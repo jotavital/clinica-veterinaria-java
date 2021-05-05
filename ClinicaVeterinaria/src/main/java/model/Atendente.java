@@ -65,6 +65,8 @@ public class Atendente {
         this.telefone = telefone;
     }
     
-    
+    public void cadastrarAtendente(Atendente atendente){
+        
+    }
     
 }
