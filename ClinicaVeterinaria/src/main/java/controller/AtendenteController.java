@@ -9,9 +9,9 @@ package controller;
  *
  * @author picle
  */
-public class AtendenteControlller {
+public class AtendenteController {
 
-    public AtendenteControlller() {
+    public AtendenteController() {
         
     }
     

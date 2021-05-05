@@ -7,6 +7,7 @@ package view;
 
 import dao.Connector;
 import java.sql.Connection;
+import controller.AtendenteController;
 
 /**
  *
@@ -80,6 +81,11 @@ public class CadastrarAtendente extends javax.swing.JFrame {
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNome.setText("Nome:");
@@ -194,6 +200,12 @@ public class CadastrarAtendente extends javax.swing.JFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        AtendenteController atendenteController = new AtendenteController();
+        atendenteController.cadastrarAtendente()
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
