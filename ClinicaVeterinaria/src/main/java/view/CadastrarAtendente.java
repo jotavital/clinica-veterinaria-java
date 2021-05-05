@@ -56,7 +56,7 @@ public class CadastrarAtendente extends javax.swing.JFrame {
         txtCpf = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clínica Veterinária - Cadastro de Atendente");
         setPreferredSize(new java.awt.Dimension(450, 360));
 

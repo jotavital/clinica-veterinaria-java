@@ -12,12 +12,12 @@ import java.sql.Connection;
  *
  * @author kairos-04
  */
-public class Login extends javax.swing.JFrame {
+public class LoginAtendente extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public LoginAtendente() {
         initComponents();
         Connector conector = new Connector();
         Connection conn = conector.connect();

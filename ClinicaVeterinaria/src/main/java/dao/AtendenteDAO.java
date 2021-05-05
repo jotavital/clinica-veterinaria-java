@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 import model.Atendente;
 
 /**
@@ -33,7 +34,10 @@ public class AtendenteDAO {
             stm.setString(4, atendente.getCpf());
             stm.setString(5, atendente.getTelefone());
             stm.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atendente cadastrado com sucesso!");
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
             e.printStackTrace();
         }
 
