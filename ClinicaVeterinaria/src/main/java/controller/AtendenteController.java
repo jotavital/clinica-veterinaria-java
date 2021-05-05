@@ -5,6 +5,8 @@
  */
 package controller;
 
+import model.Atendente;
+
 /**
  *
  * @author picle
@@ -15,7 +17,11 @@ public class AtendenteController {
         
     }
     
-    public boolean cadastrarAtendente(int id, String usuario, String senha, String nome, String cpf, String telefone){
+    public boolean cadastrarAtendente(String usuario, String senha, String nome, String cpf, String telefone){
+        Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone);
+        
+        atendente.cadastrarAtendente(atendente);
+        
         return false;
     }
     

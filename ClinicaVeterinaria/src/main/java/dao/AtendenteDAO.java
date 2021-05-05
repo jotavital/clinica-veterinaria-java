@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.*;
 import model.Atendente;
 
 /**
@@ -13,12 +14,29 @@ import model.Atendente;
  */
 public class AtendenteDAO {
 
+    Connector conector = new Connector();
+    Connection conn = conector.connect();
+
     public AtendenteDAO() {
-        
+
     }
-    
-    public void cadastrarAtendente(Atendente atendente){
-        
+
+    public void cadastrarAtendente(Atendente atendente) {
+
+        String sql = "INSERT INTO atendente (usuario, senha, nome, cpf, telefone) VALUES (?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, atendente.getUsuario());
+            stm.setString(2, atendente.getSenha());
+            stm.setString(3, atendente.getNome());
+            stm.setString(4, atendente.getCpf());
+            stm.setString(5, atendente.getTelefone());
+            stm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
-    
+
 }

@@ -5,24 +5,25 @@
  */
 package model;
 
+import dao.AtendenteDAO;
+
 /**
  *
  * @author picle
  */
 public class Atendente {
-    private int id;
     private String usuario, senha, nome, cpf, telefone;
 
     public Atendente() {
         
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public Atendente(String usuario, String senha, String nome, String cpf, String telefone){
+        setUsuario(usuario);
+        setSenha(senha);
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
     }
 
     public String getUsuario() {
@@ -66,7 +67,9 @@ public class Atendente {
     }
     
     public void cadastrarAtendente(Atendente atendente){
+        AtendenteDAO dao = new AtendenteDAO();
         
+        dao.cadastrarAtendente(atendente);
     }
     
 }
