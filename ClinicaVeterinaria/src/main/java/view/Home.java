@@ -5,10 +5,10 @@
  */
 package view;
 
+import dao.Connector;
+import java.sql.Connection;
 import view.atendente.CadastrarAtendente;
 import view.atendente.LoginAtendente;
-import javax.swing.JOptionPane;
-import view.cliente.CadastrarCliente;
 import view.cliente.CadastrarCliente;
 
 /**
@@ -22,6 +22,17 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        
+        Connector conector = new Connector();
+        Connection conn = conector.connect();
+        
+        if (conn == null) {
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_error.png")));
+            lblStatus.setText("Erro");
+        } else {
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_connect.png"))); // NOI18N
+            lblStatus.setText("Conectado");
+        }
     }
 
     /**
@@ -34,6 +45,8 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        pnRodape = new javax.swing.JPanel();
+        lblStatus = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuClientes = new javax.swing.JMenu();
         menuAddCliente = new javax.swing.JMenuItem();
@@ -69,15 +82,36 @@ public class Home extends javax.swing.JFrame {
         setTitle("Clínica Veterinária - Home");
         setMinimumSize(new java.awt.Dimension(480, 240));
 
+        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error.png"))); // NOI18N
+        lblStatus.setText("Desconhecido");
+
+        javax.swing.GroupLayout pnRodapeLayout = new javax.swing.GroupLayout(pnRodape);
+        pnRodape.setLayout(pnRodapeLayout);
+        pnRodapeLayout.setHorizontalGroup(
+            pnRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnRodapeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(590, Short.MAX_VALUE))
+        );
+        pnRodapeLayout.setVerticalGroup(
+            pnRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
+
+        jDesktopPane1.setLayer(pnRodape, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addComponent(pnRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(0, 434, Short.MAX_VALUE)
+                .addComponent(pnRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         menuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
@@ -296,6 +330,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JMenuItem menuAddAnimal;
     private javax.swing.JMenuItem menuAddAtendente;
     private javax.swing.JMenuItem menuAddAtendimento;
@@ -323,6 +358,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenu menuSobre;
     private javax.swing.JMenu menuVeterinários;
+    private javax.swing.JPanel pnRodape;
     private javax.swing.JMenuItem submenuSair;
     private javax.swing.JMenuItem submenuSobre;
     // End of variables declaration//GEN-END:variables
