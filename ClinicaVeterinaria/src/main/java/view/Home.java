@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kairos-04
@@ -27,23 +29,281 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuClientes = new javax.swing.JMenu();
+        menuAddCliente = new javax.swing.JMenuItem();
+        menuListCliente = new javax.swing.JMenuItem();
+        menuExcCliente = new javax.swing.JMenuItem();
+        menuEditCliente = new javax.swing.JMenuItem();
+        menuAnimais = new javax.swing.JMenu();
+        menuAddAnimal = new javax.swing.JMenuItem();
+        menuListAnimal = new javax.swing.JMenuItem();
+        menuExcAnimal = new javax.swing.JMenuItem();
+        menuEditAnimal = new javax.swing.JMenuItem();
+        menuAtendimentos = new javax.swing.JMenu();
+        menuAddAtendimento = new javax.swing.JMenuItem();
+        menuListAtendimento = new javax.swing.JMenuItem();
+        menuExcAtendimento = new javax.swing.JMenuItem();
+        menuEditAtendimento = new javax.swing.JMenuItem();
+        menuAtendentes = new javax.swing.JMenu();
+        menuAddAtendente = new javax.swing.JMenuItem();
+        menuListAtendente = new javax.swing.JMenuItem();
+        menuExcAtendente = new javax.swing.JMenuItem();
+        menuEditAtendente = new javax.swing.JMenuItem();
+        menuVeterinários = new javax.swing.JMenu();
+        menuAddVeterinario = new javax.swing.JMenuItem();
+        menuListVeterinario = new javax.swing.JMenuItem();
+        menuExcVeterinario = new javax.swing.JMenuItem();
+        menuEditVeterinario = new javax.swing.JMenuItem();
+        menuSobre = new javax.swing.JMenu();
+        submenuSobre = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenu();
+        submenuSair = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clínica Veterinária - Home");
+        setMinimumSize(new java.awt.Dimension(480, 240));
+
+        menuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user.png"))); // NOI18N
+        menuClientes.setText("Clientes");
+
+        menuAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
+        menuAddCliente.setText("Adicionar");
+        menuAddCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddClienteActionPerformed(evt);
+            }
+        });
+        menuClientes.add(menuAddCliente);
+
+        menuListCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListCliente.setText("Todos");
+        menuClientes.add(menuListCliente);
+
+        menuExcCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_delete.png"))); // NOI18N
+        menuExcCliente.setText("Excluir");
+        menuClientes.add(menuExcCliente);
+
+        menuEditCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_edit.png"))); // NOI18N
+        menuEditCliente.setText("Editar");
+        menuClientes.add(menuEditCliente);
+
+        jMenuBar1.add(menuClientes);
+
+        menuAnimais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/heart.png"))); // NOI18N
+        menuAnimais.setText("Animais");
+
+        menuAddAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/heart_add.png"))); // NOI18N
+        menuAddAnimal.setText("Adicionar");
+        menuAddAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddAnimalActionPerformed(evt);
+            }
+        });
+        menuAnimais.add(menuAddAnimal);
+
+        menuListAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListAnimal.setText("Todos");
+        menuAnimais.add(menuListAnimal);
+
+        menuExcAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/heart_delete.png"))); // NOI18N
+        menuExcAnimal.setText("Excluir");
+        menuAnimais.add(menuExcAnimal);
+
+        menuEditAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pencil.png"))); // NOI18N
+        menuEditAnimal.setText("Editar");
+        menuAnimais.add(menuEditAnimal);
+
+        jMenuBar1.add(menuAnimais);
+
+        menuAtendimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar.png"))); // NOI18N
+        menuAtendimentos.setText("Atendimentos");
+
+        menuAddAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_add.png"))); // NOI18N
+        menuAddAtendimento.setText("Adicionar");
+        menuAddAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddAtendimentoActionPerformed(evt);
+            }
+        });
+        menuAtendimentos.add(menuAddAtendimento);
+
+        menuListAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListAtendimento.setText("Todos");
+        menuAtendimentos.add(menuListAtendimento);
+
+        menuExcAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_delete.png"))); // NOI18N
+        menuExcAtendimento.setText("Excluir");
+        menuAtendimentos.add(menuExcAtendimento);
+
+        menuEditAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_edit.png"))); // NOI18N
+        menuEditAtendimento.setText("Editar");
+        menuAtendimentos.add(menuEditAtendimento);
+
+        jMenuBar1.add(menuAtendimentos);
+
+        menuAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group.png"))); // NOI18N
+        menuAtendentes.setText("Atendentes");
+
+        menuAddAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_add.png"))); // NOI18N
+        menuAddAtendente.setText("Adicionar");
+        menuAddAtendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddAtendenteActionPerformed(evt);
+            }
+        });
+        menuAtendentes.add(menuAddAtendente);
+
+        menuListAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListAtendente.setText("Todos");
+        menuAtendentes.add(menuListAtendente);
+
+        menuExcAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_delete.png"))); // NOI18N
+        menuExcAtendente.setText("Excluir");
+        menuAtendentes.add(menuExcAtendente);
+
+        menuEditAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_edit.png"))); // NOI18N
+        menuEditAtendente.setText("Editar");
+        menuAtendentes.add(menuEditAtendente);
+
+        jMenuBar1.add(menuAtendentes);
+
+        menuVeterinários.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard.png"))); // NOI18N
+        menuVeterinários.setText("Veterinários");
+
+        menuAddVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_add.png"))); // NOI18N
+        menuAddVeterinario.setText("Adicionar");
+        menuAddVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddVeterinarioActionPerformed(evt);
+            }
+        });
+        menuVeterinários.add(menuAddVeterinario);
+
+        menuListVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListVeterinario.setText("Todos");
+        menuVeterinários.add(menuListVeterinario);
+
+        menuExcVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_delete.png"))); // NOI18N
+        menuExcVeterinario.setText("Excluir");
+        menuVeterinários.add(menuExcVeterinario);
+
+        menuEditVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_edit.png"))); // NOI18N
+        menuEditVeterinario.setText("Editar");
+        menuVeterinários.add(menuEditVeterinario);
+
+        jMenuBar1.add(menuVeterinários);
+
+        menuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bug.png"))); // NOI18N
+        menuSobre.setText("Sobre");
+
+        submenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/help.png"))); // NOI18N
+        submenuSobre.setText("Sobre o software");
+        menuSobre.add(submenuSobre);
+
+        jMenuBar1.add(menuSobre);
+
+        menuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/door_out.png"))); // NOI18N
+        menuSair.setText("Logout");
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
+            }
+        });
+
+        submenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_go.png"))); // NOI18N
+        submenuSair.setText("Sair");
+        submenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuSairActionPerformed(evt);
+            }
+        });
+        menuSair.add(submenuSair);
+
+        jMenuBar1.add(menuSair);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddClienteActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_menuAddClienteActionPerformed
+
+    private void menuAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnimalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAddAnimalActionPerformed
+
+    private void menuAddAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAddAtendimentoActionPerformed
+
+    private void menuAddAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendenteActionPerformed
+        // TODO add your handling code here:
+        CadastrarAtendente cadAtendenteView = new CadastrarAtendente();
+        cadAtendenteView.setVisible(true);
+    }//GEN-LAST:event_menuAddAtendenteActionPerformed
+
+    private void menuAddVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddVeterinarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAddVeterinarioActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_menuSairActionPerformed
+
+    private void submenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuSairActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        LoginAtendente loginAtendenteView = new LoginAtendente();
+        loginAtendenteView.setVisible(true);
+    }//GEN-LAST:event_submenuSairActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem menuAddAnimal;
+    private javax.swing.JMenuItem menuAddAtendente;
+    private javax.swing.JMenuItem menuAddAtendimento;
+    private javax.swing.JMenuItem menuAddCliente;
+    private javax.swing.JMenuItem menuAddVeterinario;
+    private javax.swing.JMenu menuAnimais;
+    private javax.swing.JMenu menuAtendentes;
+    private javax.swing.JMenu menuAtendimentos;
+    private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenuItem menuEditAnimal;
+    private javax.swing.JMenuItem menuEditAtendente;
+    private javax.swing.JMenuItem menuEditAtendimento;
+    private javax.swing.JMenuItem menuEditCliente;
+    private javax.swing.JMenuItem menuEditVeterinario;
+    private javax.swing.JMenuItem menuExcAnimal;
+    private javax.swing.JMenuItem menuExcAtendente;
+    private javax.swing.JMenuItem menuExcAtendimento;
+    private javax.swing.JMenuItem menuExcCliente;
+    private javax.swing.JMenuItem menuExcVeterinario;
+    private javax.swing.JMenuItem menuListAnimal;
+    private javax.swing.JMenuItem menuListAtendente;
+    private javax.swing.JMenuItem menuListAtendimento;
+    private javax.swing.JMenuItem menuListCliente;
+    private javax.swing.JMenuItem menuListVeterinario;
+    private javax.swing.JMenu menuSair;
+    private javax.swing.JMenu menuSobre;
+    private javax.swing.JMenu menuVeterinários;
+    private javax.swing.JMenuItem submenuSair;
+    private javax.swing.JMenuItem submenuSobre;
     // End of variables declaration//GEN-END:variables
 }

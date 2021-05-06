@@ -7,6 +7,7 @@ package view;
 
 import controller.AtendenteController;
 import dao.Connector;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 
 /**
@@ -20,6 +21,7 @@ public class LoginAtendente extends javax.swing.JFrame {
      */
     public LoginAtendente() {
         initComponents();
+        this.getRootPane().setDefaultButton(btnEntrar);
         Connector conector = new Connector();
         Connection conn = conector.connect();
 
@@ -55,6 +57,11 @@ public class LoginAtendente extends javax.swing.JFrame {
         setTitle("Clínica Veterinária - Login");
         setPreferredSize(new java.awt.Dimension(400, 220));
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error.png"))); // NOI18N
         lblStatus.setText("Desconhecido");
@@ -158,7 +165,7 @@ public class LoginAtendente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     /**
      * @param args the command line arguments
      */
@@ -193,7 +200,7 @@ public class LoginAtendente extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -201,14 +208,18 @@ public class LoginAtendente extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         AtendenteController controller = new AtendenteController();
-        
+
         String usuario = txtUsuario.getText();
         String senha = new String(txtSenha.getPassword());
-        
-        if(controller.loginAtendente(usuario, senha)){
+
+        if (controller.loginAtendente(usuario, senha)) {
             this.dispose();
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
