@@ -25,6 +25,11 @@ public class Atendente {
         setCpf(cpf);
         setTelefone(telefone);
     }
+    
+    public Atendente(String usuario, String senha){
+        setUsuario(usuario);
+        setSenha(senha);
+    }
 
     public String getUsuario() {
         return usuario;
@@ -72,4 +77,13 @@ public class Atendente {
         dao.cadastrarAtendente(atendente);
     }
     
+    public boolean loginAtendente(Atendente atendente){
+        AtendenteDAO dao = new AtendenteDAO();
+        
+        if(dao.loginAtendente(atendente)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

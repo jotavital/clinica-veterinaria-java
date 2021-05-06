@@ -8,6 +8,8 @@ package dao;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import model.Atendente;
+import view.Home;
+import view.LoginAtendente;
 
 /**
  *
@@ -34,11 +36,39 @@ public class AtendenteDAO {
             stm.setString(4, atendente.getCpf());
             stm.setString(5, atendente.getTelefone());
             stm.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Atendente cadastrado com sucesso!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
             e.printStackTrace();
+        }
+
+    }
+
+    public boolean loginAtendente(Atendente atendente) {
+
+        String sql = "SELECT usuario, senha FROM atendente WHERE usuario=? and senha=?";
+        ResultSet res = null;
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, atendente.getUsuario());
+            stm.setString(2, atendente.getSenha());
+            res = stm.executeQuery();
+
+            if (res.next()) {
+                Home home = new Home();
+                home.setVisible(true);
+                return true;
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao logar");
+            e.printStackTrace();
+            return false;
         }
 
     }

@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.AtendenteController;
 import dao.Connector;
 import java.sql.Connection;
 
@@ -21,15 +22,15 @@ public class LoginAtendente extends javax.swing.JFrame {
         initComponents();
         Connector conector = new Connector();
         Connection conn = conector.connect();
-        
-        if(conn == null){
+
+        if (conn == null) {
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_error.png")));
             lblStatus.setText("Erro");
-        }else{
+        } else {
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_connect.png"))); // NOI18N
             lblStatus.setText("Conectado");
         }
-        
+
     }
 
     /**
@@ -76,6 +77,11 @@ public class LoginAtendente extends javax.swing.JFrame {
 
         btnEntrar.setText("Entrar");
         btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,10 +158,57 @@ public class LoginAtendente extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadastrarAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadastrarAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadastrarAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadastrarAtendente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginAtendente().setVisible(true);
+            }
+        });
+    }
+    
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+        AtendenteController controller = new AtendenteController();
+        
+        String usuario = txtUsuario.getText();
+        String senha = new String(txtSenha.getPassword());
+        
+        if(controller.loginAtendente(usuario, senha)){
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
