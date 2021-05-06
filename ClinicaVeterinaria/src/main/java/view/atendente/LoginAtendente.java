@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.atendente;
 
 import controller.AtendenteController;
 import dao.Connector;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import view.atendente.CadastrarAtendente;
 
 /**
  *
@@ -55,7 +56,6 @@ public class LoginAtendente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Veterinária - Login");
-        setPreferredSize(new java.awt.Dimension(400, 220));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

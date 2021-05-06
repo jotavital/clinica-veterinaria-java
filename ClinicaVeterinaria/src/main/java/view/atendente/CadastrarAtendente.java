@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.atendente;
 
 import dao.Connector;
 import java.sql.Connection;
@@ -58,7 +58,6 @@ public class CadastrarAtendente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clínica Veterinária - Cadastro de Atendente");
-        setPreferredSize(new java.awt.Dimension(450, 360));
 
         lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error.png"))); // NOI18N
         lblStatus.setText("Desconhecido");

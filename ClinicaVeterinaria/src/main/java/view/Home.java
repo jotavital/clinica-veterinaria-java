@@ -5,6 +5,8 @@
  */
 package view;
 
+import view.atendente.CadastrarAtendente;
+import view.atendente.LoginAtendente;
 import javax.swing.JOptionPane;
 
 /**

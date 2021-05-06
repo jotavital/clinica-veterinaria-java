@@ -9,7 +9,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import model.Atendente;
 import view.Home;
-import view.LoginAtendente;
+import view.atendente.LoginAtendente;
 
 /**
  *
