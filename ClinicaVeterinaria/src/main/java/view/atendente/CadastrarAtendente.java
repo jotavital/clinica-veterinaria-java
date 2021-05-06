@@ -5,31 +5,19 @@
  */
 package view.atendente;
 
-import dao.Connector;
-import java.sql.Connection;
 import controller.AtendenteController;
 
 /**
  *
- * @author picle
+ * @author kairos-04
  */
-public class CadastrarAtendente extends javax.swing.JFrame {
+public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form CadastrarAtendente
+     * Creates new form CadastrarAtendentes
      */
     public CadastrarAtendente() {
         initComponents();
-        Connector conector = new Connector();
-        Connection conn = conector.connect();
-        
-        if(conn == null){
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_error.png")));
-            lblStatus.setText("Erro");
-        }else{
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_connect.png"))); // NOI18N
-            lblStatus.setText("Conectado");
-        }
     }
 
     /**
@@ -55,9 +43,6 @@ public class CadastrarAtendente extends javax.swing.JFrame {
         lblTelefone = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Clínica Veterinária - Cadastro de Atendente");
 
         lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error.png"))); // NOI18N
         lblStatus.setText("Desconhecido");
@@ -109,7 +94,7 @@ public class CadastrarAtendente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -171,7 +156,7 @@ public class CadastrarAtendente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,12 +175,7 @@ public class CadastrarAtendente extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
@@ -204,17 +184,20 @@ public class CadastrarAtendente extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         AtendenteController atendenteController = new AtendenteController();
-        
+
         String usuario = txtUsuario.getText();
         String senha = new String(txtSenha.getPassword());
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String telefone = txtTelefone.getText();
-        
+
         atendenteController.cadastrarAtendente(usuario, senha, nome, cpf, telefone);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

@@ -9,6 +9,7 @@ import view.atendente.CadastrarAtendente;
 import view.atendente.LoginAtendente;
 import javax.swing.JOptionPane;
 import view.cliente.CadastrarCliente;
+import view.cliente.CadastrarCliente;
 
 /**
  *
@@ -256,9 +257,9 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddClienteActionPerformed
         // TODO add your handling code here:
-        CadastrarCliente viewCadCliente = new CadastrarCliente();
-        
-        viewCadCliente.setVisible(true);
+        CadastrarCliente cadClienteVeiew = new CadastrarCliente();
+        jDesktopPane1.add(cadClienteVeiew);
+        cadClienteVeiew.setVisible(true);
     }//GEN-LAST:event_menuAddClienteActionPerformed
 
     private void menuAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnimalActionPerformed
@@ -272,6 +273,7 @@ public class Home extends javax.swing.JFrame {
     private void menuAddAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendenteActionPerformed
         // TODO add your handling code here:
         CadastrarAtendente cadAtendenteView = new CadastrarAtendente();
+        jDesktopPane1.add(cadAtendenteView);
         cadAtendenteView.setVisible(true);
     }//GEN-LAST:event_menuAddAtendenteActionPerformed
 
@@ -281,7 +283,7 @@ public class Home extends javax.swing.JFrame {
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void submenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuSairActionPerformed
