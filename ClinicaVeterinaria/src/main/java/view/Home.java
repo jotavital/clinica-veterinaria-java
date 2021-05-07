@@ -5,7 +5,7 @@
  */
 package view;
 
-import dao.Connector;
+import model.Connector;
 import java.sql.Connection;
 import view.atendente.CadastrarAtendente;
 import view.atendente.LoginAtendente;
@@ -22,10 +22,10 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        
+
         Connector conector = new Connector();
         Connection conn = conector.connect();
-        
+
         if (conn == null) {
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_error.png")));
             lblStatus.setText("Erro");

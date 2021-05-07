@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import funcoes.Funcoes;
+import model.Atendente;
 
 /**
  *
@@ -19,7 +20,7 @@ import funcoes.Funcoes;
 public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
     Funcoes funcoes = new Funcoes();
-    
+
     /**
      * Creates new form CadastrarAtendentes
      */
@@ -187,7 +188,9 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         String cpf = txtCpf.getText();
         String telefone = txtTelefone.getText();
 
-        if (atendenteController.cadastrarAtendente(usuario, senha, nome, cpf, telefone)) {
+        Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone);
+
+        if (atendenteController.cadastrarAtendente(atendente)) {
             funcoes.resetFields(jPanel1);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

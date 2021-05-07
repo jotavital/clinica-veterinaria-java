@@ -5,8 +5,10 @@
  */
 package view.cliente;
 
-import dao.Connector;
+import controller.ClienteController;
+import model.Connector;
 import java.sql.*;
+import model.Cliente;
 
 /**
  *
@@ -78,6 +80,11 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.setPreferredSize(new java.awt.Dimension(80, 20));
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,6 +171,22 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        ClienteController controller = new ClienteController();
+        
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        String telefone = txtTelefone.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String numero = txtNumero.getText();
+        
+        Cliente cliente = new Cliente(nome, cpf, telefone, rua, bairro, numero);
+        
+        controller.cadastrarCliente(cliente);
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,9 +6,10 @@
 package view.atendente;
 
 import controller.AtendenteController;
-import dao.Connector;
+import model.Connector;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import model.Atendente;
 import view.atendente.CadastrarAtendente;
 
 /**
@@ -213,7 +214,9 @@ public class LoginAtendente extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
         String senha = new String(txtSenha.getPassword());
 
-        if (controller.loginAtendente(usuario, senha)) {
+        Atendente atendente = new Atendente(usuario, senha);
+        
+        if (controller.loginAtendente(atendente)) {
             this.dispose();
         }
     }//GEN-LAST:event_btnEntrarActionPerformed

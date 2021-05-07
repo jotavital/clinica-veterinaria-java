@@ -14,27 +14,25 @@ import model.Atendente;
 public class AtendenteController {
 
     public AtendenteController() {
-        
+
     }
-    
-    public boolean cadastrarAtendente(String usuario, String senha, String nome, String cpf, String telefone){
-        Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone);
-        
-        if(atendente.cadastrarAtendente(atendente)){
+
+    public boolean cadastrarAtendente(Atendente atendente) {
+
+        if (atendente.cadastrarAtendente(atendente)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public boolean loginAtendente(String usuario, String senha){
-        Atendente atendente = new Atendente(usuario, senha);
-        
-        if(atendente.loginAtendente(atendente)){
+
+    public boolean loginAtendente(Atendente atendente) {
+
+        if (atendente.loginAtendente(atendente)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
+
 }
