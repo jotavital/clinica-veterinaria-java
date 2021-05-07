@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import funcoes.Funcoes;
 import model.Atendente;
-
+import controller.LimitNumberCharacters;
 /**
  *
  * @author kairos-04
@@ -159,6 +159,12 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(94, Short.MAX_VALUE))
         );
+
+        txtUsuario.setDocument( new LimitNumberCharacters(20) );
+        txtSenha.setDocument( new LimitNumberCharacters(20) );
+        txtNome.setDocument( new LimitNumberCharacters(80) );
+        txtCpf.setDocument( new LimitNumberCharacters(15) );
+        txtTelefone.setDocument( new LimitNumberCharacters(11) );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

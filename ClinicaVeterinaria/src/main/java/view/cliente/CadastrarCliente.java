@@ -5,16 +5,20 @@
  */
 package view.cliente;
 
+import controller.LimitNumberCharacters;
 import controller.ClienteController;
 import model.Connector;
 import java.sql.*;
 import model.Cliente;
-
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+import javax.swing.text.*;
 /**
  *
  * @author kairos-04
  */
-public class CadastrarCliente extends javax.swing.JInternalFrame {
+public class CadastrarCliente extends javax.swing.JInternalFrame  {
 
     /**
      * Creates new form NewJInternalFrame
@@ -115,7 +119,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(lblTitulo)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBairro, txtCpf, txtNome, txtNumero, txtRua, txtTelefone});
@@ -156,6 +160,13 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
+        txtNome.setDocument( new LimitNumberCharacters(80) );
+        txtCpf.setDocument( new LimitNumberCharacters(15) );
+        txtTelefone.setDocument( new LimitNumberCharacters(11) );
+        txtRua.setDocument( new LimitNumberCharacters(40) );
+        txtBairro.setDocument( new LimitNumberCharacters(30) );
+        txtNumero.setDocument( new LimitNumberCharacters(8) );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,6 +183,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         ClienteController controller = new ClienteController();

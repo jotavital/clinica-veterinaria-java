@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="null"/>
@@ -84,7 +84,7 @@
                           <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="127" max="32767" attributes="0"/>
+                  <EmptySpace pref="128" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,16 +179,34 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtNome.setDocument( new LimitNumberCharacters(80) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCpf">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtCpf.setDocument( new LimitNumberCharacters(15) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTelefone">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtTelefone.setDocument( new LimitNumberCharacters(11) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRua">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtRua.setDocument( new LimitNumberCharacters(40) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBairro">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtBairro.setDocument( new LimitNumberCharacters(30) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNumero">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtNumero.setDocument( new LimitNumberCharacters(8) );"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastrar">
           <Properties>
