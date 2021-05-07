@@ -71,10 +71,14 @@ public class Atendente {
         this.telefone = telefone;
     }
     
-    public void cadastrarAtendente(Atendente atendente){
+    public boolean cadastrarAtendente(Atendente atendente){
         AtendenteDAO dao = new AtendenteDAO();
         
-        dao.cadastrarAtendente(atendente);
+        if(dao.cadastrarAtendente(atendente)){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public boolean loginAtendente(Atendente atendente){

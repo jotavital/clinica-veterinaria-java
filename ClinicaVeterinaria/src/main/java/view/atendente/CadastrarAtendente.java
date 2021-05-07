@@ -6,6 +6,11 @@
 package view.atendente;
 
 import controller.AtendenteController;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import funcoes.Funcoes;
 
 /**
  *
@@ -13,6 +18,8 @@ import controller.AtendenteController;
  */
 public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
+    Funcoes funcoes = new Funcoes();
+    
     /**
      * Creates new form CadastrarAtendentes
      */
@@ -180,13 +187,14 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         String cpf = txtCpf.getText();
         String telefone = txtTelefone.getText();
 
-        atendenteController.cadastrarAtendente(usuario, senha, nome, cpf, telefone);
+        if (atendenteController.cadastrarAtendente(usuario, senha, nome, cpf, telefone)) {
+            funcoes.resetFields(jPanel1);
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;

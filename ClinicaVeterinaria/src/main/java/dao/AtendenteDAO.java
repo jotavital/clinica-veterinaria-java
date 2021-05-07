@@ -24,7 +24,7 @@ public class AtendenteDAO {
 
     }
 
-    public void cadastrarAtendente(Atendente atendente) {
+    public boolean cadastrarAtendente(Atendente atendente) {
 
         String sql = "INSERT INTO atendente (usuario, senha, nome, cpf, telefone) VALUES (?, ?, ?, ?, ?)";
 
@@ -38,9 +38,11 @@ public class AtendenteDAO {
             stm.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atendente cadastrado com sucesso!");
+            return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
             e.printStackTrace();
+            return false;
         }
 
     }

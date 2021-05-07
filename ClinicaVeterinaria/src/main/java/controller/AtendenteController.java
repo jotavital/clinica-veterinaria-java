@@ -17,10 +17,14 @@ public class AtendenteController {
         
     }
     
-    public void cadastrarAtendente(String usuario, String senha, String nome, String cpf, String telefone){
+    public boolean cadastrarAtendente(String usuario, String senha, String nome, String cpf, String telefone){
         Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone);
         
-        atendente.cadastrarAtendente(atendente);
+        if(atendente.cadastrarAtendente(atendente)){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public boolean loginAtendente(String usuario, String senha){
