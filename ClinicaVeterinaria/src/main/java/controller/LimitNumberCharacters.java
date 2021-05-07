@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package controller;
+
 import javax.swing.text.*;
 
-public class LimitNumberCharacters extends PlainDocument 
-{
+public class LimitNumberCharacters extends PlainDocument {
+
     private int iMaxLength;
 
     public LimitNumberCharacters(int maxlen) {
@@ -16,19 +17,19 @@ public class LimitNumberCharacters extends PlainDocument
     }
 
     @Override
-    public void insertString(int offset, String str, AttributeSet attr)
-                    throws BadLocationException {
+    public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
         //if (s == null) return;
 
-        if (iMaxLength <= 0)        // aceitara qualquer no. de caracteres
-        {
+        if (iMaxLength <= 0) { // aceitara qualquer no. de caracteres
             super.insertString(offset, str.toUpperCase(), attr);
             return;
         }
 
         int ilen = (getLength() + str.length());
-        if (ilen <= iMaxLength)    
+
+        if (ilen <= iMaxLength) {
             super.insertString(offset, str.toUpperCase(), attr);   // ...aceita str
         }
+    }
 
 }
