@@ -5,10 +5,7 @@
  */
 package controller;
 import javax.swing.text.*;
-/**
- *
- * @author mateu
- */
+
 public class LimitNumberCharacters extends PlainDocument 
 {
     private int iMaxLength;
@@ -30,7 +27,7 @@ public class LimitNumberCharacters extends PlainDocument
         }
 
         int ilen = (getLength() + str.length());
-        if (ilen <= iMaxLength)    // se o comprimento final for menor...
+        if (ilen <= iMaxLength)    
             super.insertString(offset, str.toUpperCase(), attr);   // ...aceita str
         }
 
