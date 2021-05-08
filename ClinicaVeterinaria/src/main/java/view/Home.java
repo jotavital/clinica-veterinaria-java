@@ -10,6 +10,7 @@ import java.sql.Connection;
 import view.atendente.CadastrarAtendente;
 import view.atendente.LoginAtendente;
 import view.cliente.CadastrarCliente;
+import view.veterinario.CadastroVeterinario;
 
 /**
  *
@@ -313,6 +314,9 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddVeterinarioActionPerformed
         // TODO add your handling code here:
+        CadastroVeterinario cadVeterinarioView = new CadastroVeterinario();
+        jDesktopPane1.add(cadVeterinarioView);
+        cadVeterinarioView.setVisible(true);
     }//GEN-LAST:event_menuAddVeterinarioActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
