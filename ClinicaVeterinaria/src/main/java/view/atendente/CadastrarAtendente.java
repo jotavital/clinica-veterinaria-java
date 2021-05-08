@@ -6,13 +6,9 @@
 package view.atendente;
 
 import controller.AtendenteController;
-import java.awt.Component;
-import java.util.ArrayList;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import funcoes.Funcoes;
 import model.Atendente;
-import controller.LimitNumberCharacters;
+import funcoes.LimitNumberCharacters;
 /**
  *
  * @author kairos-04

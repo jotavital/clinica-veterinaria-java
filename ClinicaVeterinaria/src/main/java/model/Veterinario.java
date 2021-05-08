@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +15,9 @@ import javax.swing.JOptionPane;
  * @author lukas
  */
 public class Veterinario {
+    Connector conector = new Connector();
+    Connection conn = conector.connect();
+    
     private String nome, cpf, telefone, rua, bairro, numero;
 
     public Veterinario() {
@@ -76,9 +82,25 @@ public class Veterinario {
     }
     
     public boolean cadastrarVeterinario(Veterinario veterinario ){
-        //sql's
-        JOptionPane.showMessageDialog(null, "oi");
-        
-        return true;
+        //sql para o cadastro do veterinario
+        String sql = "INSERT INTO veterinario (nome, cpf, telefone, rua, bairro, numero) VALUES (?, ?, ?, ?, ?, ?)";
+                
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, veterinario.getNome());
+            stm.setString(2, veterinario.getCpf());
+            stm.setString(3, veterinario.getTelefone());
+            stm.setString(4, veterinario.getRua());
+            stm.setString(5, veterinario.getBairro());
+            stm.setString(6, veterinario.getNumero());
+            stm.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!");
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
+            e.printStackTrace();
+            return false;
+        }
     }
 }

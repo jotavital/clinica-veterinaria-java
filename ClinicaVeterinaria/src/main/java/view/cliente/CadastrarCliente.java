@@ -5,15 +5,9 @@
  */
 package view.cliente;
 
-import controller.LimitNumberCharacters;
+import funcoes.LimitNumberCharacters;
 import controller.ClienteController;
-import model.Connector;
-import java.sql.*;
 import model.Cliente;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
-import javax.swing.text.*;
 /**
  *
  * @author kairos-04

@@ -13,7 +13,7 @@ import view.Home;
  *
  * @author picle
  */
-public class Atendente {
+public final class Atendente {
 
     Connector conector = new Connector();
     Connection conn = conector.connect();
@@ -91,6 +91,7 @@ public class Atendente {
             stm.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atendente cadastrado com sucesso!");
+            
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar");

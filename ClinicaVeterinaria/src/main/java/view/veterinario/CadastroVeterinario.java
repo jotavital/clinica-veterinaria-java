@@ -6,6 +6,7 @@
 package view.veterinario;
 
 import controller.VeterinarioController;
+import funcoes.Funcoes;
 import model.Veterinario;
 
 /**
@@ -13,6 +14,8 @@ import model.Veterinario;
  * @author lukas
  */
 public class CadastroVeterinario extends javax.swing.JInternalFrame {
+    
+    Funcoes funcoes = new Funcoes();
 
     /**
      * Creates new form CadastroVeterinario
@@ -186,7 +189,9 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
         
         Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
         
-        controller.CadastrarVeterinario(veterinario);
+        if (controller.CadastrarVeterinario(veterinario)){
+            funcoes.resetFields(jPanel1);
+        }
     }//GEN-LAST:event_btnCadastrarVeterinarioActionPerformed
 
 
