@@ -5,9 +5,7 @@
  */
 package model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -98,7 +96,7 @@ public class Veterinario {
             JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!");
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o veterinário!");
             e.printStackTrace();
             return false;
         }

@@ -50,7 +50,7 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setMaximizable(true);
-        setTitle("Clínica Veterinária - Cadastrar Atendente");
+        setTitle("Clínica Veterinária - Cadastrar Atendentes");
         setPreferredSize(new java.awt.Dimension(490, 400));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 400));
@@ -158,9 +158,9 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
         txtUsuario.setDocument( new LimitNumberCharacters(20) );
         txtSenha.setDocument( new LimitNumberCharacters(20) );
-        txtNome.setDocument( new LimitNumberCharacters(80) );
+        txtNome.setDocument( new LimitNumberCharacters(50) );
         txtCpf.setDocument( new LimitNumberCharacters(15) );
-        txtTelefone.setDocument( new LimitNumberCharacters(11) );
+        txtTelefone.setDocument( new LimitNumberCharacters(14) );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

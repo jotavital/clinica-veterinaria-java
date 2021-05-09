@@ -5,7 +5,7 @@
  */
 package view.cliente;
 
-import funcoes.LimitNumberCharacters;
+import funcoes.*;
 import controller.ClienteController;
 import model.Cliente;
 /**
@@ -14,6 +14,8 @@ import model.Cliente;
  */
 public class CadastrarCliente extends javax.swing.JInternalFrame  {
 
+    Funcoes funcoes = new Funcoes();
+    
     /**
      * Creates new form NewJInternalFrame
      */
@@ -49,7 +51,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
         setBorder(null);
         setClosable(true);
         setMaximizable(true);
-        setTitle("Clínica Veterinária - Cadastrar Cliente");
+        setTitle("Clínica Veterinária - Cadastrar Clientes");
         setPreferredSize(new java.awt.Dimension(510, 410));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(510, 410));
@@ -62,7 +64,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
         lblNome.setText("Nome:");
 
         lblCpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCpf.setText("Cpf:");
+        lblCpf.setText("CPF:");
 
         lblTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTelefone.setText("Telefone:");
@@ -113,7 +115,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(lblTitulo)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBairro, txtCpf, txtNome, txtNumero, txtRua, txtTelefone});
@@ -154,12 +156,12 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        txtNome.setDocument( new LimitNumberCharacters(80) );
+        txtNome.setDocument( new LimitNumberCharacters(50) );
         txtCpf.setDocument( new LimitNumberCharacters(15) );
-        txtTelefone.setDocument( new LimitNumberCharacters(11) );
-        txtRua.setDocument( new LimitNumberCharacters(40) );
-        txtBairro.setDocument( new LimitNumberCharacters(30) );
-        txtNumero.setDocument( new LimitNumberCharacters(8) );
+        txtTelefone.setDocument( new LimitNumberCharacters(14) );
+        txtRua.setDocument( new LimitNumberCharacters(50) );
+        txtBairro.setDocument( new LimitNumberCharacters(50) );
+        txtNumero.setDocument( new LimitNumberCharacters(5) );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +193,9 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
         
         Cliente cliente = new Cliente(nome, cpf, telefone, rua, bairro, numero);
         
-        controller.cadastrarCliente(cliente);
+        if(controller.cadastrarCliente(cliente)){
+            funcoes.resetFields(jPanel1);
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
 

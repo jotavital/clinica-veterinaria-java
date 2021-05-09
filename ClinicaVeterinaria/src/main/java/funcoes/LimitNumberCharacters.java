@@ -21,14 +21,14 @@ public class LimitNumberCharacters extends PlainDocument {
         //if (s == null) return;
 
         if (iMaxLength <= 0) { // aceitara qualquer no. de caracteres
-            super.insertString(offset, str.toUpperCase(), attr);
+            super.insertString(offset, str, attr);
             return;
         }
 
         int ilen = (getLength() + str.length());
 
         if (ilen <= iMaxLength) {
-            super.insertString(offset, str.toUpperCase(), attr);   // ...aceita str
+            super.insertString(offset, str, attr);   // ...aceita str
         }
     }
 

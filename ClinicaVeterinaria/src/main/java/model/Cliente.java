@@ -6,12 +6,16 @@
 package model;
 
 import javax.swing.JOptionPane;
+import model.Connector;
+import java.sql.*;
 
 /**
  *
  * @author kairos-04
  */
 public class Cliente {
+    Connector connector = new Connector();
+    Connection conn = connector.connect();
     String nome, cpf, telefone, rua, bairro, numero;
 
     public Cliente() {
@@ -77,8 +81,27 @@ public class Cliente {
     
     public boolean cadastrarCliente(Cliente cliente){
         //sql's
-        JOptionPane.showMessageDialog(null, "oi");
+        String sql = "INSERT INTO cliente (nome, cpf, telefone, rua, bairro, numero) VALUES (?, ?, ?, ?, ?, ?)";
         
-        return true;
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, cliente.getNome());
+            stm.setString(2, cliente.getCpf());
+            stm.setString(3, cliente.getTelefone());
+            stm.setString(4, cliente.getRua());
+            stm.setString(5, cliente.getBairro());
+            stm.setString(6, cliente.getNumero());
+            
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o cliente!");
+            return false;
+        }
+        
+        
+        
     }
 }

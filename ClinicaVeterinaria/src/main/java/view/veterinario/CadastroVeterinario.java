@@ -6,7 +6,7 @@
 package view.veterinario;
 
 import controller.VeterinarioController;
-import funcoes.Funcoes;
+import funcoes.*;
 import model.Veterinario;
 
 /**
@@ -34,50 +34,51 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtNomeVeterinario = new javax.swing.JTextField();
-        txtCpfVeterinario = new javax.swing.JTextField();
-        txtBairroVeterinario = new javax.swing.JTextField();
-        txtNumeroVeterinario = new javax.swing.JTextField();
-        txtTelefoneVeterinario = new javax.swing.JTextField();
-        txtRuaVeterinario = new javax.swing.JTextField();
-        btnCadastrarVeterinario = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblCpf = new javax.swing.JLabel();
+        lblTelefone = new javax.swing.JLabel();
+        lblRua = new javax.swing.JLabel();
+        lblBairro = new javax.swing.JLabel();
+        lblNumero = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtCpf = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
+        setTitle("Clínica Veterinária - Cadastrar Veterinários");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
-        jLabel1.setText("Novo Vetrinário");
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
+        lblTitulo.setText("Novo Vetrinário");
 
-        jLabel2.setText("Nome:");
+        lblNome.setText("Nome:");
 
-        jLabel3.setText("CPF:");
+        lblCpf.setText("CPF:");
 
-        jLabel4.setText("Telefone:");
+        lblTelefone.setText("Telefone:");
 
-        jLabel5.setText("Rua:");
+        lblRua.setText("Rua:");
 
-        jLabel6.setText("Bairro:");
+        lblBairro.setText("Bairro:");
 
-        jLabel7.setText("Número:");
+        lblNumero.setText("Número:");
 
-        txtBairroVeterinario.addActionListener(new java.awt.event.ActionListener() {
+        txtBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBairroVeterinarioActionPerformed(evt);
+                txtBairroActionPerformed(evt);
             }
         });
 
-        btnCadastrarVeterinario.setText("Cadastrar");
-        btnCadastrarVeterinario.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarVeterinarioActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -93,70 +94,75 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
+                                    .addComponent(lblRua)
+                                    .addComponent(lblBairro)
+                                    .addComponent(lblNumero))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtBairroVeterinario)
-                                    .addComponent(txtNumeroVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtBairro)
+                                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jLabel2)
+                                .addComponent(lblNome)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtNomeVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(lblTitulo)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtRuaVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4))
+                                .addComponent(lblCpf)
+                                .addComponent(lblTelefone))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCpfVeterinario)
-                                .addComponent(txtTelefoneVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtCpf)
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
-                        .addComponent(btnCadastrarVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
+                .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNomeVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCpfVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCpf)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTelefoneVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTelefone)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtRuaVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRua)
+                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtBairroVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBairro)
+                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtNumeroVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNumero)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCadastrarVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
+
+        txtNome.setDocument( new LimitNumberCharacters(50) );
+        txtCpf.setDocument( new LimitNumberCharacters(15) );
+        txtBairro.setDocument( new LimitNumberCharacters(50) );
+        txtNumero.setDocument( new LimitNumberCharacters(5) );
+        txtTelefone.setDocument( new LimitNumberCharacters(14) );
+        txtRua.setDocument( new LimitNumberCharacters(50) );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,44 +178,44 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBairroVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroVeterinarioActionPerformed
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroVeterinarioActionPerformed
+    }//GEN-LAST:event_txtBairroActionPerformed
 
-    private void btnCadastrarVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVeterinarioActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         VeterinarioController controller = new VeterinarioController();
         
-        String nome = txtNomeVeterinario.getText();
-        String cpf = txtCpfVeterinario.getText();
-        String telefone = txtTelefoneVeterinario.getText();
-        String rua = txtRuaVeterinario.getText();
-        String bairro = txtBairroVeterinario.getText();
-        String numero = txtNumeroVeterinario.getText();
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        String telefone = txtTelefone.getText();
+        String rua = txtRua.getText();
+        String bairro = txtBairro.getText();
+        String numero = txtNumero.getText();
         
         Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
         
         if (controller.CadastrarVeterinario(veterinario)){
             funcoes.resetFields(jPanel1);
         }
-    }//GEN-LAST:event_btnCadastrarVeterinarioActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrarVeterinario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtBairroVeterinario;
-    private javax.swing.JTextField txtCpfVeterinario;
-    private javax.swing.JTextField txtNomeVeterinario;
-    private javax.swing.JTextField txtNumeroVeterinario;
-    private javax.swing.JTextField txtRuaVeterinario;
-    private javax.swing.JTextField txtTelefoneVeterinario;
+    private javax.swing.JLabel lblBairro;
+    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JLabel lblRua;
+    private javax.swing.JLabel lblTelefone;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtRua;
+    private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }
