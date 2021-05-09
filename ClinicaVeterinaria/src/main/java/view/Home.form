@@ -149,6 +149,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Atendentes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAtendentesActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuAddAtendente">
               <Properties>
@@ -168,6 +171,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Todos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuListAtendenteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuExcAtendente">
               <Properties>

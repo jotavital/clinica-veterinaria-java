@@ -199,6 +199,11 @@ public class Home extends javax.swing.JFrame {
 
         menuAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group.png"))); // NOI18N
         menuAtendentes.setText("Atendentes");
+        menuAtendentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAtendentesActionPerformed(evt);
+            }
+        });
 
         menuAddAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_add.png"))); // NOI18N
         menuAddAtendente.setText("Adicionar");
@@ -211,6 +216,11 @@ public class Home extends javax.swing.JFrame {
 
         menuListAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         menuListAtendente.setText("Todos");
+        menuListAtendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListAtendenteActionPerformed(evt);
+            }
+        });
         menuAtendentes.add(menuListAtendente);
 
         menuExcAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_delete.png"))); // NOI18N
@@ -353,6 +363,17 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(listaVeterinarioView);
         listaVeterinarioView.setVisible(true);
     }//GEN-LAST:event_menuListVeterinarioActionPerformed
+
+    private void menuAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAtendentesActionPerformed
+
+    }//GEN-LAST:event_menuAtendentesActionPerformed
+
+    private void menuListAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListAtendenteActionPerformed
+        // TODO add your handling code here:
+        ListarAtendente listaAtendenteView = new ListarAtendente();
+        jDesktopPane1.add(listaAtendenteView);
+        listaAtendenteView.setVisible(true);
+    }//GEN-LAST:event_menuListAtendenteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

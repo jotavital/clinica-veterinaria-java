@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Atendente;
 
 /**
@@ -34,5 +35,12 @@ public class AtendenteController {
             return false;
         }
     }
-
+    
+    public ArrayList<Atendente> listarAtendente(Atendente atendente){
+        if(atendente.ListarAtendente(atendente) != null){
+            return atendente.ListarAtendente(atendente);
+        }else{
+            return null;
+        }
+    }
 }

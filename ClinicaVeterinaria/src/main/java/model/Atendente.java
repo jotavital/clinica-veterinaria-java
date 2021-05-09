@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import view.Home;
 
@@ -36,6 +37,14 @@ public final class Atendente {
         setUsuario(usuario);
         setSenha(senha);
     }
+
+    public Atendente(String nome, String cpf, String telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+    
+    
 
     public String getUsuario() {
         return usuario;
@@ -127,5 +136,30 @@ public final class Atendente {
             return false;
         }
 
+    }
+    
+    public ArrayList<Atendente> ListarAtendente(Atendente atendente){
+        String sql = "SELECT * FROM atendente";
+        ArrayList<Atendente> listaAtendente = new ArrayList<>();
+        try {
+            ResultSet res = null;
+            PreparedStatement stm = conn.prepareStatement(sql);
+            
+            res = stm.executeQuery();
+            while(res.next()){
+                atendente.setNome(res.getString("nome"));
+                atendente.setCpf(res.getString("cpf"));
+                atendente.setTelefone(res.getString("telefone"));
+                Atendente novoAtendente = new Atendente(nome, cpf, telefone);
+                
+                listaAtendente.add(novoAtendente);
+            }
+            
+            return listaAtendente;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
     }
 }
