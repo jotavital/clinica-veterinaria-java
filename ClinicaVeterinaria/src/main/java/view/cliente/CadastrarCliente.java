@@ -52,6 +52,7 @@ public class CadastrarCliente extends javax.swing.JInternalFrame  {
         setClosable(true);
         setMaximizable(true);
         setTitle("Clínica Veterinária - Cadastrar Clientes");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
         setPreferredSize(new java.awt.Dimension(510, 410));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(510, 410));
