@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Veterinario;
 
 /**
@@ -22,6 +23,14 @@ public class VeterinarioController {
             return true;
         }else{
             return false;
+        }
+    }
+    
+    public ArrayList<Veterinario> listaVeterinario(Veterinario veterinario){
+        if(veterinario.listarVeterinario(veterinario) != null){
+            return veterinario.listarVeterinario(veterinario);
+        }else{
+            return null;
         }
     }
     

@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +17,7 @@ public class Veterinario {
     Connector conector = new Connector();
     Connection conn = conector.connect();
     
-    private String nome, cpf, telefone, rua, bairro, numero;
+    String nome, cpf, telefone, rua, bairro, numero;
 
     public Veterinario() {
         
@@ -99,6 +100,34 @@ public class Veterinario {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar o veterinário!");
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    public ArrayList<Veterinario> listarVeterinario(Veterinario veterinario){
+        String sql = "SELECT * FROM veterinario";
+        ArrayList<Veterinario> listaVeterinario = new ArrayList<>();
+        
+        try{
+            ResultSet res = null;
+            PreparedStatement stm = conn.prepareStatement(sql);
+            
+            res = stm.executeQuery();
+            while(res.next()){
+                veterinario.setNome(res.getString("nome"));
+                veterinario.setCpf(res.getString("cpf"));
+                veterinario.setTelefone(res.getString("telefone"));
+                veterinario.setRua(res.getString("rua"));
+                veterinario.setBairro(res.getString("bairro"));
+                veterinario.setNumero(res.getString("numero"));
+                Veterinario novoVeterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
+                
+                listaVeterinario.add(novoVeterinario);
+            }
+            
+            return listaVeterinario;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

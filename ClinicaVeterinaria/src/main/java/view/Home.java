@@ -237,6 +237,11 @@ public class Home extends javax.swing.JFrame {
 
         menuListVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         menuListVeterinario.setText("Todos");
+        menuListVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListVeterinarioActionPerformed(evt);
+            }
+        });
         menuVeterinários.add(menuListVeterinario);
 
         menuExcVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_delete.png"))); // NOI18N
@@ -341,6 +346,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(listarClientesView);
         listarClientesView.setVisible(true);
     }//GEN-LAST:event_menuListClienteActionPerformed
+
+    private void menuListVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListVeterinarioActionPerformed
+        // TODO add your handling code here:
+        ListarVeterinario listaVeterinarioView = new ListarVeterinario();
+        jDesktopPane1.add(listaVeterinarioView);
+        listaVeterinarioView.setVisible(true);
+    }//GEN-LAST:event_menuListVeterinarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

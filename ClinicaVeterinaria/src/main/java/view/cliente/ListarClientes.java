@@ -68,9 +68,7 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
 
         jTable1.setModel(jTable1.getModel());
-        jTable1.setTableHeader(jTable1.getTableHeader());
         jScrollPane1.setViewportView(jTable1);
-        jTable1.setColumnModel(jTable1.getColumnModel());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
