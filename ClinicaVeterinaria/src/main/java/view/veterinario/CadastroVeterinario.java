@@ -49,6 +49,7 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
         txtRua = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
 
+        setBorder(null);
         setClosable(true);
         setMaximizable(true);
         setTitle("Clínica Veterinária - Cadastrar Veterinários");
@@ -121,7 +122,7 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +155,7 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         txtNome.setDocument( new LimitNumberCharacters(50) );

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Cliente;
 
 /**
@@ -24,6 +25,16 @@ public class ClienteController {
         }else{
             return false;
         }
+    }
+    
+    public ArrayList<Cliente> pegarClientes(Cliente cliente){
+        
+        if(cliente.pegarClientes(cliente) != null){
+            return cliente.pegarClientes(cliente);
+        }else{
+            return null;
+        }
+        
     }
     
 }

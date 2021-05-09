@@ -7,10 +7,9 @@ package view;
 
 import model.Connector;
 import java.sql.Connection;
-import view.atendente.CadastrarAtendente;
-import view.atendente.LoginAtendente;
-import view.cliente.CadastrarCliente;
-import view.veterinario.CadastroVeterinario;
+import view.atendente.*;
+import view.cliente.*;
+import view.veterinario.*;
 
 /**
  *
@@ -29,7 +28,7 @@ public class Home extends javax.swing.JFrame {
 
         if (conn == null) {
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_error.png")));
-            lblStatus.setText("Erro");
+            lblStatus.setText("Erro de conexão");
         } else {
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/database_connect.png"))); // NOI18N
             lblStatus.setText("Conectado");
@@ -129,6 +128,11 @@ public class Home extends javax.swing.JFrame {
 
         menuListCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         menuListCliente.setText("Todos");
+        menuListCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListClienteActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuListCliente);
 
         menuExcCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_delete.png"))); // NOI18N
@@ -330,6 +334,13 @@ public class Home extends javax.swing.JFrame {
         LoginAtendente loginAtendenteView = new LoginAtendente();
         loginAtendenteView.setVisible(true);
     }//GEN-LAST:event_submenuSairActionPerformed
+
+    private void menuListClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListClienteActionPerformed
+        // TODO add your handling code here:
+        ListarClientes listarClientesView = new ListarClientes();
+        jDesktopPane1.add(listarClientesView);
+        listarClientesView.setVisible(true);
+    }//GEN-LAST:event_menuListClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

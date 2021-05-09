@@ -8,6 +8,7 @@ package model;
 import javax.swing.JOptionPane;
 import model.Connector;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -101,7 +102,34 @@ public class Cliente {
             return false;
         }
         
+    }
+    
+    public ArrayList<Cliente> pegarClientes(Cliente cliente){
+        String sql = "SELECT * FROM cliente";
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
         
+        try {
+            ResultSet res = null;
+            PreparedStatement stm = conn.prepareStatement(sql);
+            
+            res = stm.executeQuery();
+            while(res.next()){
+                cliente.setNome(res.getString("nome"));
+                cliente.setCpf(res.getString("cpf"));
+                cliente.setTelefone(res.getString("telefone"));
+                cliente.setRua(res.getString("rua"));
+                cliente.setBairro(res.getString("bairro"));
+                cliente.setNumero(res.getString("numero"));
+                Cliente novoCliente = new Cliente(nome, cpf, telefone, rua, bairro, numero);
+                
+                listaClientes.add(novoCliente);
+            }
+            
+            return listaClientes;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
         
     }
 }
