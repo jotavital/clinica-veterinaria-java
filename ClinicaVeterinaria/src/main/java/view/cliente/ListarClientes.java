@@ -28,10 +28,18 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         initComponents();
         
         //criando a table e suas colunas, iniciando com os dados vazios para adicionar com o que vem do banco
-        String colunas[] = {"Nome", "CPF", "Telefone", "Rua", "Bairro", "Número"}; 
+        String colunas[] = {"Nome", "CPF", "Telefone", "Endereço"}; 
         Object[][] data = { }; // inicializa vazio pois os dados virão do banco
         DefaultTableModel modelo = new DefaultTableModel(data, colunas); // criando modelo com as colunas para colocar na table
         jTable1.setModel(modelo); //colocando o modelo na table
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN); //desativa tamanho automatico das colunas
+        jTable1.getColumnModel().getColumn(0).setMinWidth(150);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
+        jTable1.getColumnModel().getColumn(1).setMinWidth(100);
+        jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
+        jTable1.getColumnModel().getColumn(2).setMinWidth(100);
+        jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+        
         jTable1.setAutoCreateRowSorter(true); //metodo que cria ordenador dos dados da table
         
         listaClientes = clienteController.pegarClientes(cliente); // metodo que vai chamar o controller > model e vai pegar os dados do banco e retornar em forma de arraylist
@@ -41,9 +49,7 @@ public class ListarClientes extends javax.swing.JInternalFrame {
                 c.getNome(),
                 c.getCpf(),
                 c.getTelefone(),
-                c.getRua(),
-                c.getBairro(),
-                c.getNumero()
+                c.getRua() + ", " + c.getBairro() + " - " + c.getNumero()
             });
         }
     }
@@ -68,6 +74,7 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
 
         jTable1.setModel(jTable1.getModel());
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,7 +83,7 @@ public class ListarClientes extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
