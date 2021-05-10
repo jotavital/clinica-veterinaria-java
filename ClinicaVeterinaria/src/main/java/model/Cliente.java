@@ -100,6 +100,7 @@ public class Cliente {
     }
     
     public boolean cadastrarCliente(Cliente cliente){
+        
         //sql's
         String sql = "INSERT INTO cliente (nome, cpf, telefone, rua, bairro, numero) VALUES (?, ?, ?, ?, ?, ?)";
         
