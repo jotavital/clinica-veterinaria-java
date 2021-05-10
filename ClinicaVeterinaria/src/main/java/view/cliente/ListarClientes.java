@@ -32,8 +32,9 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         Object[][] data = { }; // inicializa vazio pois os dados virão do banco
         DefaultTableModel modelo = new DefaultTableModel(data, colunas); // criando modelo com as colunas para colocar na table
         jTable1.setModel(modelo); //colocando o modelo na table
+        
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN); //desativa tamanho automatico das colunas
-        jTable1.getColumnModel().getColumn(0).setMinWidth(150);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(150); // seta tamanho das colunas
         jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
         jTable1.getColumnModel().getColumn(1).setMinWidth(100);
         jTable1.getColumnModel().getColumn(1).setMaxWidth(100);

@@ -7,6 +7,7 @@ package view.veterinario;
 
 import controller.VeterinarioController;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.*;
 import model.Veterinario;
 
@@ -25,10 +26,19 @@ public class ListarVeterinarios extends javax.swing.JInternalFrame {
     public ListarVeterinarios() {
         initComponents();
         
-        String colunas[] = {"Nome", "CPF", "Telefone", "Rua", "Bairro", "Número"};
+        String colunas[] = {"Nome", "CPF", "Telefone", "Endereço"};
         Object[] [] data = { };
         DefaultTableModel modelo = new DefaultTableModel(data, colunas);    
         jTable1.setModel(modelo);
+        
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN); //desativa tamanho automatico das colunas
+        jTable1.getColumnModel().getColumn(0).setMinWidth(150);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(150);
+        jTable1.getColumnModel().getColumn(1).setMinWidth(100);
+        jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
+        jTable1.getColumnModel().getColumn(2).setMinWidth(100);
+        jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+        
         jTable1.setAutoCreateRowSorter(true);
         listaVeterinario = veterinarioController.listaVeterinario(veterinario);
 
@@ -37,9 +47,7 @@ public class ListarVeterinarios extends javax.swing.JInternalFrame {
                 v.getNome(),
                 v.getCpf(),
                 v.getTelefone(),
-                v.getRua(),
-                v.getBairro(),
-                v.getNumero()
+                v.getRua() + ", " + v.getBairro() + " - " +v.getNumero()
         });
     }
 }
