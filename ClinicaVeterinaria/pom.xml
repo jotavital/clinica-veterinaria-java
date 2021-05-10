@@ -19,9 +19,9 @@
             <version>8.0.24</version>
         </dependency>
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>AbsoluteLayout</artifactId>
-            <version>SNAPSHOT</version>
+            <groupId>org.swinglabs.swingx</groupId>  <!-- https://javadoc.io/doc/org.swinglabs/swingx/latest/index.html -->
+            <artifactId>swingx-core</artifactId>
+            <version>1.6.5-1</version>
         </dependency>
     </dependencies>
     <properties>

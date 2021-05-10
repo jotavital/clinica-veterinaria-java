@@ -7,6 +7,7 @@ package view;
 
 import model.Connector;
 import java.sql.Connection;
+import view.animal.*;
 import view.atendente.*;
 import view.cliente.*;
 import view.veterinario.*;
@@ -326,6 +327,9 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnimalActionPerformed
         // TODO add your handling code here:
+        CadastrarAnimal cadAnimalView = new CadastrarAnimal();
+        jDesktopPane1.add(cadAnimalView);
+        cadAnimalView.setVisible(true);
     }//GEN-LAST:event_menuAddAnimalActionPerformed
 
     private void menuAddAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendimentoActionPerformed

@@ -17,19 +17,38 @@ import java.util.ArrayList;
 public class Cliente {
     Connector connector = new Connector();
     Connection conn = connector.connect();
+    int id;
     String nome, cpf, telefone, rua, bairro, numero;
 
     public Cliente() {
         
     }
 
+    public Cliente(int id, String nome, String cpf, String telefone, String rua, String bairro, String numero) {
+        setId(id);
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setRua(rua);
+        setBairro(bairro);
+        setNumero(numero);
+    }
+    
     public Cliente(String nome, String cpf, String telefone, String rua, String bairro, String numero) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.numero = numero;
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setRua(rua);
+        setBairro(bairro);
+        setNumero(numero);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -109,18 +128,19 @@ public class Cliente {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         
         try {
-            ResultSet res = null;
+            ResultSet res;
             PreparedStatement stm = conn.prepareStatement(sql);
             
             res = stm.executeQuery();
             while(res.next()){
+                cliente.setId(res.getInt("id"));
                 cliente.setNome(res.getString("nome"));
                 cliente.setCpf(res.getString("cpf"));
                 cliente.setTelefone(res.getString("telefone"));
                 cliente.setRua(res.getString("rua"));
                 cliente.setBairro(res.getString("bairro"));
                 cliente.setNumero(res.getString("numero"));
-                Cliente novoCliente = new Cliente(nome, cpf, telefone, rua, bairro, numero);
+                Cliente novoCliente = new Cliente(id, nome, cpf, telefone, rua, bairro, numero);
                 
                 listaClientes.add(novoCliente);
             }
