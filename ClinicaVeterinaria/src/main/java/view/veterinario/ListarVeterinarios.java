@@ -14,7 +14,7 @@ import model.Veterinario;
  *
  * @author lukas
  */
-public class ListarVeterinario extends javax.swing.JInternalFrame {
+public class ListarVeterinarios extends javax.swing.JInternalFrame {
     Veterinario veterinario = new Veterinario();
     VeterinarioController veterinarioController = new VeterinarioController();
     ArrayList<Veterinario> listaVeterinario = new ArrayList<>();
@@ -22,7 +22,7 @@ public class ListarVeterinario extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListarVeterinario
      */
-    public ListarVeterinario() {
+    public ListarVeterinarios() {
         initComponents();
         
         String colunas[] = {"Nome", "CPF", "Telefone", "Rua", "Bairro", "Número"};

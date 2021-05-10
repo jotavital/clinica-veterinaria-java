@@ -39,12 +39,17 @@ public final class Atendente {
     }
 
     public Atendente(String nome, String cpf, String telefone) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
     }
-    
-    
+
+    public Atendente(String nome, String usuario, String cpf, String telefone) {
+        setNome(nome);
+        setUsuario(usuario);
+        setCpf(cpf);
+        setTelefone(telefone);
+    }
 
     public String getUsuario() {
         return usuario;
@@ -100,7 +105,7 @@ public final class Atendente {
             stm.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atendente cadastrado com sucesso!");
-            
+
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
@@ -137,29 +142,30 @@ public final class Atendente {
         }
 
     }
-    
-    public ArrayList<Atendente> ListarAtendente(Atendente atendente){
+
+    public ArrayList<Atendente> ListarAtendente(Atendente atendente) {
         String sql = "SELECT * FROM atendente";
         ArrayList<Atendente> listaAtendente = new ArrayList<>();
         try {
             ResultSet res = null;
             PreparedStatement stm = conn.prepareStatement(sql);
-            
+
             res = stm.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 atendente.setNome(res.getString("nome"));
+                atendente.setUsuario(res.getString("usuario"));
                 atendente.setCpf(res.getString("cpf"));
                 atendente.setTelefone(res.getString("telefone"));
-                Atendente novoAtendente = new Atendente(nome, cpf, telefone);
-                
+                Atendente novoAtendente = new Atendente(nome, usuario, cpf, telefone);
+
                 listaAtendente.add(novoAtendente);
             }
-            
+
             return listaAtendente;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-        
+
     }
 }

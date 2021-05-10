@@ -14,30 +14,32 @@ import model.Atendente;
  *
  * @author lukas
  */
-public class ListarAtendente extends javax.swing.JInternalFrame {
+public class ListarAtendentes extends javax.swing.JInternalFrame {
+
     Atendente atendente = new Atendente();
     AtendenteController atendenteController = new AtendenteController();
     ArrayList<Atendente> listaAtendente = new ArrayList<>();
-    
+
     /**
      * Creates new form ListarAtendente
      */
-    public ListarAtendente() {
+    public ListarAtendentes() {
         initComponents();
-        
-        String colunas[] = {"nome", "cpf", "telefone"};
-        Object[] [] data = { };
+
+        String colunas[] = {"Nome", "Usuário", "CPF", "Telefone"};
+        Object[][] data = {};
         DefaultTableModel modelo = new DefaultTableModel(data, colunas);
         jTable1.setModel(modelo);
         jTable1.setAutoCreateRowSorter(true);
-        
+
         listaAtendente = atendenteController.listarAtendente(atendente);
-        
-        for (Atendente a : listaAtendente){
+
+        for (Atendente a : listaAtendente) {
             modelo.addRow(new Object[]{
-               a.getNome(),
-               a.getCpf(),
-               a.getTelefone()
+                a.getNome(),
+                a.getUsuario(),
+                a.getCpf(),
+                a.getTelefone()
             });
         }
     }

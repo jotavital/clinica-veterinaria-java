@@ -349,13 +349,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblStatus" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace pref="590" max="32767" attributes="0"/>
+                      <EmptySpace pref="521" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblStatus" alignment="0" pref="25" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="lblStatus" alignment="3" pref="25" max="32767" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -366,6 +371,12 @@
                   <Image iconType="3" name="/icons/error.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Desconhecido"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Ver. 1.0.0"/>
               </Properties>
             </Component>
           </SubComponents>

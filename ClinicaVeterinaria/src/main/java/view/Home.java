@@ -47,6 +47,7 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         pnRodape = new javax.swing.JPanel();
         lblStatus = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuClientes = new javax.swing.JMenu();
         menuAddCliente = new javax.swing.JMenuItem();
@@ -85,6 +86,9 @@ public class Home extends javax.swing.JFrame {
         lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error.png"))); // NOI18N
         lblStatus.setText("Desconhecido");
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Ver. 1.0.0");
+
         javax.swing.GroupLayout pnRodapeLayout = new javax.swing.GroupLayout(pnRodape);
         pnRodape.setLayout(pnRodapeLayout);
         pnRodapeLayout.setHorizontalGroup(
@@ -92,11 +96,15 @@ public class Home extends javax.swing.JFrame {
             .addGroup(pnRodapeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(590, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 521, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnRodapeLayout.setVerticalGroup(
             pnRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+            .addGroup(pnRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
 
         jDesktopPane1.setLayer(pnRodape, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -359,7 +367,7 @@ public class Home extends javax.swing.JFrame {
 
     private void menuListVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListVeterinarioActionPerformed
         // TODO add your handling code here:
-        ListarVeterinario listaVeterinarioView = new ListarVeterinario();
+        ListarVeterinarios listaVeterinarioView = new ListarVeterinarios();
         jDesktopPane1.add(listaVeterinarioView);
         listaVeterinarioView.setVisible(true);
     }//GEN-LAST:event_menuListVeterinarioActionPerformed
@@ -370,13 +378,14 @@ public class Home extends javax.swing.JFrame {
 
     private void menuListAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListAtendenteActionPerformed
         // TODO add your handling code here:
-        ListarAtendente listaAtendenteView = new ListarAtendente();
+        ListarAtendentes listaAtendenteView = new ListarAtendentes();
         jDesktopPane1.add(listaAtendenteView);
         listaAtendenteView.setVisible(true);
     }//GEN-LAST:event_menuListAtendenteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JMenuItem menuAddAnimal;
