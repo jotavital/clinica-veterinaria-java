@@ -5,6 +5,9 @@
  */
 package view.animal;
 
+import controller.AnimalController;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import model.Animal;
 
 /**
@@ -12,15 +15,34 @@ import model.Animal;
  * @author kairos-04
  */
 public class ListarAnimais extends javax.swing.JInternalFrame {
-
+    
+    ArrayList<Animal> listaAnimais = new ArrayList<>();
+    AnimalController controller = new AnimalController();
+    Animal animal = new Animal();
+    
     /**
      * Creates new form ListarAnimais
      */
     public ListarAnimais() {
         initComponents();
         
-        Animal animal = new Animal();
-        animal.pegarAnimais();
+        String colunas[] = {"Nome", "Espécie", "Raça", "Idade", "Dono"};
+        Object data[][] = {};
+        DefaultTableModel modelo = new DefaultTableModel(data, colunas);
+        
+        jTable1.setModel(modelo);
+        jTable1.setAutoCreateRowSorter(true);
+        
+        listaAnimais = controller.pegarAnimais(animal);
+        
+        for (Animal a : listaAnimais) {
+            modelo.addRow(new Object[]{
+                a.getNome(),
+                a.getEspecie(),
+                a.getRaca(),
+                a.getIdade()
+            });
+        }
     }
 
     /**

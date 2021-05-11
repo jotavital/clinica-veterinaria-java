@@ -28,8 +28,13 @@ public class AnimalController {
         
     }
     
-    public ArrayList<Animal> pegarAnimais(){
-        return listaAnimais
+    public ArrayList<Animal> pegarAnimais(Animal animal){
+        
+        if(animal.pegarAnimais(animal) != null){
+            return animal.pegarAnimais(animal);
+        }else{
+            return null;
+        }
     }
     
 }

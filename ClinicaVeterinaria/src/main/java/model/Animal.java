@@ -118,12 +118,26 @@ public class Animal {
 
     }
     
-    public ArrayList<Animal> pegarAnimais(){
-        
+    public ArrayList<Animal> pegarAnimais(Animal animal){
+        String sql = "SELECT * FROM animal";
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
         
         try {
+            ResultSet res;
+            PreparedStatement stm = conn.prepareStatement(sql);
             
-            return ;
+            res = stm.executeQuery();
+            while(res.next()){
+                animal.setNome(res.getString(2));
+                animal.setEspecie(res.getString(3));
+                animal.setRaca(res.getString(4));
+                animal.setIdade(res.getInt(5));
+                animal = new Animal(nome, especie, raca, idade);
+                
+                listaAnimais.add(animal);
+            }
+            
+            return listaAnimais;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
