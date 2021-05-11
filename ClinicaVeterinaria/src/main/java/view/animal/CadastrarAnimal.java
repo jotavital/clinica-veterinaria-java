@@ -36,6 +36,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         
         AutoCompleteDecorator.decorate(cbDono); // coloca funcao de autocomplete na combobox
         cbDono.setSelectedItem(null);
+        
     }
 
     /**
@@ -112,7 +113,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
             }
         });
 
-        spnIdade.setModel(new javax.swing.SpinnerNumberModel(0, null, 50, 1));
+        spnIdade.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
         jLabel1.setText("anos");
 
@@ -223,7 +224,9 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         idade = (Integer)spnIdade.getValue();
         
         Animal animal = new Animal(nome, especie, raca, idade);
-        controller.cadastrarAnimal(animal);
+        String nomeDono = cbDono.getStringAt(cbDono.getSelectedIndex()); // pegando o nome selecionado na combobox
+        
+        controller.cadastrarAnimal(animal, nomeDono);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
 

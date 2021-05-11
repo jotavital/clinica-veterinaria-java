@@ -17,9 +17,9 @@ public class AnimalController {
         
     }
     
-    public boolean cadastrarAnimal(Animal animal){
+    public boolean cadastrarAnimal(Animal animal, String nomeDono){
         
-        if(animal.cadastrarAnimal(animal)){
+        if(animal.cadastrarAnimal(animal, nomeDono)){
             return true;
         }else{
             return false;

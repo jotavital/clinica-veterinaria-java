@@ -6,8 +6,6 @@
 package model;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +13,14 @@ import javax.swing.JOptionPane;
  * @author kairos-04
  */
 public class Animal {
+
     Connector connector = new Connector();
     Connection conn = connector.connect();
     String nome, especie, raca;
     int idade;
 
     public Animal() {
-        
+
     }
 
     public Animal(String nome, String especie, String raca, int idade) {
@@ -62,28 +61,60 @@ public class Animal {
     public void setIdade(int idade) {
         this.idade = idade;
     }
-    
-    public boolean cadastrarAnimal(Animal animal){
-        
-        String sql = "INSERT INTO animal (nome, especie, raca, idade) VALUES (?, ?, ?, ?)";
-        String sql2 = "INSERT INTO cliente_animal (fk_cliente, fk_animal) VALUES (?, ?)"; // parei aqui
-        
+
+    public int getClienteId(String nomeDono) {
+
         PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM cliente WHERE cliente.nome = ?";
+
         try {
             stm = conn.prepareStatement(sql);
+            stm.setString(1, nomeDono);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1);    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public boolean cadastrarAnimal(Animal animal, String nomeDono) {
+
+        String sql = "INSERT INTO animal (nome, especie, raca, idade) VALUES (?, ?, ?, ?)";
+        String sql2 = "INSERT INTO cliente_animal (fk_cliente, fk_animal) VALUES (?, LAST_INSERT_ID())";
+
+        int idDono = getClienteId(nomeDono);
+        
+        PreparedStatement stm;
+        PreparedStatement stm2;
+
+        try {
+            stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stm.setString(1, animal.getNome());
             stm.setString(2, animal.getEspecie());
             stm.setString(3, animal.getRaca());
             stm.setInt(4, animal.getIdade());
             stm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
             
+            stm2 = conn.prepareStatement(sql2);
+            stm2.setInt(1, idDono);
+            stm2.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        
+
     }
-    
+
 }
