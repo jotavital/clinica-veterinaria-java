@@ -328,7 +328,7 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnimalActionPerformed
         // TODO add your handling code here:
-        CadastrarAnimal cadAnimalView = new CadastrarAnimal();
+        CadastrarAnimal cadAnimalView = new CadastrarAnimal(jDesktopPane1); //construo o view de animal passando o painel principal (para o botao de adicionar um dono conseguir chamar a view de cadastro de clientes)
         jDesktopPane1.add(cadAnimalView);
         cadAnimalView.setVisible(true);
     }//GEN-LAST:event_menuAddAnimalActionPerformed

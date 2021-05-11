@@ -7,8 +7,11 @@ package view.animal;
 
 import controller.AnimalController;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import model.Animal;
 import model.Cliente;
+import view.cliente.CadastrarCliente;
+import view.Home;
 import org.jdesktop.swingx.autocomplete.*;
 
 /**
@@ -16,14 +19,22 @@ import org.jdesktop.swingx.autocomplete.*;
  * @author kairos-04
  */
 public class CadastrarAnimal extends javax.swing.JInternalFrame {
-
+    
+    JDesktopPane jDesktopPane1; // crio o painel que vai receber o painel principal da home
     /**
      * Creates new form CadastrarAnimal
      */
-    public CadastrarAnimal() {
+    public CadastrarAnimal(JDesktopPane jDpanel) {
         initComponents();
+        jDesktopPane1 = jDpanel;  // atribui o painel que veio da home para uma variavel global
         
+        populaCbDono();
+        
+    }
+    
+    public void populaCbDono(){
         //populando a combobox do dono do animal
+        limpaCbDono();
         ArrayList<Cliente> listaClientes = new ArrayList<>(); // cria lista que vai armazenar os clientes do banco
         Object objCliente[] = {}; // vai armazenar cada cliente que vier do banco
         
@@ -36,7 +47,10 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         
         AutoCompleteDecorator.decorate(cbDono); // coloca funcao de autocomplete na combobox
         cbDono.setSelectedItem(null);
-        
+    }
+    
+    public void limpaCbDono(){
+        cbDono.removeAllItems();
     }
 
     /**
@@ -63,6 +77,8 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         btnCadastrar = new javax.swing.JButton();
         spnIdade = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
+        btnAddDono = new javax.swing.JButton();
+        btnRefreshDono = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
@@ -117,40 +133,63 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
 
         jLabel1.setText("anos");
 
+        btnAddDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        btnAddDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDonoActionPerformed(evt);
+            }
+        });
+
+        btnRefreshDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
+        btnRefreshDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshDonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnFormLayout = new javax.swing.GroupLayout(pnForm);
         pnForm.setLayout(pnFormLayout);
         pnFormLayout.setHorizontalGroup(
             pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFormLayout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(pnFormLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnFormLayout.createSequentialGroup()
-                        .addComponent(lblDono)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbDono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addComponent(lblRaca)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addComponent(lblEspecie)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addComponent(lblNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnFormLayout.createSequentialGroup()
                         .addComponent(lblIdade)
                         .addGap(18, 18, 18)
                         .addComponent(spnIdade)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1))
-                    .addGroup(pnFormLayout.createSequentialGroup()
-                        .addComponent(lblRaca)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnFormLayout.createSequentialGroup()
+                        .addComponent(lblDono)
                         .addGap(18, 18, 18)
-                        .addComponent(txtRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnFormLayout.createSequentialGroup()
-                        .addComponent(lblEspecie)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnFormLayout.createSequentialGroup()
-                        .addComponent(lblNome)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60))
-            .addGroup(pnFormLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
+                        .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbDono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addComponent(btnAddDono, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRefreshDono, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(70, 70, 70))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFormLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(151, 151, 151))
         );
 
         pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblDono, lblEspecie, lblIdade, lblNome, lblRaca});
@@ -181,9 +220,12 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDono)
                     .addComponent(cbDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCadastrar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddDono)
+                    .addComponent(btnRefreshDono))
+                .addGap(17, 17, 17)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,7 +248,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,9 +271,23 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         controller.cadastrarAnimal(animal, nomeDono);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnAddDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDonoActionPerformed
+        // TODO add your handling code here:
+        CadastrarCliente cadClienteView = new CadastrarCliente();
+        jDesktopPane1.add(cadClienteView); // consigo adicionar no painel que veio por parametro da home, ou seja essa view aparece no painel da home
+        cadClienteView.setVisible(true);
+    }//GEN-LAST:event_btnAddDonoActionPerformed
+
+    private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
+        // TODO add your handling code here:
+        populaCbDono();
+    }//GEN-LAST:event_btnRefreshDonoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddDono;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnRefreshDono;
     private org.jdesktop.swingx.JXComboBox cbDono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDono;
