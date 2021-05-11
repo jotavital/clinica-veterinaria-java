@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -115,6 +116,18 @@ public class Animal {
             return false;
         }
 
+    }
+    
+    public ArrayList<Animal> pegarAnimais(){
+        
+        
+        try {
+            
+            return ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

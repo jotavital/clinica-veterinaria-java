@@ -197,7 +197,7 @@ public class CadastroVeterinario extends javax.swing.JInternalFrame {
         
         Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
         
-        if (controller.CadastrarVeterinario(veterinario)){
+        if (controller.cadastrarVeterinario(veterinario)){
             funcoes.resetFields(jPanel1);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed

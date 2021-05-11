@@ -103,7 +103,7 @@ public class Veterinario {
         }
     }
     
-    public ArrayList<Veterinario> listarVeterinario(Veterinario veterinario){
+    public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario){
         String sql = "SELECT * FROM veterinario";
         ArrayList<Veterinario> listaVeterinario = new ArrayList<>();
         

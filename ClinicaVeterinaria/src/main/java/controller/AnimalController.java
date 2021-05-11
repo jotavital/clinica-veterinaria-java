@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Animal;
 
 /**
@@ -25,6 +26,10 @@ public class AnimalController {
             return false;
         }
         
+    }
+    
+    public ArrayList<Animal> pegarAnimais(){
+        return listaAnimais
     }
     
 }

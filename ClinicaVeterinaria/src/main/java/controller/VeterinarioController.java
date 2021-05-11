@@ -18,7 +18,7 @@ public class VeterinarioController {
         
     }
     
-    public boolean CadastrarVeterinario(Veterinario veterinario){
+    public boolean cadastrarVeterinario(Veterinario veterinario){
         if (veterinario.cadastrarVeterinario(veterinario)){
             return true;
         }else{
@@ -26,9 +26,9 @@ public class VeterinarioController {
         }
     }
     
-    public ArrayList<Veterinario> listaVeterinario(Veterinario veterinario){
-        if(veterinario.listarVeterinario(veterinario) != null){
-            return veterinario.listarVeterinario(veterinario);
+    public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario){
+        if(veterinario.pegarVeterinarios(veterinario) != null){
+            return veterinario.pegarVeterinarios(veterinario);
         }else{
             return null;
         }

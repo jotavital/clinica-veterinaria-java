@@ -36,9 +36,9 @@ public class AtendenteController {
         }
     }
     
-    public ArrayList<Atendente> listarAtendente(Atendente atendente){
-        if(atendente.ListarAtendente(atendente) != null){
-            return atendente.ListarAtendente(atendente);
+    public ArrayList<Atendente> pegarAtendentes(Atendente atendente){
+        if(atendente.pegarAtendentes(atendente) != null){
+            return atendente.pegarAtendentes(atendente);
         }else{
             return null;
         }

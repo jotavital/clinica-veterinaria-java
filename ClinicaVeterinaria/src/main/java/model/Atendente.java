@@ -143,7 +143,7 @@ public final class Atendente {
 
     }
 
-    public ArrayList<Atendente> ListarAtendente(Atendente atendente) {
+    public ArrayList<Atendente> pegarAtendentes(Atendente atendente) {
         String sql = "SELECT * FROM atendente";
         ArrayList<Atendente> listaAtendente = new ArrayList<>();
         try {

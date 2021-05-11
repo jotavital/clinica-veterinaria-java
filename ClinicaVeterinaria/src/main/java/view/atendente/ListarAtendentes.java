@@ -21,7 +21,7 @@ public class ListarAtendentes extends javax.swing.JInternalFrame {
     ArrayList<Atendente> listaAtendente = new ArrayList<>();
 
     /**
-     * Creates new form ListarAtendente
+     * Creates new form pegarAtendentes
      */
     public ListarAtendentes() {
         initComponents();
@@ -32,7 +32,7 @@ public class ListarAtendentes extends javax.swing.JInternalFrame {
         jTable1.setModel(modelo);
         jTable1.setAutoCreateRowSorter(true);
 
-        listaAtendente = atendenteController.listarAtendente(atendente);
+        listaAtendente = atendenteController.pegarAtendentes(atendente);
 
         for (Atendente a : listaAtendente) {
             modelo.addRow(new Object[]{
@@ -58,6 +58,8 @@ public class ListarAtendentes extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setMaximizable(true);
+        setTitle("Clínica Veterinária - Todos os Atendentes");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
 
         jTable1.setModel(jTable1.getModel());
         jScrollPane1.setViewportView(jTable1);

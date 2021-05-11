@@ -40,7 +40,7 @@ public class ListarVeterinarios extends javax.swing.JInternalFrame {
         jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
         
         jTable1.setAutoCreateRowSorter(true);
-        listaVeterinario = veterinarioController.listaVeterinario(veterinario);
+        listaVeterinario = veterinarioController.pegarVeterinarios(veterinario);
 
         for (Veterinario v : listaVeterinario){
             modelo.addRow(new Object[]{
@@ -61,24 +61,26 @@ public class ListarVeterinarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
         setMaximizable(true);
+        setTitle("Clínica Veterinária - Todos os Veterinários");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
 
         jTable1.setModel(jTable1.getModel());
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
         );
 
         pack();
@@ -86,7 +88,7 @@ public class ListarVeterinarios extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

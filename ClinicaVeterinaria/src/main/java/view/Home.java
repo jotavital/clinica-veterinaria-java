@@ -169,6 +169,11 @@ public class Home extends javax.swing.JFrame {
 
         menuListAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         menuListAnimal.setText("Todos");
+        menuListAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListAnimalActionPerformed(evt);
+            }
+        });
         menuAnimais.add(menuListAnimal);
 
         menuExcAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/heart_delete.png"))); // NOI18N
@@ -387,6 +392,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(listaAtendenteView);
         listaAtendenteView.setVisible(true);
     }//GEN-LAST:event_menuListAtendenteActionPerformed
+
+    private void menuListAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListAnimalActionPerformed
+        // TODO add your handling code here:
+        ListarAnimais listaAnimaisView = new ListarAnimais();
+        jDesktopPane1.add(listaAnimaisView);
+        listaAnimaisView.setVisible(true);
+    }//GEN-LAST:event_menuListAnimalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
