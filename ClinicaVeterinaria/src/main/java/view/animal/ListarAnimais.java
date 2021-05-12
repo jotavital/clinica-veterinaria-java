@@ -6,41 +6,67 @@
 package view.animal;
 
 import controller.AnimalController;
+import controller.ClienteController;
+import java.awt.List;
 import java.util.ArrayList;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.Animal;
+import model.Cliente;
+import model.ClienteAnimal;
 
 /**
  *
  * @author kairos-04
  */
 public class ListarAnimais extends javax.swing.JInternalFrame {
-    
-    ArrayList<Animal> listaAnimais = new ArrayList<>();
-    AnimalController controller = new AnimalController();
+
+    ArrayList<ClienteAnimal> listaAnimaisDonos = new ArrayList<>();
+    AnimalController animalController = new AnimalController();
+    ClienteController clienteController = new ClienteController();
     Animal animal = new Animal();
-    
+    ClienteAnimal clienteAnimal = new ClienteAnimal();
+
     /**
      * Creates new form ListarAnimais
      */
+    
     public ListarAnimais() {
         initComponents();
-        
-        String colunas[] = {"Nome", "Espécie", "Raça", "Idade", "Dono"};
+
+        String colunas[] = {"ID", "Nome", "Espécie", "Raça", "Idade", "Dono - Telefone"};
         Object data[][] = {};
         DefaultTableModel modelo = new DefaultTableModel(data, colunas);
-        
+
         jTable1.setModel(modelo);
         jTable1.setAutoCreateRowSorter(true);
-        
-        listaAnimais = controller.pegarAnimais(animal);
-        
-        for (Animal a : listaAnimais) {
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(40);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(40);
+        jTable1.getColumnModel().getColumn(4).setMaxWidth(50);
+        jTable1.getColumnModel().getColumn(4).setMinWidth(50);
+
+        //ordenando pela coluna de nome
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
+        jTable1.setRowSorter(sorter);
+        ArrayList<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        int columnIndexToSort = 1;
+        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+
+        listaAnimaisDonos = animalController.pegarAnimaisComDonos(clienteAnimal);
+
+        for (ClienteAnimal ca : listaAnimaisDonos) {
             modelo.addRow(new Object[]{
-                a.getNome(),
-                a.getEspecie(),
-                a.getRaca(),
-                a.getIdade()
+                ca.getIdAnimal(),
+                ca.getNomeAnimal(),
+                ca.getEspecieAnimal(),
+                ca.getRacaAnimal(),
+                ca.getIdadeAnimal(),
+                ca.getNomeDono() + " - " + ca.getTelefoneDono()
             });
         }
     }
@@ -61,6 +87,8 @@ public class ListarAnimais extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Clínica Veterinária - Todos os Animais");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         jScrollPane1.setViewportView(jTable1);
 

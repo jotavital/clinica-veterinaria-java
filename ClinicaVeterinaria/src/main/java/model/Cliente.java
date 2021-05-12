@@ -42,6 +42,11 @@ public class Cliente {
         setBairro(bairro);
         setNumero(numero);
     }
+    
+    public Cliente(String nome, String telefone){
+        setNome(nome);
+        setTelefone(telefone);
+    }
 
     public int getId() {
         return id;
@@ -97,6 +102,29 @@ public class Cliente {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+    
+    public int getClienteIdByNome(String nomeDono) {
+
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM cliente WHERE cliente.nome = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, nomeDono);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1);    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
     
     public boolean cadastrarCliente(Cliente cliente){

@@ -7,6 +7,7 @@ package controller;
 
 import java.util.ArrayList;
 import model.Animal;
+import model.ClienteAnimal;
 
 /**
  *
@@ -32,6 +33,15 @@ public class AnimalController {
         
         if(animal.pegarAnimais(animal) != null){
             return animal.pegarAnimais(animal);
+        }else{
+            return null;
+        }
+    }
+    
+    public ArrayList<ClienteAnimal> pegarAnimaisComDonos(ClienteAnimal clienteAnimal){
+        
+        if(clienteAnimal.pegarAnimaisComDonos(clienteAnimal) != null){
+            return clienteAnimal.pegarAnimaisComDonos(clienteAnimal);
         }else{
             return null;
         }
