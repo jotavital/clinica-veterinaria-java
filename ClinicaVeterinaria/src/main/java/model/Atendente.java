@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -168,4 +169,24 @@ public final class Atendente {
         }
 
     }
+    public boolean excluirAtendentee(String usuario){
+        String sql = "DELETE FROM atendente WHERE atendente.usuario = ?";
+        
+        try {
+            ResultSet res = null;
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, usuario);
+            stm.executeUpdate();
+            if(JOptionPane.showConfirmDialog((Component) res, "Confirmar exclusão de " + usuario + "?","confirmar",
+                     JOptionPane.YES_NO_CANCEL_OPTION )== JOptionPane.YES_OPTION){   
+                JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+            }
+              return true;  
+            }  
+        catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir o atendente");
+            return false;
+        }
+    }  
 }

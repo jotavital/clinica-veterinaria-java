@@ -43,4 +43,8 @@ public class AtendenteController {
             return null;
         }
     }
+     public boolean excluirAtendente(String usuario){
+        Atendente atendente = new Atendente();
+        return atendente.excluirAtendentee(usuario); 
+    }
 }
