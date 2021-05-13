@@ -12,6 +12,10 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import model.Consulta;
+import funcoes.Funcoes;
+import model.Animal;
+import model.Cliente;
+import model.Veterinario;
 
 /**
  *
@@ -19,12 +23,20 @@ import model.Consulta;
  */
 public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
+    Funcoes funcoes = new Funcoes();
+    Cliente cliente = new Cliente();
+    Veterinario veterinario = new Veterinario();
+    Animal animal = new Animal();
+    
     /**
      * Creates new form CadastrarConsulta
      */
     public CadastrarConsulta() {
         initComponents();
         
+        funcoes.populaComboBox(cliente, cbDono);
+        funcoes.populaComboBox(animal, cbAnimal);
+        funcoes.populaComboBox(veterinario, cbVeterinario);
     }
 
     /**

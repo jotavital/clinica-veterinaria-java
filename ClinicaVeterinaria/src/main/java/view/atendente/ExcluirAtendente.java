@@ -16,31 +16,17 @@ import funcoes.Funcoes;
  * @author mateu
  */
 public class ExcluirAtendente extends javax.swing.JInternalFrame {
-    
+
     Funcoes funcoes = new Funcoes();
+    Atendente atendente = new Atendente();
 
     /**
      * Creates new form ExcluirAtendente
      */
     public ExcluirAtendente() {
         initComponents();
-        
-        populaCbAtendente();
-    }
 
-    public void populaCbAtendente() {
-        funcoes.resetComboBox(cbAtendende);
-        
-        ArrayList<Atendente> listaAtendentes = new ArrayList<>();
-        Atendente atendente = new Atendente();
-        listaAtendentes = atendente.pegarAtendentes(atendente);
-
-        for (Atendente a : listaAtendentes) {
-            cbAtendende.addItem(a.getUsuario());
-        }
-
-        AutoCompleteDecorator.decorate(cbAtendende);
-        cbAtendende.setSelectedItem(null);
+        funcoes.populaComboBox(atendente, cbAtendende);
     }
 
     /**
@@ -156,7 +142,7 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
         if (!usuarioAtendente.isEmpty()) {
             controller.excluirAtendente(usuarioAtendente, atendente);
-            populaCbAtendente();
+            funcoes.populaComboBox(atendente, cbAtendende);
         } else {
             jXLabel1.setText("O campo não pode esta vazio");
         }
@@ -165,13 +151,12 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
     private void btnRefreshAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAtendenteActionPerformed
         // TODO add your handling code here:
-        populaCbAtendente();
+        funcoes.populaComboBox(atendente, cbAtendende);
     }//GEN-LAST:event_btnRefreshAtendenteActionPerformed
 
     private void cbAtendendeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbAtendendeFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_cbAtendendeFocusLost
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.plaf.basic.BasicMultiThumbSliderUI basicMultiThumbSliderUI1;
