@@ -10,6 +10,7 @@ import java.sql.Connection;
 import view.animal.*;
 import view.atendente.*;
 import view.cliente.*;
+import view.consulta.CadastrarConsulta;
 import view.veterinario.*;
 
 /**
@@ -60,11 +61,11 @@ public class Home extends javax.swing.JFrame {
         menuListAnimal = new javax.swing.JMenuItem();
         menuExcAnimal = new javax.swing.JMenuItem();
         menuEditAnimal = new javax.swing.JMenuItem();
-        menuAtendimentos = new javax.swing.JMenu();
-        menuAddAtendimento = new javax.swing.JMenuItem();
-        menuListAtendimento = new javax.swing.JMenuItem();
-        menuExcAtendimento = new javax.swing.JMenuItem();
-        menuEditAtendimento = new javax.swing.JMenuItem();
+        menuConsultas = new javax.swing.JMenu();
+        menuAddConsulta = new javax.swing.JMenuItem();
+        menuListConsulta = new javax.swing.JMenuItem();
+        menuExcConsulta = new javax.swing.JMenuItem();
+        menuEditConsulta = new javax.swing.JMenuItem();
         menuAtendentes = new javax.swing.JMenu();
         menuAddAtendente = new javax.swing.JMenuItem();
         menuListAtendente = new javax.swing.JMenuItem();
@@ -186,31 +187,31 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAnimais);
 
-        menuAtendimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar.png"))); // NOI18N
-        menuAtendimentos.setText("Atendimentos");
+        menuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar.png"))); // NOI18N
+        menuConsultas.setText("Consultas");
 
-        menuAddAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_add.png"))); // NOI18N
-        menuAddAtendimento.setText("Adicionar");
-        menuAddAtendimento.addActionListener(new java.awt.event.ActionListener() {
+        menuAddConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_add.png"))); // NOI18N
+        menuAddConsulta.setText("Adicionar");
+        menuAddConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAddAtendimentoActionPerformed(evt);
+                menuAddConsultaActionPerformed(evt);
             }
         });
-        menuAtendimentos.add(menuAddAtendimento);
+        menuConsultas.add(menuAddConsulta);
 
-        menuListAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
-        menuListAtendimento.setText("Todos");
-        menuAtendimentos.add(menuListAtendimento);
+        menuListConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        menuListConsulta.setText("Todos");
+        menuConsultas.add(menuListConsulta);
 
-        menuExcAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_delete.png"))); // NOI18N
-        menuExcAtendimento.setText("Excluir");
-        menuAtendimentos.add(menuExcAtendimento);
+        menuExcConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_delete.png"))); // NOI18N
+        menuExcConsulta.setText("Excluir");
+        menuConsultas.add(menuExcConsulta);
 
-        menuEditAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_edit.png"))); // NOI18N
-        menuEditAtendimento.setText("Editar");
-        menuAtendimentos.add(menuEditAtendimento);
+        menuEditConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_edit.png"))); // NOI18N
+        menuEditConsulta.setText("Editar");
+        menuConsultas.add(menuEditConsulta);
 
-        jMenuBar1.add(menuAtendimentos);
+        jMenuBar1.add(menuConsultas);
 
         menuAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group.png"))); // NOI18N
         menuAtendentes.setText("Atendentes");
@@ -343,9 +344,12 @@ public class Home extends javax.swing.JFrame {
         cadAnimalView.setVisible(true);
     }//GEN-LAST:event_menuAddAnimalActionPerformed
 
-    private void menuAddAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendimentoActionPerformed
+    private void menuAddConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddConsultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuAddAtendimentoActionPerformed
+        CadastrarConsulta cadConsultaView = new CadastrarConsulta();
+        jDesktopPane1.add(cadConsultaView);
+        cadConsultaView.setVisible(true);
+    }//GEN-LAST:event_menuAddConsultaActionPerformed
 
     private void menuAddAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAtendenteActionPerformed
         // TODO add your handling code here:
@@ -419,27 +423,27 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JMenuItem menuAddAnimal;
     private javax.swing.JMenuItem menuAddAtendente;
-    private javax.swing.JMenuItem menuAddAtendimento;
     private javax.swing.JMenuItem menuAddCliente;
+    private javax.swing.JMenuItem menuAddConsulta;
     private javax.swing.JMenuItem menuAddVeterinario;
     private javax.swing.JMenu menuAnimais;
     private javax.swing.JMenu menuAtendentes;
-    private javax.swing.JMenu menuAtendimentos;
     private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenu menuConsultas;
     private javax.swing.JMenuItem menuEditAnimal;
     private javax.swing.JMenuItem menuEditAtendente;
-    private javax.swing.JMenuItem menuEditAtendimento;
     private javax.swing.JMenuItem menuEditCliente;
+    private javax.swing.JMenuItem menuEditConsulta;
     private javax.swing.JMenuItem menuEditVeterinario;
     private javax.swing.JMenuItem menuExcAnimal;
     private javax.swing.JMenuItem menuExcAtendente;
-    private javax.swing.JMenuItem menuExcAtendimento;
     private javax.swing.JMenuItem menuExcCliente;
+    private javax.swing.JMenuItem menuExcConsulta;
     private javax.swing.JMenuItem menuExcVeterinario;
     private javax.swing.JMenuItem menuListAnimal;
     private javax.swing.JMenuItem menuListAtendente;
-    private javax.swing.JMenuItem menuListAtendimento;
     private javax.swing.JMenuItem menuListCliente;
+    private javax.swing.JMenuItem menuListConsulta;
     private javax.swing.JMenuItem menuListVeterinario;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenu menuSobre;

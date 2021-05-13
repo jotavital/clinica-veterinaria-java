@@ -118,7 +118,7 @@ public final class Atendente {
 
     public boolean loginAtendente(Atendente atendente) {
 
-        String sql = "SELECT usuario, senha FROM atendente WHERE usuario=? and senha=?";
+        String sql = "SELECT id, usuario, senha FROM atendente WHERE usuario=? and senha=?";
         ResultSet res = null;
 
         try {
@@ -193,5 +193,29 @@ public final class Atendente {
             JOptionPane.showMessageDialog(null, "Erro ao excluir o atendente");
             return false;
         }
+    }
+
+    int getAtendenteIdByNome(String nomeAtendente) {
+        
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM atendente WHERE atendente.nome = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, nomeAtendente);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1);    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+        
     }
 }

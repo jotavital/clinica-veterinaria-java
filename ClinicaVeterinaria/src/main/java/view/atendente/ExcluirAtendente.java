@@ -61,7 +61,6 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
 
         setClosable(true);
-        setMaximizable(true);
 
         lblBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBuscar.setText("Buscar:");

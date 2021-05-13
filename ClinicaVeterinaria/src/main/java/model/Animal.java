@@ -141,5 +141,29 @@ public class Animal {
         }
 
     }
+    
+    public int getAnimalIdByNome(String nomeAnimal){
+        
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM animal WHERE animal.nome = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, nomeAnimal);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1);    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+        
+    }
 
 }

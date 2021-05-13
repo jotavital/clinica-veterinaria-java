@@ -100,15 +100,15 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuAtendimentos">
+        <Menu class="javax.swing.JMenu" name="menuConsultas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/calendar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Atendimentos"/>
+            <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuAddAtendimento">
+            <MenuItem class="javax.swing.JMenuItem" name="menuAddConsulta">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/calendar_add.png"/>
@@ -116,10 +116,10 @@
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAddAtendimentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAddConsultaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuListAtendimento">
+            <MenuItem class="javax.swing.JMenuItem" name="menuListConsulta">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/book_open.png"/>
@@ -127,7 +127,7 @@
                 <Property name="text" type="java.lang.String" value="Todos"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuExcAtendimento">
+            <MenuItem class="javax.swing.JMenuItem" name="menuExcConsulta">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/calendar_delete.png"/>
@@ -135,7 +135,7 @@
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuEditAtendimento">
+            <MenuItem class="javax.swing.JMenuItem" name="menuEditConsulta">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/calendar_edit.png"/>

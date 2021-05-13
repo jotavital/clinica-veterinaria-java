@@ -49,7 +49,6 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
         setBorder(null);
         setClosable(true);
-        setMaximizable(true);
         setTitle("Clínica Veterinária - Cadastrar Atendentes");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_add.png"))); // NOI18N
         setPreferredSize(new java.awt.Dimension(490, 400));
