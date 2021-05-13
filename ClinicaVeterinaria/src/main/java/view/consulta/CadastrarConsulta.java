@@ -247,8 +247,9 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
         
         String nomeAnimal = cbAnimal.getSelectedItem().toString();
+        String nomeVeterinario = cbVeterinario.getSelectedItem().toString();
         
-        controller.cadastrarConstulta(consulta, nomeAnimal, "admin"); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
+        controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 

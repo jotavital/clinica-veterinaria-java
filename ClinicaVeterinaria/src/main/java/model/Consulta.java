@@ -85,14 +85,17 @@ public class Consulta {
         this.fk_atendente = fk_atendente;
     }
 
-    public boolean CadastrarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente) {
+    public boolean CadastrarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario) {
         String sql = "INSERT INTO consulta (descricao, valor, data_consulta, data_prevista, data_agendamento, fk_animal, fk_atendente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql2 = "INSERT INTO veterinario_consulta (fk_veterinario, fk_consulta) VALUES (?, LAST_INSERT_ID())";
 
         Animal animal = new Animal();
         Atendente atendente = new Atendente();
+        Veterinario veterinario = new Veterinario();
         
         int idAnimal = animal.getAnimalIdByNome(nomeAnimal);
         int idAtendente = atendente.getAtendenteIdByNome(nomeAtendente);
+        int idVeterinario = veterinario.getVeterinarioIdByNome(nomeVeterinario);
         
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
@@ -103,6 +106,11 @@ public class Consulta {
             stm.setString(5, LocalDate.now().toString());
             stm.setInt(6, idAnimal);
             stm.setInt(7, idAtendente);
+            stm.executeUpdate();
+            
+            stm = conn.prepareStatement(sql2);
+            stm.setInt(1, idVeterinario);
+            
             stm.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso!");

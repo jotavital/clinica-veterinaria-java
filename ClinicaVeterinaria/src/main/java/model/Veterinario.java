@@ -130,4 +130,28 @@ public class Veterinario {
             return null;
         }
     }
+
+    int getVeterinarioIdByNome(String nomeVeterinario) {
+        
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM veterinario WHERE veterinario.nome = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, nomeVeterinario);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt(1);    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+        
+    }
 }
