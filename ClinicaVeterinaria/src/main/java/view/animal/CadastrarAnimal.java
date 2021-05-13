@@ -28,12 +28,13 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         initComponents();
         jDesktopPane1 = jDpanel;  // atribui o painel que veio da home para uma variavel global
         
-        limpaCbDono();
         populaCbDono();
         
     }
     
     public void populaCbDono(){
+        limpaCbDono();
+        
         //populando a combobox do dono do animal
         ArrayList<Cliente> listaClientes = new ArrayList<>(); // cria lista que vai armazenar os clientes do banco
         Object objCliente[] = {}; // vai armazenar cada cliente que vier do banco
@@ -280,7 +281,6 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
 
     private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
         // TODO add your handling code here:
-        limpaCbDono();
         populaCbDono();
     }//GEN-LAST:event_btnRefreshDonoActionPerformed
 

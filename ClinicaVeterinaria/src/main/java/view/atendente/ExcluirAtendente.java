@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view.atendente;
+
 import java.util.ArrayList;
 import model.Atendente;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
@@ -14,30 +15,33 @@ import controller.AtendenteController;
  * @author mateu
  */
 public class ExcluirAtendente extends javax.swing.JInternalFrame {
+
     /**
      * Creates new form ExcluirAtendente
      */
     public ExcluirAtendente() {
         initComponents();
-        limpaCbAtendente();
-        PopulaCbAtendente();
+        populaCbAtendente();
     }
-    public void PopulaCbAtendente(){
-        ArrayList<Atendente> listaAtendentes = new ArrayList<>(); 
-        Atendente atendente = new Atendente();
-        listaAtendentes = atendente.pegarAtendentes(atendente); 
+
+    public void populaCbAtendente() {
+        limpaCbAtendente();
         
-        for (Atendente a : listaAtendentes) { 
+        ArrayList<Atendente> listaAtendentes = new ArrayList<>();
+        Atendente atendente = new Atendente();
+        listaAtendentes = atendente.pegarAtendentes(atendente);
+
+        for (Atendente a : listaAtendentes) {
             cbAtendende.addItem(a.getUsuario());
         }
-        
+
         AutoCompleteDecorator.decorate(cbAtendende);
         cbAtendende.setSelectedItem(null);
     }
-    public void limpaCbAtendente(){
+
+    public void limpaCbAtendente() {
         cbAtendende.removeAllItems();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,18 +53,18 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         basicMultiThumbSliderUI1 = new org.jdesktop.swingx.plaf.basic.BasicMultiThumbSliderUI();
-        jLabel1 = new javax.swing.JLabel();
+        lblBuscar = new javax.swing.JLabel();
         cbAtendende = new org.jdesktop.swingx.JXComboBox();
         btnExcluir = new javax.swing.JButton();
-        btnRefreshDono = new javax.swing.JButton();
+        btnRefreshAtendente = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
 
         setClosable(true);
         setMaximizable(true);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Buscar");
+        lblBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBuscar.setText("Buscar:");
 
         cbAtendende.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -74,22 +78,22 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
         });
 
         btnExcluir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExcluir.setText("ok");
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete.png"))); // NOI18N
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
 
-        btnRefreshDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
-        btnRefreshDono.addActionListener(new java.awt.event.ActionListener() {
+        btnRefreshAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
+        btnRefreshAtendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshDonoActionPerformed(evt);
+                btnRefreshAtendenteActionPerformed(evt);
             }
         });
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_add.png"))); // NOI18N
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_delete.png"))); // NOI18N
         lblTitulo.setText("Excluir atendentes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,38 +101,42 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRefreshDono, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbAtendende, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(btnRefreshAtendente)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExcluir))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(cbAtendende, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(lblTitulo)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbAtendende, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefreshDono)
-                .addGap(31, 31, 31)
-                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(lblBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRefreshAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -136,40 +144,43 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
     private void cbAtendendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAtendendeActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_cbAtendendeActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
+        Atendente atendente = new Atendente();
         AtendenteController controller = new AtendenteController();
-        String userDono = cbAtendende.getStringAt(cbAtendende.getSelectedIndex()); 
-        if(userDono != ""){
-            controller.excluirAtendente(userDono);    
-        }else
-             jXLabel1.setText("O campo não pode esta vazio");
-           
+        String usuarioAtendente = cbAtendende.getStringAt(cbAtendende.getSelectedIndex());
+
+        System.out.println(usuarioAtendente);
+
+        if (!usuarioAtendente.isEmpty()) {
+            controller.excluirAtendente(usuarioAtendente, atendente);
+            populaCbAtendente();
+        } else {
+            jXLabel1.setText("O campo não pode esta vazio");
+        }
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
+    private void btnRefreshAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAtendenteActionPerformed
         // TODO add your handling code here:
-        limpaCbAtendente();     
-    }//GEN-LAST:event_btnRefreshDonoActionPerformed
+        populaCbAtendente();
+    }//GEN-LAST:event_btnRefreshAtendenteActionPerformed
 
     private void cbAtendendeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbAtendendeFocusLost
         // TODO add your handling code here:
-        
-         
-            
     }//GEN-LAST:event_cbAtendendeFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.plaf.basic.BasicMultiThumbSliderUI basicMultiThumbSliderUI1;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnRefreshDono;
+    private javax.swing.JButton btnRefreshAtendente;
     private org.jdesktop.swingx.JXComboBox cbAtendende;
-    private javax.swing.JLabel jLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel1;
+    private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

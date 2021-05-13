@@ -35,16 +35,16 @@ public class AtendenteController {
             return false;
         }
     }
-    
-    public ArrayList<Atendente> pegarAtendentes(Atendente atendente){
-        if(atendente.pegarAtendentes(atendente) != null){
+
+    public ArrayList<Atendente> pegarAtendentes(Atendente atendente) {
+        if (atendente.pegarAtendentes(atendente) != null) {
             return atendente.pegarAtendentes(atendente);
-        }else{
+        } else {
             return null;
         }
     }
-     public boolean excluirAtendente(String usuario){
-        Atendente atendente = new Atendente();
-        return atendente.excluirAtendentee(usuario); 
+
+    public boolean excluirAtendente(String usuario, Atendente atendente) {
+        return atendente.excluirAtendentee(usuario);
     }
 }

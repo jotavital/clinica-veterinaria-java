@@ -407,7 +407,6 @@ public class Home extends javax.swing.JFrame {
 
     private void menuExcAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcAtendenteActionPerformed
         // TODO add your handling code here:
-        System.out.println("okkkkk");
         ExcluirAtendente excluirAtendente = new ExcluirAtendente();
         jDesktopPane1.add(excluirAtendente);
         excluirAtendente.setVisible(true);

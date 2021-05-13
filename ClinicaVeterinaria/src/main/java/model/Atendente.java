@@ -169,24 +169,29 @@ public final class Atendente {
         }
 
     }
-    public boolean excluirAtendentee(String usuario){
+
+    public boolean excluirAtendentee(String usuario) {
         String sql = "DELETE FROM atendente WHERE atendente.usuario = ?";
-        
+
         try {
-            ResultSet res = null;
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, usuario);
-            stm.executeUpdate();
-            if(JOptionPane.showConfirmDialog((Component) res, "Confirmar exclusão de " + usuario + "?","confirmar",
-                     JOptionPane.YES_NO_CANCEL_OPTION )== JOptionPane.YES_OPTION){   
-                JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+            
+            Object[] opcoes = {"Sim", "Não"};
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de " + usuario + "?", "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+            
+            if (escolha == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "Atendente excluido com sucesso");
+                stm.executeUpdate();
+            }else{
+                JOptionPane.showMessageDialog(null, "O atendente não foi excluído");
             }
-              return true;  
-            }  
-        catch (SQLException e) {
+            
+            return true;
+        } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao Excluir o atendente");
+            JOptionPane.showMessageDialog(null, "Erro ao excluir o atendente");
             return false;
         }
-    }  
+    }
 }
