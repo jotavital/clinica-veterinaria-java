@@ -9,23 +9,27 @@ import java.util.ArrayList;
 import model.Atendente;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import controller.AtendenteController;
+import funcoes.Funcoes;
 
 /**
  *
  * @author mateu
  */
 public class ExcluirAtendente extends javax.swing.JInternalFrame {
+    
+    Funcoes funcoes = new Funcoes();
 
     /**
      * Creates new form ExcluirAtendente
      */
     public ExcluirAtendente() {
         initComponents();
+        
         populaCbAtendente();
     }
 
     public void populaCbAtendente() {
-        limpaCbAtendente();
+        funcoes.resetComboBox(cbAtendende);
         
         ArrayList<Atendente> listaAtendentes = new ArrayList<>();
         Atendente atendente = new Atendente();
@@ -37,10 +41,6 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
         AutoCompleteDecorator.decorate(cbAtendende);
         cbAtendende.setSelectedItem(null);
-    }
-
-    public void limpaCbAtendente() {
-        cbAtendende.removeAllItems();
     }
 
     /**

@@ -13,6 +13,7 @@ import model.Cliente;
 import view.cliente.CadastrarCliente;
 import view.Home;
 import org.jdesktop.swingx.autocomplete.*;
+import funcoes.Funcoes;
 
 /**
  *
@@ -20,12 +21,15 @@ import org.jdesktop.swingx.autocomplete.*;
  */
 public class CadastrarAnimal extends javax.swing.JInternalFrame {
     
+    Funcoes funcoes = new Funcoes();
+    
     JDesktopPane jDesktopPane1; // crio o painel que vai receber o painel principal da home
     /**
      * Creates new form CadastrarAnimal
      */
     public CadastrarAnimal(JDesktopPane jDpanel) {
         initComponents();
+        
         jDesktopPane1 = jDpanel;  // atribui o painel que veio da home para uma variavel global
         
         populaCbDono();
@@ -33,7 +37,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
     }
     
     public void populaCbDono(){
-        limpaCbDono();
+        funcoes.resetComboBox(cbDono);
         
         //populando a combobox do dono do animal
         ArrayList<Cliente> listaClientes = new ArrayList<>(); // cria lista que vai armazenar os clientes do banco
@@ -48,10 +52,6 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         
         AutoCompleteDecorator.decorate(cbDono); // coloca funcao de autocomplete na combobox
         cbDono.setSelectedItem(null);
-    }
-    
-    public void limpaCbDono(){
-        cbDono.removeAllItems();
     }
 
     /**

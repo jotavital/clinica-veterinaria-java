@@ -24,6 +24,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
      */
     public CadastrarConsulta() {
         initComponents();
+        
     }
 
     /**

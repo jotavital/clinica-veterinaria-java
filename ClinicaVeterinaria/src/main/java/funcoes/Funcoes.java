@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author kairos-04
  */
-public class Funcoes {
+public class Funcoes { // classe que armazena funcoes globais do sistema
 
     public Funcoes() {
         
@@ -29,5 +29,9 @@ public class Funcoes {
                 ((JPasswordField)c).setText("");
             }
         }
+    }
+    
+    public void resetComboBox(org.jdesktop.swingx.JXComboBox combobox){
+        combobox.removeAllItems();
     }
 }
