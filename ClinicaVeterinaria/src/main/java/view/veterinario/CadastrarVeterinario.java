@@ -47,7 +47,7 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         txtNumero = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtRua = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
+        btnCadastrar = new customSwingComponents.JButtonCadastrar();
 
         setBorder(null);
         setClosable(true);
@@ -76,8 +76,6 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/accept.png"))); // NOI18N
-        btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
@@ -119,11 +117,12 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtCpf)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(btnCadastrar)))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(194, 194, 194))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,8 +154,8 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
                     .addComponent(lblNumero)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         txtNome.setDocument( new LimitNumberCharacters(50) );
@@ -204,7 +203,7 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
+    private customSwingComponents.JButtonCadastrar btnCadastrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCpf;

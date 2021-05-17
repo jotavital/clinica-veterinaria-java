@@ -64,7 +64,6 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         lblDono = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
-        btnSalvar = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
         pickerDtPrevista = new org.jdesktop.swingx.JXDatePicker();
         pickerDtConsulta = new org.jdesktop.swingx.JXDatePicker();
@@ -77,6 +76,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         btnRefreshDono = new javax.swing.JButton();
         btnAddVeterinario = new javax.swing.JButton();
         btnRefreshVeterinario = new javax.swing.JButton();
+        btnCadastrar = new customSwingComponents.JButtonCadastrar();
 
         setBorder(null);
         setClosable(true);
@@ -129,14 +129,6 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         txtDesc.setColumns(20);
         txtDesc.setRows(2);
         jScrollPane1.setViewportView(txtDesc);
-
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/accept.png"))); // NOI18N
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
 
         cbDono.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -201,33 +193,38 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnFormLayout = new javax.swing.GroupLayout(pnForm);
         pnForm.setLayout(pnFormLayout);
         pnFormLayout.setHorizontalGroup(
             pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnFormLayout.createSequentialGroup()
-                        .addComponent(lblAnimal)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRefreshAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnFormLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
                         .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblVeterinario)
-                            .addComponent(lblDono)
-                            .addComponent(lblDescricao)
-                            .addComponent(lblValor)
-                            .addComponent(lblDataConsulta)
-                            .addComponent(lblDataPrevista))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalvar)
                             .addGroup(pnFormLayout.createSequentialGroup()
+                                .addComponent(lblAnimal)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAddAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRefreshAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVeterinario)
+                                    .addComponent(lblDono)
+                                    .addComponent(lblDescricao)
+                                    .addComponent(lblValor)
+                                    .addComponent(lblDataConsulta)
+                                    .addComponent(lblDataPrevista))
+                                .addGap(18, 18, 18)
                                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                     .addComponent(pickerDtPrevista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,7 +241,10 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                                     .addGroup(pnFormLayout.createSequentialGroup()
                                         .addComponent(btnAddVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRefreshVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(btnRefreshVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(pnFormLayout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -290,7 +290,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                     .addComponent(lblDescricao)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,22 +328,6 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-        ConsultaController controller = new ConsultaController();
-        String dataConsulta = pickerDtConsulta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
-        String dataPrevista = pickerDtPrevista.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
-        String descricao = txtDesc.getText();
-        double valor = Double.parseDouble(txtValor.getText());
-        
-        Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
-        
-        String nomeAnimal = cbAnimal.getSelectedItem().toString();
-        String nomeVeterinario = cbVeterinario.getSelectedItem().toString();
-        
-        controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
-    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cbDonoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDonoItemStateChanged
         // TODO add your handling code here:
@@ -407,15 +391,31 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         funcoesCB.populaComboBox(veterinario, cbVeterinario);
     }//GEN-LAST:event_btnRefreshVeterinarioActionPerformed
 
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        ConsultaController controller = new ConsultaController();
+        String dataConsulta = pickerDtConsulta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
+        String dataPrevista = pickerDtPrevista.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
+        String descricao = txtDesc.getText();
+        double valor = Double.parseDouble(txtValor.getText());
+        
+        Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
+        
+        String nomeAnimal = cbAnimal.getSelectedItem().toString();
+        String nomeVeterinario = cbVeterinario.getSelectedItem().toString();
+        
+        controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
+    }//GEN-LAST:event_btnCadastrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAnimal;
     private javax.swing.JButton btnAddDono;
     private javax.swing.JButton btnAddVeterinario;
+    private customSwingComponents.JButtonCadastrar btnCadastrar;
     private javax.swing.JButton btnRefreshAnimal;
     private javax.swing.JButton btnRefreshDono;
     private javax.swing.JButton btnRefreshVeterinario;
-    private javax.swing.JButton btnSalvar;
     private org.jdesktop.swingx.JXComboBox cbAnimal;
     private org.jdesktop.swingx.JXComboBox cbDono;
     private org.jdesktop.swingx.JXComboBox cbVeterinario;

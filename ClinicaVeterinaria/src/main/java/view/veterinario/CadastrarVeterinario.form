@@ -87,12 +87,13 @@
                               </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace pref="118" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,8 +133,8 @@
                       <Component id="txtNumero" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnCadastrar" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -213,13 +214,7 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtRua.setDocument( new LimitNumberCharacters(50) );"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCadastrar">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/accept.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cadastrar"/>
-          </Properties>
+        <Component class="customSwingComponents.JButtonCadastrar" name="btnCadastrar">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
           </Events>

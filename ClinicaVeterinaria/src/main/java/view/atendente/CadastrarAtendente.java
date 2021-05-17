@@ -38,7 +38,6 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        btnCadastrar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -46,6 +45,7 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         lblTelefone = new javax.swing.JLabel();
         txtCpf = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
+        btnCadastrar = new customSwingComponents.JButtonCadastrar();
 
         setBorder(null);
         setClosable(true);
@@ -71,16 +71,6 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/accept.png"))); // NOI18N
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCadastrar.setPreferredSize(new java.awt.Dimension(80, 20));
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-
         lblNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNome.setText("Nome:");
 
@@ -95,6 +85,12 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
 
         lblTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTelefone.setText("Telefone:");
+
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,15 +118,17 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(txtUsuario))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)))
+                        .addComponent(txtUsuario)))
                 .addGap(119, 119, 119))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo)
-                .addGap(143, 143, 143))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(187, 187, 187))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +155,9 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         txtUsuario.setDocument( new LimitNumberCharacters(20) );
@@ -186,6 +184,10 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         AtendenteController atendenteController = new AtendenteController();
@@ -203,12 +205,8 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
+    private customSwingComponents.JButtonCadastrar btnCadastrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblNome;

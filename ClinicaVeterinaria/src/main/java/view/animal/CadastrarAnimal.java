@@ -53,11 +53,11 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         txtEspecie = new javax.swing.JTextField();
         txtRaca = new javax.swing.JTextField();
         cbDono = new org.jdesktop.swingx.JXComboBox();
-        btnCadastrar = new javax.swing.JButton();
         spnIdade = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         btnAddDono = new javax.swing.JButton();
         btnRefreshDono = new javax.swing.JButton();
+        btnCadastrar = new customSwingComponents.JButtonCadastrar();
 
         setBorder(null);
         setClosable(true);
@@ -100,14 +100,6 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         lblDono.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDono.setText("Dono:");
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/accept.png"))); // NOI18N
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
-            }
-        });
-
         spnIdade.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
         jLabel1.setText("anos");
@@ -123,6 +115,12 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         btnRefreshDono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshDonoActionPerformed(evt);
+            }
+        });
+
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -165,10 +163,10 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                                 .addComponent(btnRefreshDono, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(70, 70, 70))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFormLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCadastrar)
-                .addGap(151, 151, 151))
+            .addGroup(pnFormLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblDono, lblEspecie, lblIdade, lblNome, lblRaca});
@@ -203,8 +201,9 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddDono)
                     .addComponent(btnRefreshDono))
-                .addGap(17, 17, 17)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,12 +225,24 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(pnForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDonoActionPerformed
+        // TODO add your handling code here:
+        CadastrarCliente cadClienteView = new CadastrarCliente();
+        jDesktopPane1.add(cadClienteView); // consigo adicionar no painel que veio por parametro da home, ou seja essa view aparece no painel da home
+        cadClienteView.setVisible(true);
+    }//GEN-LAST:event_btnAddDonoActionPerformed
+
+    private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
+        // TODO add your handling code here:
+        funcoesCB.populaComboBox(cliente, cbDono);
+    }//GEN-LAST:event_btnRefreshDonoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
@@ -250,22 +261,10 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         controller.cadastrarAnimal(animal, nomeDono);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnAddDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDonoActionPerformed
-        // TODO add your handling code here:
-        CadastrarCliente cadClienteView = new CadastrarCliente();
-        jDesktopPane1.add(cadClienteView); // consigo adicionar no painel que veio por parametro da home, ou seja essa view aparece no painel da home
-        cadClienteView.setVisible(true);
-    }//GEN-LAST:event_btnAddDonoActionPerformed
-
-    private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
-        // TODO add your handling code here:
-        funcoesCB.populaComboBox(cliente, cbDono);
-    }//GEN-LAST:event_btnRefreshDonoActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDono;
-    private javax.swing.JButton btnCadastrar;
+    private customSwingComponents.JButtonCadastrar btnCadastrar;
     private javax.swing.JButton btnRefreshDono;
     private org.jdesktop.swingx.JXComboBox cbDono;
     private javax.swing.JLabel jLabel1;
