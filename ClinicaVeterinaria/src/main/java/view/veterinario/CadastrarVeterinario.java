@@ -13,14 +13,14 @@ import model.Veterinario;
  *
  * @author lukas
  */
-public class CadastroVeterinario extends javax.swing.JInternalFrame {
+public class CadastrarVeterinario extends javax.swing.JInternalFrame {
     
     Funcoes funcoes = new Funcoes();
 
     /**
      * Creates new form CadastroVeterinario
      */
-    public CadastroVeterinario() {
+    public CadastrarVeterinario() {
         initComponents();
     }
 

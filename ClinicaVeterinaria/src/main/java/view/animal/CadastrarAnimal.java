@@ -20,7 +20,6 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
     
     FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Cliente cliente = new Cliente();
-    
     JDesktopPane jDesktopPane1; // crio o painel que vai receber o painel principal da home
     /**
      * Creates new form CadastrarAnimal

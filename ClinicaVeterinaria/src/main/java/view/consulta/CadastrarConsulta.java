@@ -8,10 +8,14 @@ package view.consulta;
 import controller.ConsultaController;
 import funcoes.*;
 import java.time.ZoneId;
+import javax.swing.JDesktopPane;
 import model.Animal;
 import model.Cliente;
 import model.Consulta;
 import model.Veterinario;
+import view.animal.CadastrarAnimal;
+import view.cliente.CadastrarCliente;
+import view.veterinario.CadastrarVeterinario;
 
 /**
  *
@@ -23,12 +27,15 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
     Cliente cliente = new Cliente();
     Veterinario veterinario = new Veterinario();
     Animal animal = new Animal();
+    JDesktopPane jDesktopPane1;
     
     /**
      * Creates new form CadastrarConsulta
      */
-    public CadastrarConsulta() {
+    public CadastrarConsulta(JDesktopPane jDpane1) {
         initComponents();
+        
+        jDesktopPane1 = jDpane1;
         
         funcoesCB.populaComboBox(cliente, cbDono);
         funcoesCB.populaComboBox(veterinario, cbVeterinario);
@@ -64,6 +71,12 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         cbDono = new org.jdesktop.swingx.JXComboBox();
         cbAnimal = new org.jdesktop.swingx.JXComboBox();
         cbVeterinario = new org.jdesktop.swingx.JXComboBox();
+        btnAddAnimal = new javax.swing.JButton();
+        btnRefreshAnimal = new javax.swing.JButton();
+        btnAddDono = new javax.swing.JButton();
+        btnRefreshDono = new javax.swing.JButton();
+        btnAddVeterinario = new javax.swing.JButton();
+        btnRefreshVeterinario = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
@@ -146,6 +159,48 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAddAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        btnAddAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAnimalActionPerformed(evt);
+            }
+        });
+
+        btnRefreshAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
+        btnRefreshAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshAnimalActionPerformed(evt);
+            }
+        });
+
+        btnAddDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        btnAddDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDonoActionPerformed(evt);
+            }
+        });
+
+        btnRefreshDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
+        btnRefreshDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshDonoActionPerformed(evt);
+            }
+        });
+
+        btnAddVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        btnAddVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddVeterinarioActionPerformed(evt);
+            }
+        });
+
+        btnRefreshVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_refresh.png"))); // NOI18N
+        btnRefreshVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshVeterinarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnFormLayout = new javax.swing.GroupLayout(pnForm);
         pnForm.setLayout(pnFormLayout);
         pnFormLayout.setHorizontalGroup(
@@ -156,7 +211,11 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                     .addGroup(pnFormLayout.createSequentialGroup()
                         .addComponent(lblAnimal)
                         .addGap(18, 18, 18)
-                        .addComponent(cbAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                        .addComponent(cbAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRefreshAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnFormLayout.createSequentialGroup()
                         .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblVeterinario)
@@ -168,14 +227,25 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSalvar)
-                            .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(pickerDtPrevista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbDono, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(cbVeterinario, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(pickerDtConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(119, Short.MAX_VALUE))
+                            .addGroup(pnFormLayout.createSequentialGroup()
+                                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(pickerDtPrevista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbDono, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(cbVeterinario, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(pickerDtConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnFormLayout.createSequentialGroup()
+                                        .addComponent(btnAddDono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnRefreshDono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnFormLayout.createSequentialGroup()
+                                        .addComponent(btnAddVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnRefreshVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAnimal, lblDataConsulta, lblDataPrevista, lblDescricao, lblDono, lblValor, lblVeterinario});
@@ -198,17 +268,23 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                     .addComponent(lblValor)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDono)
-                    .addComponent(cbDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnAddDono)
+                    .addComponent(btnRefreshDono)
+                    .addComponent(cbDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDono))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblAnimal)
-                    .addComponent(cbAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVeterinario)
-                    .addComponent(cbVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddAnimal)
+                    .addComponent(btnRefreshAnimal))
+                .addGap(16, 16, 16)
+                .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnAddVeterinario)
+                    .addComponent(btnRefreshVeterinario)
+                    .addComponent(cbVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVeterinario))
                 .addGap(18, 18, 18)
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDescricao)
@@ -283,12 +359,62 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
     private void cbDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDonoActionPerformed
         // TODO add your handling code here:
-        funcoesCB.populaComboBox(animal, cbAnimal);
-        cbAnimal.setEnabled(true);
+        if(cbDono.getSelectedItem() != null){
+            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());    
+            funcoesCB.populaComboBox(animal, idDono, cbAnimal);
+            cbAnimal.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_cbDonoActionPerformed
+
+    private void btnAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAnimalActionPerformed
+        // TODO add your handling code here:
+        CadastrarAnimal cadAnimalView = new CadastrarAnimal(jDesktopPane1);
+        jDesktopPane1.add(cadAnimalView);
+        cadAnimalView.setVisible(true);
+    }//GEN-LAST:event_btnAddAnimalActionPerformed
+
+    private void btnRefreshAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAnimalActionPerformed
+        // TODO add your handling code here:
+        if(cbDono.getSelectedItem() != null){
+            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());    
+            funcoesCB.populaComboBox(animal, idDono, cbAnimal);
+            cbAnimal.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnRefreshAnimalActionPerformed
+
+    private void btnAddDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDonoActionPerformed
+        // TODO add your handling code here:
+        CadastrarCliente cadClienteView = new CadastrarCliente();
+        jDesktopPane1.add(cadClienteView);
+        cadClienteView.setVisible(true);
+    }//GEN-LAST:event_btnAddDonoActionPerformed
+
+    private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
+        // TODO add your handling code here:
+        funcoesCB.populaComboBox(cliente, cbDono);
+    }//GEN-LAST:event_btnRefreshDonoActionPerformed
+
+    private void btnAddVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVeterinarioActionPerformed
+        // TODO add your handling code here:
+        CadastrarVeterinario cadVetView = new CadastrarVeterinario();
+        jDesktopPane1.add(cadVetView);
+        cadVetView.setVisible(true);
+    }//GEN-LAST:event_btnAddVeterinarioActionPerformed
+
+    private void btnRefreshVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshVeterinarioActionPerformed
+        // TODO add your handling code here:
+        funcoesCB.populaComboBox(veterinario, cbVeterinario);
+    }//GEN-LAST:event_btnRefreshVeterinarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAnimal;
+    private javax.swing.JButton btnAddDono;
+    private javax.swing.JButton btnAddVeterinario;
+    private javax.swing.JButton btnRefreshAnimal;
+    private javax.swing.JButton btnRefreshDono;
+    private javax.swing.JButton btnRefreshVeterinario;
     private javax.swing.JButton btnSalvar;
     private org.jdesktop.swingx.JXComboBox cbAnimal;
     private org.jdesktop.swingx.JXComboBox cbDono;

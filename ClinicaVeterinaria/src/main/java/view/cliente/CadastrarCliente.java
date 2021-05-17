@@ -7,6 +7,7 @@ package view.cliente;
 
 import controller.ClienteController;
 import funcoes.*;
+import javax.swing.JDesktopPane;
 import model.Cliente;
 /**
  *

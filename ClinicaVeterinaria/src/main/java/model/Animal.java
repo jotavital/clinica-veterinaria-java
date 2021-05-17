@@ -118,10 +118,9 @@ public class Animal {
         ArrayList<Animal> listaAnimais = new ArrayList<>();
 
         try {
-            ResultSet res;
             PreparedStatement stm = conn.prepareStatement(sql);
-
-            res = stm.executeQuery();
+            ResultSet res = stm.executeQuery();
+            
             while (res.next()) {
                 animal.setIdAnimal(res.getInt(1));
                 animal.setNomeAnimal(res.getString(2));
@@ -165,8 +164,33 @@ public class Animal {
         
     }
     
-    public ArrayList<Animal> getAnimaisByDono(Animal animal) {
-        return null;
+    public ArrayList<Animal> getAnimaisByDono(Animal animal, int idDono) {
+        
+        String sql = "SELECT animal.*, cliente_animal.fk_cliente FROM animal, cliente_animal WHERE cliente_animal.fk_animal = animal.id AND cliente_animal.fk_cliente = ?";
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+        Cliente cliente = new Cliente();
+        
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1, idDono);
+            ResultSet res = stm.executeQuery();
+            
+            while (res.next()) {
+                animal.setIdAnimal(res.getInt(1));
+                animal.setNomeAnimal(res.getString(2));
+                animal.setEspecieAnimal(res.getString(3));
+                animal.setRacaAnimal(res.getString(4));
+                animal.setIdadeAnimal(res.getInt(5));
+                animal = new Animal(idAnimal, nomeAnimal, especieAnimal, racaAnimal, idadeAnimal);
+
+                listaAnimais.add(animal);
+            }
+
+            return listaAnimais;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

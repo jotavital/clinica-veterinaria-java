@@ -346,7 +346,7 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddConsultaActionPerformed
         // TODO add your handling code here:
-        CadastrarConsulta cadConsultaView = new CadastrarConsulta();
+        CadastrarConsulta cadConsultaView = new CadastrarConsulta(jDesktopPane1);
         jDesktopPane1.add(cadConsultaView);
         cadConsultaView.setVisible(true);
     }//GEN-LAST:event_menuAddConsultaActionPerformed
@@ -360,7 +360,7 @@ public class Home extends javax.swing.JFrame {
 
     private void menuAddVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddVeterinarioActionPerformed
         // TODO add your handling code here:
-        CadastroVeterinario cadVeterinarioView = new CadastroVeterinario();
+        CadastrarVeterinario cadVeterinarioView = new CadastrarVeterinario();
         jDesktopPane1.add(cadVeterinarioView);
         cadVeterinarioView.setVisible(true);
     }//GEN-LAST:event_menuAddVeterinarioActionPerformed

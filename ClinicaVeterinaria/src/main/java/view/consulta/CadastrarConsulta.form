@@ -116,6 +116,10 @@
                               <Component id="lblAnimal" linkSize="1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="cbAnimal" linkSize="2" pref="166" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAddAnimal" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnRefreshAnimal" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -129,24 +133,39 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtValor" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
-                                      <Component id="pickerDtPrevista" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cbDono" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
-                                      <Component id="cbVeterinario" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane1" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
-                                      <Component id="pickerDtConsulta" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtValor" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
+                                          <Component id="pickerDtPrevista" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cbDono" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
+                                          <Component id="cbVeterinario" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane1" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
+                                          <Component id="pickerDtConsulta" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnAddDono" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnRefreshDono" min="-2" pref="30" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnAddVeterinario" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnRefreshVeterinario" min="-2" pref="30" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblDataConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -163,19 +182,25 @@
                           <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDono" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbDono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="btnAddDono" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRefreshDono" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbDono" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDono" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="lblAnimal" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbAnimal" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAddAnimal" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRefreshAnimal" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblVeterinario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbVeterinario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="btnAddVeterinario" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRefreshVeterinario" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbVeterinario" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblVeterinario" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -275,6 +300,66 @@
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbAnimal">
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbVeterinario">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddAnimal">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/add.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddAnimalActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRefreshAnimal">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/arrow_refresh.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshAnimalActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddDono">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/add.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddDonoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRefreshDono">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/arrow_refresh.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshDonoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddVeterinario">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/add.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddVeterinarioActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRefreshVeterinario">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icons/arrow_refresh.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshVeterinarioActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
