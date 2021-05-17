@@ -100,6 +100,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         lblDono.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDono.setText("Dono:");
 
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/accept.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

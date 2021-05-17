@@ -33,9 +33,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" pref="408" max="-2" attributes="0"/>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,39 +56,42 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace pref="77" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblNumero" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBairro" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblRua" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTelefone" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCpf" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNome" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblNumero" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblBairro" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblRua" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTelefone" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCpf" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNome" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="2" attributes="0">
+                                      <Component id="txtNumero" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtBairro" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtRua" linkSize="1" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="txtTelefone" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCpf" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNome" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="txtNumero" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBairro" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtRua" linkSize="1" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="txtTelefone" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCpf" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNome" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btnCadastrar" min="-2" pref="105" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                  <Component id="btnCadastrar" min="-2" pref="88" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -214,6 +217,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastrar">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icons/accept.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 20]"/>
