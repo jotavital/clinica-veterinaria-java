@@ -8,6 +8,7 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +37,7 @@ public class Connector {
             return con;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Erro: ");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e);
             return null;
         }
     }
