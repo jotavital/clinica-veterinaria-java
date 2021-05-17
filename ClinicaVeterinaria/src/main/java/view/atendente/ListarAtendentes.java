@@ -21,7 +21,7 @@ public class ListarAtendentes extends javax.swing.JInternalFrame {
     ArrayList<Atendente> listaAtendente = new ArrayList<>();
 
     /**
-     * Creates new form pegarAtendentes
+     * Creates new form getAtendentes
      */
     public ListarAtendentes() {
         initComponents();

@@ -20,18 +20,14 @@ public class AnimalController {
     }
     
     public boolean cadastrarAnimal(Animal animal, String nomeDono){
-        
         return animal.cadastrarAnimal(animal, nomeDono);
-        
     }
     
     public ArrayList<Animal> pegarAnimais(Animal animal){
-        
         return animal.pegarAnimais(animal);
     }
     
     public ArrayList<ClienteAnimal> pegarAnimaisComDonos(ClienteAnimal clienteAnimal){
-        
         return clienteAnimal.pegarAnimaisComDonos(clienteAnimal);
     }
     

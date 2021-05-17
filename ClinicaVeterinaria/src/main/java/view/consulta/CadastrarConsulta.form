@@ -265,6 +265,12 @@
             <Component class="org.jdesktop.swingx.JXDatePicker" name="pickerDtConsulta">
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbDono">
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbDonoItemStateChanged"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cbDonoFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDonoActionPerformed"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="cbDonoPropertyChange"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbAnimal">
             </Component>

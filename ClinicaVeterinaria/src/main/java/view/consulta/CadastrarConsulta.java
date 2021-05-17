@@ -31,8 +31,8 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         initComponents();
         
         funcoesCB.populaComboBox(cliente, cbDono);
-        funcoesCB.populaComboBox(animal, cbAnimal);
         funcoesCB.populaComboBox(veterinario, cbVeterinario);
+        cbAnimal.setEnabled(false);
     }
 
     /**
@@ -122,6 +122,27 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
+            }
+        });
+
+        cbDono.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbDonoItemStateChanged(evt);
+            }
+        });
+        cbDono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbDonoFocusLost(evt);
+            }
+        });
+        cbDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDonoActionPerformed(evt);
+            }
+        });
+        cbDono.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbDonoPropertyChange(evt);
             }
         });
 
@@ -247,6 +268,24 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         
         controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cbDonoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDonoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDonoItemStateChanged
+
+    private void cbDonoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbDonoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDonoPropertyChange
+
+    private void cbDonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbDonoFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDonoFocusLost
+
+    private void cbDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDonoActionPerformed
+        // TODO add your handling code here:
+        funcoesCB.populaComboBox(animal, cbAnimal);
+        cbAnimal.setEnabled(true);
+    }//GEN-LAST:event_cbDonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -164,5 +164,9 @@ public class Animal {
         }
         
     }
+    
+    public ArrayList<Animal> getAnimaisByDono(Animal animal) {
+        return null;
+    }
 
 }

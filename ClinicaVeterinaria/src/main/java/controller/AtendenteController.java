@@ -19,12 +19,10 @@ public class AtendenteController {
     }
 
     public boolean cadastrarAtendente(Atendente atendente) {
-
         return atendente.cadastrarAtendente(atendente);
     }
 
     public boolean loginAtendente(Atendente atendente) {
-
         return atendente.loginAtendente(atendente);
     }
 
@@ -33,6 +31,6 @@ public class AtendenteController {
     }
 
     public boolean excluirAtendente(String usuario, Atendente atendente) {
-        return atendente.excluirAtendentee(usuario);
+        return atendente.excluirAtendente(usuario);
     }
 }

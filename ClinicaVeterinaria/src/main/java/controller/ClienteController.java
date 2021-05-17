@@ -19,15 +19,11 @@ public class ClienteController {
     }
     
     public boolean cadastrarCliente(Cliente cliente){
-        
         return cliente.cadastrarCliente(cliente);
-        
     }
     
     public ArrayList<Cliente> pegarClientes(Cliente cliente){
-        
         return cliente.pegarClientes(cliente);
-        
     }
     
 }

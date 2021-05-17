@@ -169,7 +169,7 @@ public final class Atendente {
 
     }
 
-    public boolean excluirAtendentee(String usuario) {
+    public boolean excluirAtendente(String usuario) {
         String sql = "DELETE FROM atendente WHERE atendente.usuario = ?";
 
         try {
