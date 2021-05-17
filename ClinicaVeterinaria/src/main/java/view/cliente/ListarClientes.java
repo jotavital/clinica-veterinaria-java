@@ -5,12 +5,11 @@
  */
 package view.cliente;
 
-import javax.swing.JOptionPane;
+import controller.ClienteController;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.*;
 import model.Cliente;
-import controller.ClienteController;
-import java.util.ArrayList;
 
 /**
  *

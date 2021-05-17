@@ -5,8 +5,8 @@
  */
 package view.cliente;
 
-import funcoes.*;
 import controller.ClienteController;
+import funcoes.*;
 import model.Cliente;
 /**
  *

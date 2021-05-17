@@ -6,11 +6,9 @@
 package view.atendente;
 
 import controller.AtendenteController;
-import model.Connector;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import model.Atendente;
-import view.atendente.CadastrarAtendente;
+import model.Connector;
 
 /**
  *

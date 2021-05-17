@@ -19,19 +19,11 @@ public class VeterinarioController {
     }
     
     public boolean cadastrarVeterinario(Veterinario veterinario){
-        if (veterinario.cadastrarVeterinario(veterinario)){
-            return true;
-        }else{
-            return false;
-        }
+        return veterinario.cadastrarVeterinario(veterinario);
     }
     
     public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario){
-        if(veterinario.pegarVeterinarios(veterinario) != null){
-            return veterinario.pegarVeterinarios(veterinario);
-        }else{
-            return null;
-        }
+        return veterinario.pegarVeterinarios(veterinario);
     }
     
 }

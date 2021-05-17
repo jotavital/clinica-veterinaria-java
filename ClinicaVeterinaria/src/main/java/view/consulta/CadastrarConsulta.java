@@ -6,15 +6,11 @@
 package view.consulta;
 
 import controller.ConsultaController;
-import java.text.SimpleDateFormat;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.LocalDate;
+import funcoes.*;
 import java.time.ZoneId;
-import model.Consulta;
-import funcoes.Funcoes;
 import model.Animal;
 import model.Cliente;
+import model.Consulta;
 import model.Veterinario;
 
 /**
@@ -23,7 +19,7 @@ import model.Veterinario;
  */
 public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
-    Funcoes funcoes = new Funcoes();
+    FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Cliente cliente = new Cliente();
     Veterinario veterinario = new Veterinario();
     Animal animal = new Animal();
@@ -34,9 +30,9 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
     public CadastrarConsulta() {
         initComponents();
         
-        funcoes.populaComboBox(cliente, cbDono);
-        funcoes.populaComboBox(animal, cbAnimal);
-        funcoes.populaComboBox(veterinario, cbVeterinario);
+        funcoesCB.populaComboBox(cliente, cbDono);
+        funcoesCB.populaComboBox(animal, cbAnimal);
+        funcoesCB.populaComboBox(veterinario, cbVeterinario);
     }
 
     /**

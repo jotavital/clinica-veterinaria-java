@@ -18,11 +18,7 @@ public class ConsultaController {
     }
     
     public boolean cadastrarConstulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario){
-        if(consulta.CadastrarConsulta(consulta, nomeAnimal, nomeAtendente, nomeVeterinario)){
-            return true;
-        }else{
-            return false;
-        }
+        return consulta.CadastrarConsulta(consulta, nomeAnimal, nomeAtendente, nomeVeterinario);
     }
     
 }

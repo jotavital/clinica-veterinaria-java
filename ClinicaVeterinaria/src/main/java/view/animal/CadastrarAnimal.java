@@ -6,14 +6,11 @@
 package view.animal;
 
 import controller.AnimalController;
-import java.util.ArrayList;
+import funcoes.*;
 import javax.swing.JDesktopPane;
 import model.Animal;
 import model.Cliente;
 import view.cliente.CadastrarCliente;
-import view.Home;
-import org.jdesktop.swingx.autocomplete.*;
-import funcoes.Funcoes;
 
 /**
  *
@@ -21,7 +18,7 @@ import funcoes.Funcoes;
  */
 public class CadastrarAnimal extends javax.swing.JInternalFrame {
     
-    Funcoes funcoes = new Funcoes();
+    FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Cliente cliente = new Cliente();
     
     JDesktopPane jDesktopPane1; // crio o painel que vai receber o painel principal da home
@@ -33,7 +30,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         
         jDesktopPane1 = jDpanel;  // atribui o painel que veio da home para uma variavel global
         
-        funcoes.populaComboBox(cliente, cbDono);
+        funcoesCB.populaComboBox(cliente, cbDono);
     }
 
     /**
@@ -262,7 +259,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
 
     private void btnRefreshDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDonoActionPerformed
         // TODO add your handling code here:
-        funcoes.populaComboBox(cliente, cbDono);
+        funcoesCB.populaComboBox(cliente, cbDono);
     }//GEN-LAST:event_btnRefreshDonoActionPerformed
 
 

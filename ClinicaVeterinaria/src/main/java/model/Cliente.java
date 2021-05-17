@@ -5,10 +5,9 @@
  */
 package model;
 
-import javax.swing.JOptionPane;
-import model.Connector;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *

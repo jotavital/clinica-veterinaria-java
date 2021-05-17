@@ -20,28 +20,16 @@ public class AtendenteController {
 
     public boolean cadastrarAtendente(Atendente atendente) {
 
-        if (atendente.cadastrarAtendente(atendente)) {
-            return true;
-        } else {
-            return false;
-        }
+        return atendente.cadastrarAtendente(atendente);
     }
 
     public boolean loginAtendente(Atendente atendente) {
 
-        if (atendente.loginAtendente(atendente)) {
-            return true;
-        } else {
-            return false;
-        }
+        return atendente.loginAtendente(atendente);
     }
 
     public ArrayList<Atendente> pegarAtendentes(Atendente atendente) {
-        if (atendente.pegarAtendentes(atendente) != null) {
-            return atendente.pegarAtendentes(atendente);
-        } else {
-            return null;
-        }
+        return atendente.pegarAtendentes(atendente);
     }
 
     public boolean excluirAtendente(String usuario, Atendente atendente) {

@@ -5,13 +5,11 @@
  */
 package model;
 
-import java.sql.PreparedStatement;
-import java.time.LocalDate;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import model.Connector;
-import model.Animal;
 
 /**
  *

@@ -7,8 +7,8 @@ package view.atendente;
 
 import controller.AtendenteController;
 import funcoes.Funcoes;
-import model.Atendente;
 import funcoes.LimitNumberCharacters;
+import model.Atendente;
 /**
  *
  * @author kairos-04

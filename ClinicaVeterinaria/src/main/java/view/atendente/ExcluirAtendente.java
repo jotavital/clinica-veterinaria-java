@@ -5,11 +5,9 @@
  */
 package view.atendente;
 
-import java.util.ArrayList;
-import model.Atendente;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import controller.AtendenteController;
-import funcoes.Funcoes;
+import funcoes.*;
+import model.Atendente;
 
 /**
  *
@@ -17,7 +15,7 @@ import funcoes.Funcoes;
  */
 public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
-    Funcoes funcoes = new Funcoes();
+    FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Atendente atendente = new Atendente();
 
     /**
@@ -26,7 +24,7 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
     public ExcluirAtendente() {
         initComponents();
 
-        funcoes.populaComboBox(atendente, cbAtendende);
+        funcoesCB.populaComboBox(atendente, cbAtendende);
     }
 
     /**
@@ -142,7 +140,7 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
         if (!usuarioAtendente.isEmpty()) {
             controller.excluirAtendente(usuarioAtendente, atendente);
-            funcoes.populaComboBox(atendente, cbAtendende);
+            funcoesCB.populaComboBox(atendente, cbAtendende);
         } else {
             jXLabel1.setText("O campo não pode esta vazio");
         }
@@ -151,7 +149,7 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
 
     private void btnRefreshAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAtendenteActionPerformed
         // TODO add your handling code here:
-        funcoes.populaComboBox(atendente, cbAtendende);
+        funcoesCB.populaComboBox(atendente, cbAtendende);
     }//GEN-LAST:event_btnRefreshAtendenteActionPerformed
 
     private void cbAtendendeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbAtendendeFocusLost

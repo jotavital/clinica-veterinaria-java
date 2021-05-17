@@ -20,21 +20,13 @@ public class ClienteController {
     
     public boolean cadastrarCliente(Cliente cliente){
         
-        if(cliente.cadastrarCliente(cliente)){
-            return true;
-        }else{
-            return false;
-        }
+        return cliente.cadastrarCliente(cliente);
         
     }
     
     public ArrayList<Cliente> pegarClientes(Cliente cliente){
         
-        if(cliente.pegarClientes(cliente) != null){
-            return cliente.pegarClientes(cliente);
-        }else{
-            return null;
-        }
+        return cliente.pegarClientes(cliente);
         
     }
     

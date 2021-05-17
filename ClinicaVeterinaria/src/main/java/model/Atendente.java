@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

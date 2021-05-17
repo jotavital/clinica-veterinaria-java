@@ -7,7 +7,6 @@ package view.animal;
 
 import controller.AnimalController;
 import controller.ClienteController;
-import java.awt.List;
 import java.util.ArrayList;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
@@ -15,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.Animal;
-import model.Cliente;
 import model.ClienteAnimal;
 
 /**

@@ -5,8 +5,8 @@
  */
 package view;
 
-import model.Connector;
 import java.sql.Connection;
+import model.Connector;
 import view.animal.*;
 import view.atendente.*;
 import view.cliente.*;

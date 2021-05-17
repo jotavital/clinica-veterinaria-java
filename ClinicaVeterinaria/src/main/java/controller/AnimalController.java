@@ -21,30 +21,18 @@ public class AnimalController {
     
     public boolean cadastrarAnimal(Animal animal, String nomeDono){
         
-        if(animal.cadastrarAnimal(animal, nomeDono)){
-            return true;
-        }else{
-            return false;
-        }
+        return animal.cadastrarAnimal(animal, nomeDono);
         
     }
     
     public ArrayList<Animal> pegarAnimais(Animal animal){
         
-        if(animal.pegarAnimais(animal) != null){
-            return animal.pegarAnimais(animal);
-        }else{
-            return null;
-        }
+        return animal.pegarAnimais(animal);
     }
     
     public ArrayList<ClienteAnimal> pegarAnimaisComDonos(ClienteAnimal clienteAnimal){
         
-        if(clienteAnimal.pegarAnimaisComDonos(clienteAnimal) != null){
-            return clienteAnimal.pegarAnimaisComDonos(clienteAnimal);
-        }else{
-            return null;
-        }
+        return clienteAnimal.pegarAnimaisComDonos(clienteAnimal);
     }
     
 }
