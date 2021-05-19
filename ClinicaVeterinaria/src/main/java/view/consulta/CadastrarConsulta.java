@@ -131,6 +131,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         txtDesc.setRows(2);
         txtDesc.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtDesc);
+        txtDesc.setDocument( new LimitNumberCharacters(255) );
 
         cbDono.setEnabled(false);
         cbDono.addItemListener(new java.awt.event.ItemListener() {
@@ -300,6 +301,8 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtValor.setDocument( new LimitNumberCharacters(9) );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

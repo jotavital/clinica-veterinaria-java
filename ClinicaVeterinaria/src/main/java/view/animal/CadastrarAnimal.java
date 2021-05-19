@@ -208,6 +208,10 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        txtNome.setDocument( new LimitNumberCharacters(50) );
+        txtEspecie.setDocument( new LimitNumberCharacters(50) );
+        txtRaca.setDocument( new LimitNumberCharacters(50) );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
