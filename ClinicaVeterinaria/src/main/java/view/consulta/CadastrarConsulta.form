@@ -134,12 +134,12 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtValor" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
                                           <Component id="pickerDtPrevista" linkSize="2" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cbDono" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
                                           <Component id="cbVeterinario" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
                                           <Component id="jScrollPane1" linkSize="2" alignment="0" pref="166" max="32767" attributes="0"/>
                                           <Component id="pickerDtConsulta" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtValor" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -280,11 +280,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txtValor">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtValor.setDocument( new LimitNumberCharacters(9) );"/>
-              </AuxValues>
-            </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="pickerDtPrevista">
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="pickerDtConsulta">
@@ -374,6 +369,8 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtValor">
             </Component>
           </SubComponents>
         </Container>

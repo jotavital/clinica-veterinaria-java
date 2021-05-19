@@ -64,7 +64,6 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         lblDono = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
-        txtValor = new javax.swing.JTextField();
         pickerDtPrevista = new org.jdesktop.swingx.JXDatePicker();
         pickerDtConsulta = new org.jdesktop.swingx.JXDatePicker();
         cbDono = new org.jdesktop.swingx.JXComboBox();
@@ -77,6 +76,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         btnAddVeterinario = new javax.swing.JButton();
         btnRefreshVeterinario = new javax.swing.JButton();
         btnCadastrar = new customSwingComponents.JButtonCadastrar();
+        txtValor = new javax.swing.JTextField();
 
         setBorder(null);
         setClosable(true);
@@ -234,12 +234,12 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                                     .addComponent(lblDataPrevista))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                     .addComponent(pickerDtPrevista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbDono, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                     .addComponent(cbVeterinario, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .addComponent(pickerDtConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(pickerDtConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtValor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnFormLayout.createSequentialGroup()
@@ -258,7 +258,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
         pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAnimal, lblDataConsulta, lblDataPrevista, lblDescricao, lblDono, lblValor, lblVeterinario});
 
-        pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbAnimal, cbDono, cbVeterinario, jScrollPane1, pickerDtPrevista, txtValor});
+        pnFormLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cbAnimal, cbDono, cbVeterinario, jScrollPane1, pickerDtPrevista});
 
         pnFormLayout.setVerticalGroup(
             pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,8 +301,6 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        txtValor.setDocument( new LimitNumberCharacters(9) );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

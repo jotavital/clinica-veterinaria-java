@@ -16,7 +16,7 @@ import model.Veterinario;
 public class CadastrarVeterinario extends javax.swing.JInternalFrame {
     
     Funcoes funcoes = new Funcoes();
-
+    MascarasDeCampos mascara = new MascarasDeCampos();
     /**
      * Creates new form CadastroVeterinario
      */
@@ -36,18 +36,20 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
-        lblCpf = new javax.swing.JLabel();
-        lblTelefone = new javax.swing.JLabel();
         lblRua = new javax.swing.JLabel();
         lblBairro = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        txtCpf = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
-        txtTelefone = new javax.swing.JTextField();
         txtRua = new javax.swing.JTextField();
         btnCadastrar = new customSwingComponents.JButtonCadastrar();
+        txtCpf = new javax.swing.JFormattedTextField();
+        lblCpf = new javax.swing.JLabel();
+        txtTelefone = new javax.swing.JFormattedTextField();
+        lblTelefone = new javax.swing.JLabel();
+        radioFixo = new javax.swing.JRadioButton();
+        radioCelular = new javax.swing.JRadioButton();
 
         setBorder(null);
         setClosable(true);
@@ -59,10 +61,6 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         lblTitulo.setText("Novo Vetrinário");
 
         lblNome.setText("Nome:");
-
-        lblCpf.setText("CPF:");
-
-        lblTelefone.setText("Telefone:");
 
         lblRua.setText("Rua:");
 
@@ -82,47 +80,82 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
             }
         });
 
+        try {
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCpfFocusGained(evt);
+            }
+        });
+
+        lblCpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblCpf.setText("CPF:");
+
+        try {
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtTelefone.setEnabled(false);
+
+        lblTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTelefone.setText("Telefone:");
+
+        radioFixo.setText("Fixo");
+        radioFixo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioFixoActionPerformed(evt);
+            }
+        });
+
+        radioCelular.setText("Celular");
+        radioCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioCelularActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(116, 116, 116)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                        .addGap(119, 119, 119)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblRua)
-                                    .addComponent(lblBairro)
-                                    .addComponent(lblNumero))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtBairro)
-                                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lblNome)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTitulo)
-                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblCpf, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblNome)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblCpf)
-                                .addComponent(lblTelefone))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCpf)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                                .addComponent(lblRua)
+                                .addComponent(lblBairro)
+                                .addComponent(lblNumero)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(txtCpf)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(txtNome)
+                            .addComponent(txtRua)
+                            .addComponent(txtBairro)
+                            .addComponent(txtNumero)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(lblTitulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(radioFixo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioCelular)))
+                .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(194, 194, 194))
+                .addGap(186, 186, 186))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +174,11 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioFixo)
+                    .addComponent(radioCelular))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRua)
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,14 +192,12 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtNome.setDocument( new LimitNumberCharacters(50) );
-        txtCpf.setDocument( new LimitNumberCharacters(15) );
         txtBairro.setDocument( new LimitNumberCharacters(50) );
         txtNumero.setDocument( new LimitNumberCharacters(5) );
-        txtTelefone.setDocument( new LimitNumberCharacters(14) );
         txtRua.setDocument( new LimitNumberCharacters(50) );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,6 +236,22 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
+        // TODO add your handling code here:
+        txtCpf.setCaretPosition(0);
+        mascara.mascaraCpf(txtCpf);
+    }//GEN-LAST:event_txtCpfFocusGained
+
+    private void radioFixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFixoActionPerformed
+        // TODO add your handling code here:
+        mascara.mascaraTelefoneFixo(txtTelefone);
+    }//GEN-LAST:event_radioFixoActionPerformed
+
+    private void radioCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCelularActionPerformed
+        // TODO add your handling code here:
+        mascara.mascaraCelular(txtTelefone);
+    }//GEN-LAST:event_radioCelularActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customSwingComponents.JButtonCadastrar btnCadastrar;
@@ -212,11 +263,13 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblRua;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JRadioButton radioCelular;
+    private javax.swing.JRadioButton radioFixo;
     private javax.swing.JTextField txtBairro;
-    private javax.swing.JTextField txtCpf;
+    private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }
