@@ -100,6 +100,8 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         lblDono.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDono.setText("Dono:");
 
+        cbDono.setEnabled(false);
+
         spnIdade.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50, 1));
 
         jLabel1.setText("anos");

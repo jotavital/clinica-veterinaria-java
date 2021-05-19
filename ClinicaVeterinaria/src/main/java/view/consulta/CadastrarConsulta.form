@@ -270,7 +270,9 @@
                 <Component class="javax.swing.JTextArea" name="txtDesc">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="2"/>
+                    <Property name="wrapStyleWord" type="boolean" value="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -282,6 +284,9 @@
             <Component class="org.jdesktop.swingx.JXDatePicker" name="pickerDtConsulta">
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbDono">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbDonoItemStateChanged"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cbDonoFocusLost"/>
@@ -290,8 +295,14 @@
               </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbAnimal">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXComboBox" name="cbVeterinario">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnAddAnimal">
               <Properties>

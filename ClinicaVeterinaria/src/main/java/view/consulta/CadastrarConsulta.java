@@ -28,15 +28,15 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
     Veterinario veterinario = new Veterinario();
     Animal animal = new Animal();
     JDesktopPane jDesktopPane1;
-    
+
     /**
      * Creates new form CadastrarConsulta
      */
     public CadastrarConsulta(JDesktopPane jDpane1) {
         initComponents();
-        
+
         jDesktopPane1 = jDpane1;
-        
+
         funcoesCB.populaComboBox(cliente, cbDono);
         funcoesCB.populaComboBox(veterinario, cbVeterinario);
         cbAnimal.setEnabled(false);
@@ -127,9 +127,12 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         lblDono.setText("Dono:");
 
         txtDesc.setColumns(20);
+        txtDesc.setLineWrap(true);
         txtDesc.setRows(2);
+        txtDesc.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtDesc);
 
+        cbDono.setEnabled(false);
         cbDono.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbDonoItemStateChanged(evt);
@@ -150,6 +153,10 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
                 cbDonoPropertyChange(evt);
             }
         });
+
+        cbAnimal.setEnabled(false);
+
+        cbVeterinario.setEnabled(false);
 
         btnAddAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
         btnAddAnimal.addActionListener(new java.awt.event.ActionListener() {
@@ -343,12 +350,12 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
     private void cbDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDonoActionPerformed
         // TODO add your handling code here:
-        if(cbDono.getSelectedItem() != null){
-            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());    
+        if (cbDono.getSelectedItem() != null) {
+            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());
             funcoesCB.populaComboBox(animal, idDono, cbAnimal);
             cbAnimal.setEnabled(true);
         }
-        
+
     }//GEN-LAST:event_cbDonoActionPerformed
 
     private void btnAddAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAnimalActionPerformed
@@ -360,8 +367,8 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
     private void btnRefreshAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAnimalActionPerformed
         // TODO add your handling code here:
-        if(cbDono.getSelectedItem() != null){
-            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());    
+        if (cbDono.getSelectedItem() != null) {
+            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());
             funcoesCB.populaComboBox(animal, idDono, cbAnimal);
             cbAnimal.setEnabled(true);
         }
@@ -398,12 +405,12 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         String dataPrevista = pickerDtPrevista.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
         String descricao = txtDesc.getText();
         double valor = Double.parseDouble(txtValor.getText());
-        
+
         Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
-        
+
         String nomeAnimal = cbAnimal.getSelectedItem().toString();
         String nomeVeterinario = cbVeterinario.getSelectedItem().toString();
-        
+
         controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

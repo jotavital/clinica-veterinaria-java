@@ -227,6 +227,9 @@
         <Component class="javax.swing.JTextField" name="txtRaca">
         </Component>
         <Component class="org.jdesktop.swingx.JXComboBox" name="cbDono">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnIdade">
           <Properties>
