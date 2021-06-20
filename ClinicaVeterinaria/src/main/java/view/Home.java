@@ -10,7 +10,7 @@ import model.Connector;
 import view.animal.*;
 import view.atendente.*;
 import view.cliente.*;
-import view.consulta.CadastrarConsulta;
+import view.consulta.*;
 import view.veterinario.*;
 
 /**
@@ -189,6 +189,11 @@ public class Home extends javax.swing.JFrame {
 
         menuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar.png"))); // NOI18N
         menuConsultas.setText("Consultas");
+        menuConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultasActionPerformed(evt);
+            }
+        });
 
         menuAddConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_add.png"))); // NOI18N
         menuAddConsulta.setText("Adicionar");
@@ -201,6 +206,11 @@ public class Home extends javax.swing.JFrame {
 
         menuListConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         menuListConsulta.setText("Todos");
+        menuListConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListConsultaActionPerformed(evt);
+            }
+        });
         menuConsultas.add(menuListConsulta);
 
         menuExcConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_delete.png"))); // NOI18N
@@ -415,6 +425,17 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(excluirAtendente);
         excluirAtendente.setVisible(true);
     }//GEN-LAST:event_menuExcAtendenteActionPerformed
+
+    private void menuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuConsultasActionPerformed
+
+    private void menuListConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListConsultaActionPerformed
+        // TODO add your handling code here:
+        ListarConsultas listarConsultas = new ListarConsultas();
+        jDesktopPane1.add(listarConsultas);
+        listarConsultas.setVisible(true);
+    }//GEN-LAST:event_menuListConsultaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

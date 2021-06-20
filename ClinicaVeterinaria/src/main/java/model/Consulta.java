@@ -7,8 +7,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +23,8 @@ public class Consulta {
     Connection conn = connector.connect();
     String descricao;
     double valor;
-    String data_consulta, data_prevista;
-    int fk_animal, fk_atendente;
+    String data_consulta, data_prevista, data_agendamento;
+    int id, fk_animal, fk_atendente;
 
     public Consulta() {
 
@@ -33,6 +35,31 @@ public class Consulta {
         this.valor = valor;
         this.data_consulta = data_consulta;
         this.data_prevista = data_prevista;
+    }
+
+    private Consulta(int id, String descricao, double valor, String data_consulta, String data_prevista, String data_agendamento) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.data_consulta = data_consulta;
+        this.data_prevista = data_prevista;
+        this.data_agendamento = data_agendamento;
+    }
+
+    public String getData_agendamento() {
+        return data_agendamento;
+    }
+
+    public void setData_agendamento(String data_agendamento) {
+        this.data_agendamento = data_agendamento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -120,5 +147,34 @@ public class Consulta {
             
             return false;
         }
+    }
+    
+    public ArrayList<Consulta> pegarConsultas(Consulta consulta){
+        String sql = "SELECT * FROM consulta";
+        ArrayList<Consulta> listaConsultas = new ArrayList<>();
+        
+        try {
+            ResultSet res;
+            PreparedStatement stm = conn.prepareStatement(sql);
+            
+            res = stm.executeQuery();
+            while(res.next()){
+                consulta.setId(res.getInt("id"));
+                consulta.setDescricao(res.getString("descricao"));
+                consulta.setValor(res.getDouble("valor"));
+                consulta.setData_consulta(res.getString("data_consulta"));
+                consulta.setData_prevista(res.getString("data_prevista"));
+                consulta.setData_agendamento(res.getString("data_agendamento"));
+                Consulta novaConsulta = new Consulta(id, descricao, valor, data_consulta, data_prevista, data_agendamento);
+                
+                listaConsultas.add(novaConsulta);
+            }
+            
+            return listaConsultas;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
     }
 }

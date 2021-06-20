@@ -3,31 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.cliente;
+package view.consulta;
 
-import controller.ClienteController;
+import model.Consulta;
+import controller.ConsultaController;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.*;
-import model.Cliente;
 
 /**
  *
  * @author picle
  */
-public class ListarClientes extends javax.swing.JInternalFrame {
-    Cliente cliente = new Cliente();
-    ClienteController clienteController = new ClienteController();
-    ArrayList<Cliente> listaClientes = new ArrayList<>();
+public class ListarConsultas extends javax.swing.JInternalFrame {
 
+    Consulta consulta = new Consulta();
+    ConsultaController consultaController = new ConsultaController();
+    ArrayList<Consulta> listaConsultas = new ArrayList<>();
+    
     /**
-     * Creates new form ListarClientes
+     * Creates new form ListarConsultas
      */
-    public ListarClientes() {
+    public ListarConsultas() {
         initComponents();
         
         //criando a table e suas colunas, iniciando com os dados vazios para adicionar com o que vem do banco
-        String colunas[] = {"Nome", "CPF", "Telefone", "Endereço"}; 
+        String colunas[] = {"Descrição", "Valor", "Data da Consulta", "Data Prevista", "Data do Agendamento"}; 
         Object[][] data = { }; // inicializa vazio pois os dados virão do banco
         DefaultTableModel modelo = new DefaultTableModel(data, colunas); // criando modelo com as colunas para colocar na table
         jTable1.setModel(modelo); //colocando o modelo na table
@@ -42,14 +43,15 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         
         jTable1.setAutoCreateRowSorter(true); //metodo que cria ordenador dos dados da table
         
-        listaClientes = clienteController.pegarClientes(cliente); // metodo que vai chamar o controller > model e vai pegar os dados do banco e retornar em forma de arraylist
+        listaConsultas = consultaController.pegarConsultas(consulta); // metodo que vai chamar o controller > model e vai pegar os dados do banco e retornar em forma de arraylist
         
-        for (Cliente c : listaClientes) { // para cada cliente no arraylist cria uma linha na table
+        for (Consulta c : listaConsultas) { // para cada cliente no arraylist cria uma linha na table
             modelo.addRow(new Object[]{
-                c.getNome(),
-                c.getCpf(),
-                c.getTelefone(),
-                c.getRua() + ", " + c.getBairro() + " - " + c.getNumero()
+                c.getDescricao(),
+                c.getValor(),
+                c.getData_consulta(),
+                c.getData_prevista(),
+                c.getData_agendamento()
             });
         }
     }
@@ -66,14 +68,12 @@ public class ListarClientes extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setBorder(null);
         setClosable(true);
-        setTitle("Clínica Veterinária - Todos os Clientes");
-        setToolTipText("");
+        setTitle("Clínica Veterinária - Todas as Consultas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
+        setPreferredSize(new java.awt.Dimension(695, 379));
 
         jTable1.setModel(jTable1.getModel());
-        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,15 +82,15 @@ public class ListarClientes extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
