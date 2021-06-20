@@ -37,13 +37,15 @@ public class Consulta {
         this.data_prevista = data_prevista;
     }
 
-    private Consulta(int id, String descricao, double valor, String data_consulta, String data_prevista, String data_agendamento) {
+    private Consulta(int id, String descricao, double valor, String data_consulta, String data_prevista, String data_agendamento, int fk_animal, int fk_atendente) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
         this.data_consulta = data_consulta;
         this.data_prevista = data_prevista;
         this.data_agendamento = data_agendamento;
+        this.fk_animal = fk_animal;
+        this.fk_atendente = fk_atendente;
     }
 
     public String getData_agendamento() {
@@ -165,7 +167,9 @@ public class Consulta {
                 consulta.setData_consulta(res.getString("data_consulta"));
                 consulta.setData_prevista(res.getString("data_prevista"));
                 consulta.setData_agendamento(res.getString("data_agendamento"));
-                Consulta novaConsulta = new Consulta(id, descricao, valor, data_consulta, data_prevista, data_agendamento);
+                consulta.setFk_animal(res.getInt("fk_animal"));
+                consulta.setFk_atendente(res.getInt("fk_atendente"));
+                Consulta novaConsulta = new Consulta(id, descricao, valor, data_consulta, data_prevista, data_agendamento, fk_animal, fk_atendente);
                 
                 listaConsultas.add(novaConsulta);
             }

@@ -192,5 +192,28 @@ public class Animal {
             return null;
         }
     }
+    
+    public String getAnimalNomeById(int idAnimal){
+        
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT nome FROM animal WHERE animal.id = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idAnimal);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getString(1);    
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        
+    }
 
 }

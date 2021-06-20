@@ -5,11 +5,15 @@
  */
 package view.consulta;
 
+import controller.AnimalController;
+import controller.AtendenteController;
 import model.Consulta;
 import controller.ConsultaController;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.*;
+import model.Animal;
 
 /**
  *
@@ -20,6 +24,7 @@ public class ListarConsultas extends javax.swing.JInternalFrame {
     Consulta consulta = new Consulta();
     ConsultaController consultaController = new ConsultaController();
     ArrayList<Consulta> listaConsultas = new ArrayList<>();
+    String nomeAtendente, nomeAnimal;
     
     /**
      * Creates new form ListarConsultas
@@ -28,7 +33,7 @@ public class ListarConsultas extends javax.swing.JInternalFrame {
         initComponents();
         
         //criando a table e suas colunas, iniciando com os dados vazios para adicionar com o que vem do banco
-        String colunas[] = {"Descrição", "Valor", "Data da Consulta", "Data Prevista", "Data do Agendamento"}; 
+        String colunas[] = {"Descrição", "Valor", "Data Consulta", "Data Prevista", "Data Agendamento", "Animal" , "Atendente"}; 
         Object[][] data = { }; // inicializa vazio pois os dados virão do banco
         DefaultTableModel modelo = new DefaultTableModel(data, colunas); // criando modelo com as colunas para colocar na table
         jTable1.setModel(modelo); //colocando o modelo na table
@@ -44,14 +49,21 @@ public class ListarConsultas extends javax.swing.JInternalFrame {
         jTable1.setAutoCreateRowSorter(true); //metodo que cria ordenador dos dados da table
         
         listaConsultas = consultaController.pegarConsultas(consulta); // metodo que vai chamar o controller > model e vai pegar os dados do banco e retornar em forma de arraylist
+        AtendenteController atendenteControllerObj = new AtendenteController();
+        AnimalController animalControllerObj = new AnimalController();
         
         for (Consulta c : listaConsultas) { // para cada cliente no arraylist cria uma linha na table
+            nomeAtendente = atendenteControllerObj.getAtendenteNomeById(c.getFk_atendente());
+            nomeAnimal = animalControllerObj.getAnimalNomeById(c.getFk_animal());
+            
             modelo.addRow(new Object[]{
                 c.getDescricao(),
                 c.getValor(),
                 c.getData_consulta(),
                 c.getData_prevista(),
-                c.getData_agendamento()
+                c.getData_agendamento(),
+                nomeAnimal,
+                nomeAtendente
             });
         }
     }

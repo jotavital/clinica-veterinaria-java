@@ -194,7 +194,7 @@ public final class Atendente {
         }
     }
 
-    int getAtendenteIdByNome(String nomeAtendente) {
+    public int getAtendenteIdByNome(String nomeAtendente) {
         
         PreparedStatement stm;
         ResultSet res;
@@ -214,6 +214,30 @@ public final class Atendente {
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
+        }
+        
+    }
+    
+    public String getAtendenteNomeById(int idAtendente) {
+        
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT nome FROM atendente WHERE atendente.id = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idAtendente);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getString(1);    
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
         
     }
