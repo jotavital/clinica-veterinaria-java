@@ -33,4 +33,9 @@ public class AtendenteController {
     public boolean excluirAtendente(String usuario, Atendente atendente) {
         return atendente.excluirAtendente(usuario);
     }
+    
+    public String getAtendenteNomeById(int idAtendente){
+        Atendente atendenteObj = new Atendente();
+        return atendenteObj.getAtendenteNomeById(idAtendente);
+    }
 }

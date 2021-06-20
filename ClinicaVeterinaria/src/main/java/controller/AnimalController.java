@@ -31,4 +31,9 @@ public class AnimalController {
         return clienteAnimal.pegarAnimaisComDonos(clienteAnimal);
     }
     
+    public String getAnimalNomeById(int idAnimal){
+        Animal animalObj = new Animal();
+        return animalObj.getAnimalNomeById(idAnimal);
+    }
+    
 }
