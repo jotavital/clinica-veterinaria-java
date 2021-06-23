@@ -140,10 +140,10 @@ public class ExcluirAtendente extends javax.swing.JInternalFrame {
         AtendenteController controller = new AtendenteController();
         String usuarioAtendente = cbAtendende.getStringAt(cbAtendende.getSelectedIndex());
 
-        System.out.println(usuarioAtendente);
+       
 
         if (!usuarioAtendente.isEmpty()) {
-            controller.excluirAtendente(usuarioAtendente, atendente);
+            controller.excluirAtendente(atendente ,usuarioAtendente );
             funcoesCB.populaComboBox(atendente, cbAtendende);
         } else {
             jXLabel1.setText("Selecione um atendente!");
