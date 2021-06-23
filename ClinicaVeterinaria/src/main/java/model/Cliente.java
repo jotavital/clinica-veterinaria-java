@@ -260,14 +260,18 @@ public class Cliente {
         }
         
     }
-    public boolean excluirCliente(String cpf){
+    public boolean excluirCliente(String nomeCPF){
         String sql = "DELETE FROM cliente WHERE cliente.cpf = ?";
+                
+        String[] splitted = nomeCPF.split(" - ");
+        String cpf = splitted[1]; 
+
         try {
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setString(1, cpf);
             
             Object[] opcoes = {"Sim", "Não"};
-            int escolha = JOptionPane.showOptionDialog(null, "Confirmar eclusão de" + cpf + "?",
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de" + cpf + "?",
                     "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
             
             if (escolha == JOptionPane.YES_OPTION) {

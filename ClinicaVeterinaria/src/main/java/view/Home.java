@@ -456,6 +456,10 @@ public class Home extends javax.swing.JFrame {
 
     private void menuExcClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcClienteActionPerformed
         // TODO add your handling code here:
+        ExcluirCliente excluirCliente = new ExcluirCliente();
+        jDesktopPane1.add(excluirCliente);
+        excluirCliente.setVisible(true);
+        
     }//GEN-LAST:event_menuExcClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

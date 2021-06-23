@@ -30,7 +30,7 @@ public class AtendenteController {
         return atendente.pegarAtendentes(atendente);
     }
 
-    public boolean excluirAtendente(String usuario, Atendente atendente) {
+    public boolean excluirAtendente(Atendente atendente, String usuario) {
         return atendente.excluirAtendente(usuario);
     }
     

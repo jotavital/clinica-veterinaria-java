@@ -121,7 +121,7 @@ public class ExcluirCliente extends javax.swing.JInternalFrame {
         String cpfCliente = cbCliente.getStringAt(cbCliente.getSelectedIndex());
 
         if (!cpfCliente.isEmpty()) {
-            controller.exluirCliente(cliente ,cpfCliente );
+            controller.exluirCliente(cliente ,cpfCliente);
             funcoesCB.populaComboBox(cliente, cbCliente);
         } else {
             jXLabel1.setText("Selecione um atendente!");
