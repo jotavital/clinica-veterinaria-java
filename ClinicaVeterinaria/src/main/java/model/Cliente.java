@@ -17,7 +17,7 @@ public class Cliente {
     Connector connector = new Connector();
     Connection conn = connector.connect();
     int id;
-    String nome, cpf, telefone, rua, bairro, numero;
+    String nome, cpf, telefone, rua, bairro, numero, tipo_telefone;
 
     public Cliente() {
         
@@ -45,6 +45,35 @@ public class Cliente {
     public Cliente(String nome, String telefone){
         setNome(nome);
         setTelefone(telefone);
+    }
+
+    public Cliente(String nome, String cpf, String telefone, String rua, String bairro, String numero, String tipo_telefone) {
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setRua(rua);
+        setBairro(bairro);
+        setNumero(numero);
+        setTipo_telefone(tipo_telefone);
+    }
+    
+    public Cliente(int id, String nome, String cpf, String telefone, String rua, String bairro, String numero, String tipo_telefone) {
+        setId(id);
+        setNome(nome);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setRua(rua);
+        setBairro(bairro);
+        setNumero(numero);
+        setTipo_telefone(tipo_telefone);
+    }
+
+    public String getTipo_telefone() {
+        return tipo_telefone;
+    }
+
+    public void setTipo_telefone(String tipo_telefone) {
+        this.tipo_telefone = tipo_telefone;
     }
 
     public int getId() {
@@ -103,7 +132,7 @@ public class Cliente {
         this.numero = numero;
     }
     
-    public int getClienteIdByNome(String nomeDono) {
+    public int getClienteIdByNome(String nomeCliente) {
 
         PreparedStatement stm;
         ResultSet res;
@@ -112,7 +141,7 @@ public class Cliente {
 
         try {
             stm = conn.prepareStatement(sql);
-            stm.setString(1, nomeDono);
+            stm.setString(1, nomeCliente);
             res = stm.executeQuery();
 
             if(res.next()){
@@ -126,10 +155,33 @@ public class Cliente {
         }
     }
     
+    public ResultSet selectAllFromClienteByCpf(String cpfCliente) {
+
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT * FROM cliente WHERE cliente.cpf = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, cpfCliente);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res;    
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public boolean cadastrarCliente(Cliente cliente){
         
         //sql's
-        String sql = "INSERT INTO cliente (nome, cpf, telefone, rua, bairro, numero) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (nome, cpf, telefone, rua, bairro, numero, tipo_telefone) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
@@ -139,6 +191,7 @@ public class Cliente {
             stm.setString(4, cliente.getRua());
             stm.setString(5, cliente.getBairro());
             stm.setString(6, cliente.getNumero());
+            stm.setString(7, cliente.getTipo_telefone());
             
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
@@ -146,6 +199,33 @@ public class Cliente {
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar o cliente!");
+            return false;
+        }
+        
+    }
+    
+    public boolean editarCliente(Cliente cliente){
+        
+        //sql's
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, rua = ?, bairro = ?, numero = ?, tipo_telefone = ? WHERE id = ?";
+        
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, cliente.getNome());
+            stm.setString(2, cliente.getCpf());
+            stm.setString(3, cliente.getTelefone());
+            stm.setString(4, cliente.getRua());
+            stm.setString(5, cliente.getBairro());
+            stm.setString(6, cliente.getNumero());
+            stm.setString(7, cliente.getTipo_telefone());
+            stm.setInt(8, cliente.getId());
+            
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao editar o cliente!");
             return false;
         }
         
