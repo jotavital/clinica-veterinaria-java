@@ -215,5 +215,32 @@ public class Animal {
         }
         
     }
+    public boolean excluirAnimal(String id){
+        String sql = "DELETE FROM animal WHERE animal.id = ?";
+                
+    
+        try {
+            PreparedStatement stm = conn.prepareCall(sql);
+            stm.setString(1, id);
+            
+            Object[] opcoes = {"Sim", "Não"};
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de " + id + "?",
+                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+            
+            if (escolha == JOptionPane.YES_OPTION) {
+                stm.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Animal excluido com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null, "O Animal não foi excluido");
+            }
+            return true;
+        } catch (SQLException e) {
+             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao excluir o animal");
+            return false;
+        }
+        
+    }
+    
 
 }

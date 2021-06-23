@@ -189,6 +189,11 @@ public class Home extends javax.swing.JFrame {
 
         menuExcAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/heart_delete.png"))); // NOI18N
         menuExcAnimal.setText("Excluir");
+        menuExcAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExcAnimalActionPerformed(evt);
+            }
+        });
         menuAnimais.add(menuExcAnimal);
 
         menuEditAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pencil.png"))); // NOI18N
@@ -461,6 +466,13 @@ public class Home extends javax.swing.JFrame {
         excluirCliente.setVisible(true);
         
     }//GEN-LAST:event_menuExcClienteActionPerformed
+
+    private void menuExcAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcAnimalActionPerformed
+        // TODO add your handling code here:
+        ExcluirAnimal excluirAnimal = new  ExcluirAnimal();
+        jDesktopPane1.add(excluirAnimal);
+        excluirAnimal.setVisible(true);
+    }//GEN-LAST:event_menuExcAnimalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

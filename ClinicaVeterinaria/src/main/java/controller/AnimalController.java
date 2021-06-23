@@ -35,5 +35,8 @@ public class AnimalController {
         Animal animalObj = new Animal();
         return animalObj.getAnimalNomeById(idAnimal);
     }
+    public boolean exluirCliente(Animal animal, String id){
+        return animal.excluirAnimal(id);
+    }
     
 }
