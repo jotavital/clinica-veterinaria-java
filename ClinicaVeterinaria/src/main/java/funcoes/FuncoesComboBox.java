@@ -5,7 +5,12 @@
  */
 package funcoes;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 import model.Animal;
 import model.Atendente;
 import model.Cliente;
@@ -66,11 +71,11 @@ public class FuncoesComboBox {
 
         if (!listaVeterinarios.isEmpty()) {
             combobox.setEnabled(true);
-            
+
             for (Veterinario v : listaVeterinarios) {
                 combobox.addItem(v.getNome());
             }
-            
+
         }
 
         AutoCompleteDecorator.decorate(combobox);

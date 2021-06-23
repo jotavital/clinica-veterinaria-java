@@ -13,6 +13,7 @@ import java.awt.event.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -41,37 +42,42 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         cbSelectCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 for (Component c : jPanel1.getComponents()) {
                     if (c instanceof JTextField) {
                         c.setEnabled(true);
                     }
                 }
 
-                String partes[] = cbSelectCliente.getSelectedItem().toString().split(" - ");
-
-                resultCliente = clienteController.selectAllFromClienteByCpf(partes[1]);
+                if (cbSelectCliente.getSelectedItem() != null) {
+                    String partes[] = cbSelectCliente.getSelectedItem().toString().split(" - ");
+                    resultCliente = clienteController.selectAllFromClienteByCpf(partes[1]);
+                }
 
                 try {
-                    txtNome.setText(resultCliente.getString("nome"));
-                    txtCpf.setText(resultCliente.getString("cpf"));
 
-                    if (resultCliente.getString("tipo_telefone").equals("Celular")) {
-                        radioCelular.setSelected(true);
-                        mascara.mascaraCelular(txtTelefone);
-                    } else if (resultCliente.getString("tipo_telefone").equals("Fixo")) {
-                        radioFixo.setSelected(true);
-                        mascara.mascaraTelefoneFixo(txtTelefone);
-                    } else if (resultCliente.getString("tipo_telefone").equals("")) {
-                        radioCelular.setSelected(false);
-                        radioFixo.setSelected(false);
+                    if (resultCliente != null) {
+                        txtNome.setText(resultCliente.getString("nome"));
+                        txtCpf.setText(resultCliente.getString("cpf"));
+
+                        if (resultCliente.getString("tipo_telefone").equals("Celular")) {
+                            radioCelular.setSelected(true);
+                            mascara.mascaraCelular(txtTelefone);
+                        } else if (resultCliente.getString("tipo_telefone").equals("Fixo")) {
+                            radioFixo.setSelected(true);
+                            mascara.mascaraTelefoneFixo(txtTelefone);
+                        } else if (resultCliente.getString("tipo_telefone").equals("")) {
+                            radioCelular.setSelected(false);
+                            radioFixo.setSelected(false);
+                        }
+
+                        txtTelefone.setText(resultCliente.getString("telefone"));
+                        txtRua.setText(resultCliente.getString("rua"));
+                        txtBairro.setText(resultCliente.getString("bairro"));
+                        txtNumero.setText(resultCliente.getString("numero"));
+
+                        idCliente = resultCliente.getInt("id");
                     }
-
-                    txtTelefone.setText(resultCliente.getString("telefone"));
-                    txtRua.setText(resultCliente.getString("rua"));
-                    txtBairro.setText(resultCliente.getString("bairro"));
-                    txtNumero.setText(resultCliente.getString("numero"));
-
-                    idCliente = resultCliente.getInt("id");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -101,7 +107,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         txtRua = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
-        btnCadastrar = new customSwingComponents.JButtonCadastrar();
+        btnEditar = new customSwingComponents.JButtonCadastrar();
         txtCpf = new javax.swing.JFormattedTextField();
         txtTelefone = new javax.swing.JFormattedTextField();
         radioFixo = new javax.swing.JRadioButton();
@@ -146,10 +152,10 @@ public class EditarCliente extends javax.swing.JInternalFrame {
 
         txtNumero.setEnabled(false);
 
-        btnCadastrar.setText("Salvar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setText("Salvar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -231,7 +237,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
                                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
-                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(2, 2, 2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
@@ -280,7 +286,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
                     .addComponent(lblNumero)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -308,7 +314,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         ClienteController controller = new ClienteController();
 
@@ -326,8 +332,12 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         }
 
         clienteObj = new Cliente(idCliente, nome, cpf, telefone, rua, bairro, numero, tipo_telefone);
-        clienteController.editarCliente(clienteObj);
-    }//GEN-LAST:event_btnCadastrarActionPerformed
+
+        if (clienteController.editarCliente(clienteObj)) {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
         // TODO add your handling code here:
@@ -353,7 +363,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customSwingComponents.JButtonCadastrar btnCadastrar;
+    private customSwingComponents.JButtonCadastrar btnEditar;
     private javax.swing.ButtonGroup buttonGroup1;
     private org.jdesktop.swingx.JXComboBox cbSelectCliente;
     private javax.swing.JPanel jPanel1;
