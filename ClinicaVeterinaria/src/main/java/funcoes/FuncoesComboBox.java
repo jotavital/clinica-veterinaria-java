@@ -38,7 +38,7 @@ public class FuncoesComboBox {
             combobox.setEnabled(true);
 
             for (Cliente c : listaClientes) {
-                combobox.addItem(c.getCpf());
+                combobox.addItem(c.getNome() + " - " + c.getCpf());
             }
 
         }
