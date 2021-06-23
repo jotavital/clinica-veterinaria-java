@@ -40,7 +40,7 @@ public class FuncoesComboBox {
             for (Cliente c : listaClientes) {
                 combobox.addItem(c.getNome() + " - " + c.getCpf());
             }
-
+            
         }
 
         AutoCompleteDecorator.decorate(combobox);
