@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXComboBox;
 
 /**
  *
@@ -38,6 +39,8 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         initComponents();
         funcoesCb.populaComboBox(clienteObj, cbSelectCliente);
         mascara.mascaraCpf(txtCpf);
+
+        cbSelectCliente.removeActionListener(cbSelectCliente.getActionListeners()[0]);
 
         cbSelectCliente.addActionListener(new ActionListener() {
             @Override
@@ -334,7 +337,59 @@ public class EditarCliente extends javax.swing.JInternalFrame {
         clienteObj = new Cliente(idCliente, nome, cpf, telefone, rua, bairro, numero, tipo_telefone);
 
         if (clienteController.editarCliente(clienteObj)) {
-            this.dispose();
+            cbSelectCliente.removeActionListener(cbSelectCliente.getActionListeners()[0]);
+
+            funcoes.resetFields(jPanel1);
+            funcoes.disableFields(jPanel1);
+            funcoesCb.populaComboBox(clienteObj, cbSelectCliente);
+
+            cbSelectCliente.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    for (Component c : jPanel1.getComponents()) {
+                        if (c instanceof JTextField) {
+                            c.setEnabled(true);
+                        }
+                    }
+
+                    if (cbSelectCliente.getSelectedItem() != null) {
+                        String partes[] = cbSelectCliente.getSelectedItem().toString().split(" - ");
+
+                        if (partes.length != 1) {
+                            resultCliente = clienteController.selectAllFromClienteByCpf(partes[1]);
+                        }
+                    }
+
+                    try {
+
+                        if (resultCliente != null) {
+                            txtNome.setText(resultCliente.getString("nome"));
+                            txtCpf.setText(resultCliente.getString("cpf"));
+
+                            if (resultCliente.getString("tipo_telefone").equals("Celular")) {
+                                radioCelular.setSelected(true);
+                                mascara.mascaraCelular(txtTelefone);
+                            } else if (resultCliente.getString("tipo_telefone").equals("Fixo")) {
+                                radioFixo.setSelected(true);
+                                mascara.mascaraTelefoneFixo(txtTelefone);
+                            } else if (resultCliente.getString("tipo_telefone").equals("")) {
+                                radioCelular.setSelected(false);
+                                radioFixo.setSelected(false);
+                            }
+
+                            txtTelefone.setText(resultCliente.getString("telefone"));
+                            txtRua.setText(resultCliente.getString("rua"));
+                            txtBairro.setText(resultCliente.getString("bairro"));
+                            txtNumero.setText(resultCliente.getString("numero"));
+
+                            idCliente = resultCliente.getInt("id");
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
         }
 
     }//GEN-LAST:event_btnEditarActionPerformed
