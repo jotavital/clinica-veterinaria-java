@@ -171,20 +171,17 @@ public final class Atendente {
 
     public boolean excluirAtendente(String usuario) {
         String sql = "DELETE FROM atendente WHERE atendente.usuario = ?";
-        
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, usuario);
             
             Object[] opcoes = {"Sim", "Não"};
-            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de " + usuario + "?", 
-                    "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de " + usuario + "?", "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
             
             if (escolha == JOptionPane.YES_OPTION) {
-                stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Atendente excluido com sucesso");
-               
-                
+                stm.executeUpdate();
             }else{
                 JOptionPane.showMessageDialog(null, "O atendente não foi excluído");
             }

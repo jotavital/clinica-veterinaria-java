@@ -35,5 +35,7 @@ public class ClienteController {
     public ArrayList<Cliente> pegarClientes(Cliente cliente){
         return cliente.pegarClientes(cliente);
     }
-    
+    public boolean exluirCliente(Cliente cliente, String cpf){
+        return cliente.excluirCliente(cpf);
+    }
 }
