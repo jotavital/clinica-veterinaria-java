@@ -9,6 +9,7 @@ import controller.ConsultaController;
 import funcoes.*;
 import java.time.ZoneId;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import model.Animal;
 import model.Cliente;
 import model.Consulta;
@@ -351,6 +352,7 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
     private void cbDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDonoActionPerformed
         // TODO add your handling code here:
+        
         if (cbDono.getSelectedItem() != null) {
             int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());
             funcoesCB.populaComboBox(animal, idDono, cbAnimal);

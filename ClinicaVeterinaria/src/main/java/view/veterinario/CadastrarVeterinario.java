@@ -56,7 +56,7 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         setTitle("Clínica Veterinária - Cadastrar Veterinários");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_add.png"))); // NOI18N
 
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
         lblTitulo.setText("Novo Vetrinário");
 

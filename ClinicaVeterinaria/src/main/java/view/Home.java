@@ -157,6 +157,11 @@ public class Home extends javax.swing.JFrame {
 
         menuEditCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_edit.png"))); // NOI18N
         menuEditCliente.setText("Editar");
+        menuEditCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditClienteActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuEditCliente);
 
         jMenuBar1.add(menuClientes);
@@ -442,12 +447,12 @@ public class Home extends javax.swing.JFrame {
         listarConsultas.setVisible(true);
     }//GEN-LAST:event_menuListConsultaActionPerformed
 
-    private void menuExcClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcClienteActionPerformed
+    private void menuEditClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditClienteActionPerformed
         // TODO add your handling code here:
-        ExcluirCliente excluirCliente = new ExcluirCliente();
-        jDesktopPane1.add(excluirCliente);
-        excluirCliente.setVisible(true);
-    }//GEN-LAST:event_menuExcClienteActionPerformed
+        EditarCliente editarCliente = new EditarCliente();
+        jDesktopPane1.add(editarCliente);
+        editarCliente.setVisible(true);
+    }//GEN-LAST:event_menuEditClienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

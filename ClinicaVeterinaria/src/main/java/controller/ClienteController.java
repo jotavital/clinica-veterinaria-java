@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Cliente;
 
@@ -16,6 +17,15 @@ public class ClienteController {
 
     public ClienteController() {
         
+    }
+    
+    public ResultSet selectAllFromClienteByCpf(String cpfCliente){
+        Cliente clienteObj = new Cliente();
+        return clienteObj.selectAllFromClienteByCpf(cpfCliente);
+    }
+    
+    public boolean editarCliente(Cliente cliente){
+        return cliente.editarCliente(cliente);
     }
     
     public boolean cadastrarCliente(Cliente cliente){
