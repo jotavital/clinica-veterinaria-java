@@ -50,7 +50,7 @@ public class FuncoesComboBox {
         listaAtendentes = atendente.pegarAtendentes(atendente);
 
         for (Atendente a : listaAtendentes) {
-            combobox.addItem(a.getUsuario());
+            combobox.addItem(a.getNome());
         }
 
         AutoCompleteDecorator.decorate(combobox);
