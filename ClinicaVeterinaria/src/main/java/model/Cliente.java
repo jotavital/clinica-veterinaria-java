@@ -180,4 +180,29 @@ public class Cliente {
         }
         
     }
+    public boolean excluirCliente(String cpf){
+        String sql = "DELETE FROM cliente WHERE cliente.cpf = ?";
+        try {
+            PreparedStatement stm = conn.prepareCall(sql);
+            stm.setString(1, cpf);
+            
+            Object[] opcoes = {"Sim", "Não"};
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar eclusão de" + cpf + "?",
+                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+            
+            if (escolha == JOptionPane.YES_OPTION) {
+                stm.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Atendente excluido com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null, "O cliente não foi excluido");
+            }
+            return true;
+        } catch (SQLException e) {
+             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente");
+            return false;
+        }
+        
+    }
+    
 }
