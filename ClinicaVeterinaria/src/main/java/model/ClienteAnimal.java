@@ -72,4 +72,44 @@ public class ClienteAnimal extends Animal{
             return null;
         }
     }
+    
+    public boolean desvincularDonoAnimal(String cpfDono){
+        PreparedStatement stm;
+        ResultSet res;
+        
+        int idCPF = 0;
+        String[] splitted = cpfDono.split(" - ");
+        String cpf = splitted[1]; 
+        
+        String slqCPF = "SELECT cliente.id FROM cliente WHERE cliente.cpf = ?";
+        String sql = "DELETE FROM cliente_animal WHERE cliente_animal.fk_cliente = ?";
+      
+        try {
+            stm = conn.prepareStatement(slqCPF);
+            stm.setString(1, cpf);
+            stm.execute();
+            res = stm.executeQuery();
+
+            if(res.next()){
+                idCPF = res.getInt(1);  
+            }else{
+                System.out.println("erro");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        try { 
+            String id = Integer.toString(idCPF);
+            System.out.println(id);
+            stm = conn.prepareCall(sql);
+            stm.setString(1, id);
+            stm.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
 }

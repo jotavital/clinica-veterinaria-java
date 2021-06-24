@@ -39,4 +39,10 @@ public class AnimalController {
         return animal.excluirAnimal(id);
     }
     
+    public  boolean desvicularAnimal(String cpfDono){
+        ClienteAnimal clienteAnimal = new  ClienteAnimal();
+        return clienteAnimal.desvincularDonoAnimal(cpfDono);
+    }
+    
+    
 }

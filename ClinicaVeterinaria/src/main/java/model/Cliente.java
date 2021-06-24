@@ -277,10 +277,12 @@ public class Cliente {
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Atendente excluido com sucesso");
+                 return true;
             }else{
                 JOptionPane.showMessageDialog(null, "O cliente não foi excluido");
+                 return true;
             }
-            return true;
+           
         } catch (SQLException e) {
              e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente");

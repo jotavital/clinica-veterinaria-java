@@ -230,10 +230,11 @@ public class Animal {
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Animal excluido com sucesso");
+                return true;
             }else{
                 JOptionPane.showMessageDialog(null, "O Animal não foi excluido");
+                 return  false;
             }
-            return true;
         } catch (SQLException e) {
              e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao excluir o animal");

@@ -5,7 +5,9 @@
  */
 package view.cliente;
 import controller.ClienteController;
+import controller.AnimalController;
 import funcoes.*;
+import java.sql.ResultSet;
 import model.Cliente;
 /**
  *
@@ -117,11 +119,15 @@ public class ExcluirCliente extends javax.swing.JInternalFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
         Cliente cliente = new Cliente();
-        ClienteController controller = new ClienteController();
+        ClienteController clienteController = new ClienteController();
+        AnimalController animalController = new AnimalController();
         String cpfCliente = cbCliente.getStringAt(cbCliente.getSelectedIndex());
 
-        if (!cpfCliente.isEmpty()) {
-            controller.exluirCliente(cliente ,cpfCliente);
+        if (!cpfCliente.isEmpty()) {  
+            
+            animalController.desvicularAnimal(cpfCliente);
+            clienteController.exluirCliente(cliente ,cpfCliente);
+            
             funcoesCB.populaComboBox(cliente, cbCliente);
         } else {
             jXLabel1.setText("Selecione um atendente!");
