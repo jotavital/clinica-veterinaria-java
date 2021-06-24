@@ -178,6 +178,29 @@ public class Cliente {
         }
     }
     
+    public int selectIdFromClienteByCpf(String cpfCliente) {
+
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT id FROM cliente WHERE cliente.cpf = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, cpfCliente);
+            res = stm.executeQuery();
+
+            if(res.next()){
+                return res.getInt("id");    
+            }else{
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
     public boolean cadastrarCliente(Cliente cliente){
         
         //sql's
@@ -206,7 +229,6 @@ public class Cliente {
     
     public boolean editarCliente(Cliente cliente){
         
-        //sql's
         String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, rua = ?, bairro = ?, numero = ?, tipo_telefone = ? WHERE id = ?";
         
         try {

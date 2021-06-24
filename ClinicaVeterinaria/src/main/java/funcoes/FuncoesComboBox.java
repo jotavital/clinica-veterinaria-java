@@ -112,4 +112,19 @@ public class FuncoesComboBox {
         AutoCompleteDecorator.decorate(combobox);
         combobox.setSelectedItem(null);
     }
+    
+    public void populaComboBoxAnimalComId(Animal animal, org.jdesktop.swingx.JXComboBox combobox) {
+        resetComboBox(combobox);
+
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+
+        listaAnimais = animal.pegarAnimais(animal);
+
+        for (Animal a : listaAnimais) {
+            combobox.addItem(a.getIdAnimal() + " - " + a.getNomeAnimal());
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+        combobox.setSelectedItem(null);
+    }
 }

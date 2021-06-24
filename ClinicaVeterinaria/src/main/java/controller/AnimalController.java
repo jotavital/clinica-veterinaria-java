@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Animal;
 import model.ClienteAnimal;
@@ -44,5 +45,13 @@ public class AnimalController {
         return clienteAnimal.desvincularDonoAnimal(cpfDono);
     }
     
+    public ResultSet selectAllFromAnimalById(int idAnimal){
+        Animal animalObj = new Animal();
+        return animalObj.selectAllFromAnimalById(idAnimal);
+    }
+    
+    public boolean editarAnimal(Animal animal, int idDono){
+        return animal.editarAnimal(animal, idDono);
+    }
     
 }

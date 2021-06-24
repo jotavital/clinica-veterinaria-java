@@ -120,7 +120,7 @@ public class Animal {
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             ResultSet res = stm.executeQuery();
-            
+
             while (res.next()) {
                 animal.setIdAnimal(res.getInt(1));
                 animal.setNomeAnimal(res.getString(2));
@@ -139,9 +139,9 @@ public class Animal {
         }
 
     }
-    
-    public int getAnimalIdByNome(String nomeAnimal){
-        
+
+    public int getAnimalIdByNome(String nomeAnimal) {
+
         PreparedStatement stm;
         ResultSet res;
 
@@ -152,29 +152,29 @@ public class Animal {
             stm.setString(1, nomeAnimal);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res.getInt(1);    
-            }else{
+            if (res.next()) {
+                return res.getInt(1);
+            } else {
                 return -1;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
         }
-        
+
     }
-    
+
     public ArrayList<Animal> getAnimaisByDono(Animal animal, int idDono) {
-        
+
         String sql = "SELECT animal.*, cliente_animal.fk_cliente FROM animal, cliente_animal WHERE cliente_animal.fk_animal = animal.id AND cliente_animal.fk_cliente = ?";
         ArrayList<Animal> listaAnimais = new ArrayList<>();
         Cliente cliente = new Cliente();
-        
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setInt(1, idDono);
             ResultSet res = stm.executeQuery();
-            
+
             while (res.next()) {
                 animal.setIdAnimal(res.getInt(1));
                 animal.setNomeAnimal(res.getString(2));
@@ -192,9 +192,9 @@ public class Animal {
             return null;
         }
     }
-    
-    public String getAnimalNomeById(int idAnimal){
-        
+
+    public String getAnimalNomeById(int idAnimal) {
+
         PreparedStatement stm;
         ResultSet res;
 
@@ -205,43 +205,92 @@ public class Animal {
             stm.setInt(1, idAnimal);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res.getString(1);    
-            }else{
+            if (res.next()) {
+                return res.getString(1);
+            } else {
                 return null;
             }
         } catch (SQLException e) {
             return null;
         }
-        
+
     }
-    public boolean excluirAnimal(String id){
+
+    public boolean excluirAnimal(String id) {
         String sql = "DELETE FROM animal WHERE animal.id = ?";
-                
-    
+
         try {
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setString(1, id);
-            
+
             Object[] opcoes = {"Sim", "Não"};
             int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de " + id + "?",
-                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
-            
+                    "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Animal excluido com sucesso");
                 return true;
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "O Animal não foi excluido");
-                 return  false;
+                return false;
             }
         } catch (SQLException e) {
-             e.printStackTrace();
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao excluir o animal");
             return false;
         }
-        
+
     }
-    
+
+    public ResultSet selectAllFromAnimalById(int idAnimal) {
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT * FROM animal WHERE animal.id = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idAnimal);
+            res = stm.executeQuery();
+
+            if (res.next()) {
+                return res;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
+    public boolean editarAnimal(Animal animal, int idDono) {
+        ClienteAnimal clienteAnimalObj = new ClienteAnimal();
+
+        String sql = "UPDATE animal SET nome = ?, especie = ?, raca = ?, idade = ? WHERE id = ?";
+
+        try {
+            if (clienteAnimalObj.updateDonoAnimal(idDono, animal.getIdAnimal())) {
+                PreparedStatement stm = conn.prepareStatement(sql);
+                stm.setString(1, animal.getNomeAnimal());
+                stm.setString(2, animal.getEspecieAnimal());
+                stm.setString(3, animal.getRacaAnimal());
+                stm.setInt(4, animal.getIdadeAnimal());
+                stm.setInt(5, animal.getIdAnimal());
+
+                stm.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Animal editado com sucesso!");
+                return true;
+            }else{
+                return false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao editar o animal!");
+            return false;
+        }
+    }
 
 }

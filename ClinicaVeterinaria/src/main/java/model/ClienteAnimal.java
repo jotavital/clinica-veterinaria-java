@@ -112,4 +112,27 @@ public class ClienteAnimal extends Animal{
         }
     }
     
+    public boolean updateDonoAnimal(int idDono, int idAnimal){
+        PreparedStatement stm;
+        
+        String sql = "UPDATE cliente_animal SET fk_cliente = ? WHERE fk_animal = ?";
+        
+        
+        
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idDono);
+            stm.setInt(2, idAnimal);
+            System.out.println(idDono + " - " + idAnimal);
+            
+            stm.executeUpdate();
+            
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+                
+    }
+    
 }

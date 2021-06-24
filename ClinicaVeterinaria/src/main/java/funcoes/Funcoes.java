@@ -4,6 +4,7 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import org.jdesktop.swingx.JXComboBox;
 
@@ -30,6 +31,8 @@ public class Funcoes { // classe que armazena funcoes globais do sistema
                 ((JPasswordField) c).setText("");
             } else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
+            }else if (c instanceof JSpinner){
+                ((JSpinner) c).setValue(0);
             }
         }
     }
@@ -40,6 +43,8 @@ public class Funcoes { // classe que armazena funcoes globais do sistema
                 ((JTextField) c).setEnabled(false);
             } else if (c instanceof JPasswordField) {
                 ((JPasswordField) c).setEnabled(false);
+            } else if (c instanceof JSpinner){
+                ((JSpinner) c).setEnabled(false);
             }
         }
     }

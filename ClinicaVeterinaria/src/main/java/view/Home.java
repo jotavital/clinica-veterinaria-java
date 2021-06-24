@@ -198,6 +198,11 @@ public class Home extends javax.swing.JFrame {
 
         menuEditAnimal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pencil.png"))); // NOI18N
         menuEditAnimal.setText("Editar");
+        menuEditAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditAnimalActionPerformed(evt);
+            }
+        });
         menuAnimais.add(menuEditAnimal);
 
         jMenuBar1.add(menuAnimais);
@@ -473,6 +478,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(excluirAnimal);
         excluirAnimal.setVisible(true);
     }//GEN-LAST:event_menuExcAnimalActionPerformed
+
+    private void menuEditAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditAnimalActionPerformed
+        // TODO add your handling code here:
+        EditarAnimal editarAnimal = new EditarAnimal(jDesktopPane1);
+        jDesktopPane1.add(editarAnimal);
+        editarAnimal.setVisible(true);
+    }//GEN-LAST:event_menuEditAnimalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
