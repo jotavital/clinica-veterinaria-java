@@ -25,5 +25,11 @@ public class VeterinarioController {
     public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario){
         return veterinario.pegarVeterinarios(veterinario);
     }
+    public  boolean excluirVeterinario(String nomeCPF){
+        Veterinario veterinario = new Veterinario();
+        
+        return veterinario.excluirVeterinario(nomeCPF);
+        
+    }
     
 }

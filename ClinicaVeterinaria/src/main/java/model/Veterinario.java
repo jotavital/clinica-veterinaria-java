@@ -154,4 +154,34 @@ public class Veterinario {
         }
         
     }
+    public boolean excluirVeterinario(String nomeCPF){
+        String sql = "DELETE FROM veterinario WHERE veterinario.cpf = ?";
+        
+        String[] splitted = nomeCPF.split(" - ");
+        String cpf = splitted[1]; 
+        String nome = splitted[0];
+        
+        try {
+            PreparedStatement stm = conn.prepareCall(sql);
+            stm.setString(1, cpf);
+            Object[] opcoes = {"Sim", "Não"};
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf  + "?",
+                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+            
+            if (escolha == JOptionPane.YES_OPTION) {
+                stm.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Veterinario excluido com sucesso");
+                 return true;
+            }else{
+                JOptionPane.showMessageDialog(null, "O veterinario não foi excluido");
+                 return false;
+            }
+            
+        } catch (SQLException e) {
+             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao excluir o veterinario");
+            return false;
+        }
+       
+    }
 }

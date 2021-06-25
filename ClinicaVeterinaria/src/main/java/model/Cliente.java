@@ -287,22 +287,23 @@ public class Cliente {
                 
         String[] splitted = nomeCPF.split(" - ");
         String cpf = splitted[1]; 
-
+        String nome = splitted[0];
+        
         try {
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setString(1, cpf);
             
             Object[] opcoes = {"Sim", "Não"};
-            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de" + cpf + "?",
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf  + "?",
                     "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
             
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Atendente excluido com sucesso");
+                JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso");
                  return true;
             }else{
                 JOptionPane.showMessageDialog(null, "O cliente não foi excluido");
-                 return true;
+                 return false;
             }
            
         } catch (SQLException e) {

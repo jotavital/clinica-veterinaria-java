@@ -307,6 +307,11 @@ public class Home extends javax.swing.JFrame {
 
         menuExcVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_delete.png"))); // NOI18N
         menuExcVeterinario.setText("Excluir");
+        menuExcVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExcVeterinarioActionPerformed(evt);
+            }
+        });
         menuVeterinários.add(menuExcVeterinario);
 
         menuEditVeterinario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_edit.png"))); // NOI18N
@@ -485,6 +490,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(editarAnimal);
         editarAnimal.setVisible(true);
     }//GEN-LAST:event_menuEditAnimalActionPerformed
+
+    private void menuExcVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcVeterinarioActionPerformed
+        // TODO add your handling code here:
+        ExcluirVeterinario excluirVeterinario = new ExcluirVeterinario();
+        jDesktopPane1.add(excluirVeterinario);
+        excluirVeterinario.setVisible(true);
+    }//GEN-LAST:event_menuExcVeterinarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

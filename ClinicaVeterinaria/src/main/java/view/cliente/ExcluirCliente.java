@@ -7,7 +7,6 @@ package view.cliente;
 import controller.ClienteController;
 import controller.AnimalController;
 import funcoes.*;
-import java.sql.ResultSet;
 import model.Cliente;
 /**
  *
@@ -121,6 +120,7 @@ public class ExcluirCliente extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente();
         ClienteController clienteController = new ClienteController();
         AnimalController animalController = new AnimalController();
+       
         String cpfCliente = cbCliente.getStringAt(cbCliente.getSelectedIndex());
 
         if (!cpfCliente.isEmpty()) {  
@@ -130,7 +130,7 @@ public class ExcluirCliente extends javax.swing.JInternalFrame {
             
             funcoesCB.populaComboBox(cliente, cbCliente);
         } else {
-            jXLabel1.setText("Selecione um atendente!");
+            jXLabel1.setText("Selecione um cliente!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 

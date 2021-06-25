@@ -74,7 +74,8 @@ public class FuncoesComboBox {
             combobox.setEnabled(true);
 
             for (Veterinario v : listaVeterinarios) {
-                combobox.addItem(v.getNome());
+                // combobox.addItem(v.getNome());
+                combobox.addItem(v.getNome() + " - " + v.getCpf());
             }
 
         }

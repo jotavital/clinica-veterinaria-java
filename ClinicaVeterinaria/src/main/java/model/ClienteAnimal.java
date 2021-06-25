@@ -92,16 +92,16 @@ public class ClienteAnimal extends Animal{
 
             if(res.next()){
                 idCPF = res.getInt(1);  
-            }else{
-                System.out.println("erro");
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
+           // return false; ?
         }
         
         try { 
             String id = Integer.toString(idCPF);
-            System.out.println(id);
+            
             stm = conn.prepareCall(sql);
             stm.setString(1, id);
             stm.executeUpdate();
@@ -116,8 +116,6 @@ public class ClienteAnimal extends Animal{
         PreparedStatement stm;
         
         String sql = "UPDATE cliente_animal SET fk_cliente = ? WHERE fk_animal = ?";
-        
-        
         
         try {
             stm = conn.prepareStatement(sql);
