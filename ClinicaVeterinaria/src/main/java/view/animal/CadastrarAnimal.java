@@ -263,6 +263,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         
         Animal animal = new Animal(nome, especie, raca, idade);
         String nomeDono = cbDono.getStringAt(cbDono.getSelectedIndex()); // pegando o nome selecionado na combobox
+        nomeDono = nomeDono.split(" - ")[0];
         
         controller.cadastrarAnimal(animal, nomeDono);
     }//GEN-LAST:event_btnCadastrarActionPerformed
