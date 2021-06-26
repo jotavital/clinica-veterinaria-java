@@ -1,6 +1,7 @@
 package funcoes;
 
 import java.awt.Component;
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -31,7 +32,7 @@ public class Funcoes { // classe que armazena funcoes globais do sistema
                 ((JPasswordField) c).setText("");
             } else if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
-            }else if (c instanceof JSpinner){
+            } else if (c instanceof JSpinner) {
                 ((JSpinner) c).setValue(0);
             }
         }
@@ -43,18 +44,24 @@ public class Funcoes { // classe que armazena funcoes globais do sistema
                 ((JTextField) c).setEnabled(false);
             } else if (c instanceof JPasswordField) {
                 ((JPasswordField) c).setEnabled(false);
-            } else if (c instanceof JSpinner){
+            } else if (c instanceof JSpinner) {
                 ((JSpinner) c).setEnabled(false);
+            } else if (c instanceof JRadioButton) {
+                ((JRadioButton) c).setSelected(false);
             }
         }
     }
-    
-    public void uncheckRadio(JPanel painel){
+
+    public void uncheckRadio(JPanel painel) {
         for (Component c : painel.getComponents()) {
             if (c instanceof JRadioButton) {
                 ((JRadioButton) c).setSelected(false);
             }
         }
+    }
+    
+    public void uncheckRadioButtonGroup(ButtonGroup btnGroup){
+        btnGroup.clearSelection();
     }
 
 }

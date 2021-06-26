@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Atendente;
 
@@ -37,5 +38,14 @@ public class AtendenteController {
     public String getAtendenteNomeById(int idAtendente){
         Atendente atendenteObj = new Atendente();
         return atendenteObj.getAtendenteNomeById(idAtendente);
+    }
+    
+    public ResultSet selectAllFromAtendenteByUsuario(String usuario){
+        Atendente atendente = new Atendente();
+        return atendente.selectAllFromAtendenteByUsuario(usuario);
+    }
+    
+    public boolean editarAtendente(Atendente atendente, String usuario){
+        return atendente.editarAtendente(atendente, usuario); 
     }
 }

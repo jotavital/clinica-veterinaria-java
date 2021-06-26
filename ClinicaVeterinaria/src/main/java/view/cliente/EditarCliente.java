@@ -340,6 +340,7 @@ public class EditarCliente extends javax.swing.JInternalFrame {
             cbSelectCliente.removeActionListener(cbSelectCliente.getActionListeners()[0]);
 
             funcoes.resetFields(jPanel1);
+            funcoes.uncheckRadioButtonGroup(buttonGroup1);
             funcoes.disableFields(jPanel1);
             funcoesCb.populaComboBox(clienteObj, cbSelectCliente);
 

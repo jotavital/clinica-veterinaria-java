@@ -280,6 +280,11 @@ public class Home extends javax.swing.JFrame {
 
         menuEditAtendente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/group_edit.png"))); // NOI18N
         menuEditAtendente.setText("Editar");
+        menuEditAtendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditAtendenteActionPerformed(evt);
+            }
+        });
         menuAtendentes.add(menuEditAtendente);
 
         jMenuBar1.add(menuAtendentes);
@@ -497,6 +502,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(excluirVeterinario);
         excluirVeterinario.setVisible(true);
     }//GEN-LAST:event_menuExcVeterinarioActionPerformed
+
+    private void menuEditAtendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditAtendenteActionPerformed
+        // TODO add your handling code here:
+        EditarAtendente editarAtendente = new EditarAtendente();
+        jDesktopPane1.add(editarAtendente);
+        editarAtendente.setVisible(true);
+    }//GEN-LAST:event_menuEditAtendenteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

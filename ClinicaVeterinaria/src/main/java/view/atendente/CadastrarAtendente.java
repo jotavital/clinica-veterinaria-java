@@ -239,8 +239,15 @@ public class CadastrarAtendente extends javax.swing.JInternalFrame {
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String telefone = txtTelefone.getText();
+        String tipo_telefone = "";
+        
+        if(radioCelular.isSelected() == true){
+            tipo_telefone = "Celular";
+        }else if(radioFixo.isSelected() == true){
+            tipo_telefone = "Fixo";
+        }
 
-        Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone);
+        Atendente atendente = new Atendente(usuario, senha, nome, cpf, telefone, tipo_telefone);
 
         if (atendenteController.cadastrarAtendente(atendente)) {
             funcoes.resetFields(jPanel1);
