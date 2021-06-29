@@ -20,6 +20,7 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
     
     FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Cliente cliente = new Cliente();
+    Funcoes funcoes = new Funcoes();
     JDesktopPane jDesktopPane1; // crio o painel que vai receber o painel principal da home
     /**
      * Creates new form CadastrarAnimal
@@ -265,7 +266,10 @@ public class CadastrarAnimal extends javax.swing.JInternalFrame {
         String nomeDono = cbDono.getStringAt(cbDono.getSelectedIndex()); // pegando o nome selecionado na combobox
         nomeDono = nomeDono.split(" - ")[0];
         
-        controller.cadastrarAnimal(animal, nomeDono);
+        if(controller.cadastrarAnimal(animal, nomeDono)){
+            funcoes.resetFields(pnForm);
+            funcoesCB.populaComboBox(cliente, cbDono);
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
 

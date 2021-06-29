@@ -64,15 +64,17 @@ public class EditarAtendente extends javax.swing.JInternalFrame {
                         txtNome.setText(resultAtendente.getString("nome"));
                         txtCpf.setText(resultAtendente.getString("cpf"));
 
-                        if (resultAtendente.getString("tipo_telefone").equals("Celular")) {
-                            radioCelular.setSelected(true);
-                            mascara.mascaraCelular(txtTelefone);
-                        } else if (resultAtendente.getString("tipo_telefone").equals("Fixo")) {
-                            radioFixo.setSelected(true);
-                            mascara.mascaraTelefoneFixo(txtTelefone);
-                        } else if (resultAtendente.getString("tipo_telefone").equals("")) {
-                            radioCelular.setSelected(false);
-                            radioFixo.setSelected(false);
+                        if (resultAtendente.getString("tipo_telefone") != null) {
+                            if (resultAtendente.getString("tipo_telefone").equals("Celular")) {
+                                radioCelular.setSelected(true);
+                                mascara.mascaraCelular(txtTelefone);
+                            } else if (resultAtendente.getString("tipo_telefone").equals("Fixo")) {
+                                radioFixo.setSelected(true);
+                                mascara.mascaraTelefoneFixo(txtTelefone);
+                            } else if (resultAtendente.getString("tipo_telefone").equals("")) {
+                                radioCelular.setSelected(false);
+                                radioFixo.setSelected(false);
+                            }
                         }
 
                         txtTelefone.setText(resultAtendente.getString("telefone"));
