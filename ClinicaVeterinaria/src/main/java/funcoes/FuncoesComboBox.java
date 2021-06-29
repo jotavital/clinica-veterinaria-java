@@ -128,4 +128,30 @@ public class FuncoesComboBox {
         AutoCompleteDecorator.decorate(combobox);
         combobox.setSelectedItem(null);
     }
+    
+    public void populaComboBoxSelecionandoDono(Cliente cliente, org.jdesktop.swingx.JXComboBox combobox, String cpfDono){
+        resetComboBox(combobox);
+
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+        listaClientes = cliente.pegarClientes(cliente);
+
+        if (!listaClientes.isEmpty()) {
+            combobox.setEnabled(true);
+            
+            int i = 0;
+            
+            for (Cliente c : listaClientes) {
+                combobox.addItem(c.getNome() + " - " + c.getCpf());
+                
+                if(c.getCpf().equals(cpfDono)){
+                    combobox.setSelectedIndex(i);
+                }
+                i++;
+            }
+            
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+    }
 }

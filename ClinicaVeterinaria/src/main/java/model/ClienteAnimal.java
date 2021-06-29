@@ -133,4 +133,26 @@ public class ClienteAnimal extends Animal{
                 
     }
     
+    public int getDonoIdByAnimalId(int idAnimal){
+        PreparedStatement stm;
+        ResultSet res;
+        
+        String sql = "SELECT fk_cliente FROM cliente_animal WHERE fk_animal = ?";
+        
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idAnimal);
+            res = stm.executeQuery();
+            
+            if(res != null && res.next()){
+                return res.getInt("fk_cliente");
+            }else{
+                throw new SQLException();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
 }

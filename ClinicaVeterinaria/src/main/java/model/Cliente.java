@@ -14,13 +14,14 @@ import javax.swing.JOptionPane;
  * @author kairos-04
  */
 public class Cliente {
+
     Connector connector = new Connector();
     Connection conn = connector.connect();
     int id;
     String nome, cpf, telefone, rua, bairro, numero, tipo_telefone;
 
     public Cliente() {
-        
+
     }
 
     public Cliente(int id, String nome, String cpf, String telefone, String rua, String bairro, String numero) {
@@ -32,7 +33,7 @@ public class Cliente {
         setBairro(bairro);
         setNumero(numero);
     }
-    
+
     public Cliente(String nome, String cpf, String telefone, String rua, String bairro, String numero) {
         setNome(nome);
         setCpf(cpf);
@@ -41,8 +42,8 @@ public class Cliente {
         setBairro(bairro);
         setNumero(numero);
     }
-    
-    public Cliente(String nome, String telefone){
+
+    public Cliente(String nome, String telefone) {
         setNome(nome);
         setTelefone(telefone);
     }
@@ -56,7 +57,7 @@ public class Cliente {
         setNumero(numero);
         setTipo_telefone(tipo_telefone);
     }
-    
+
     public Cliente(int id, String nome, String cpf, String telefone, String rua, String bairro, String numero, String tipo_telefone) {
         setId(id);
         setNome(nome);
@@ -131,7 +132,7 @@ public class Cliente {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
+
     public int getClienteIdByNome(String nomeCliente) {
 
         PreparedStatement stm;
@@ -144,9 +145,9 @@ public class Cliente {
             stm.setString(1, nomeCliente);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res.getInt(1);    
-            }else{
+            if (res.next()) {
+                return res.getInt(1);
+            } else {
                 return -1;
             }
         } catch (SQLException e) {
@@ -154,7 +155,7 @@ public class Cliente {
             return -1;
         }
     }
-    
+
     public ResultSet selectAllFromClienteByCpf(String cpfCliente) {
 
         PreparedStatement stm;
@@ -167,9 +168,9 @@ public class Cliente {
             stm.setString(1, cpfCliente);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res;    
-            }else{
+            if (res.next()) {
+                return res;
+            } else {
                 return null;
             }
         } catch (SQLException e) {
@@ -177,7 +178,7 @@ public class Cliente {
             return null;
         }
     }
-    
+
     public int selectIdFromClienteByCpf(String cpfCliente) {
 
         PreparedStatement stm;
@@ -190,9 +191,9 @@ public class Cliente {
             stm.setString(1, cpfCliente);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res.getInt("id");    
-            }else{
+            if (res.next()) {
+                return res.getInt("id");
+            } else {
                 return -1;
             }
         } catch (SQLException e) {
@@ -200,12 +201,12 @@ public class Cliente {
             return -1;
         }
     }
-    
-    public boolean cadastrarCliente(Cliente cliente){
-        
+
+    public boolean cadastrarCliente(Cliente cliente) {
+
         //sql's
         String sql = "INSERT INTO cliente (nome, cpf, telefone, rua, bairro, numero, tipo_telefone) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, cliente.getNome());
@@ -215,7 +216,7 @@ public class Cliente {
             stm.setString(5, cliente.getBairro());
             stm.setString(6, cliente.getNumero());
             stm.setString(7, cliente.getTipo_telefone());
-            
+
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
             return true;
@@ -224,13 +225,13 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar o cliente!");
             return false;
         }
-        
+
     }
-    
-    public boolean editarCliente(Cliente cliente){
-        
+
+    public boolean editarCliente(Cliente cliente) {
+
         String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ?, rua = ?, bairro = ?, numero = ?, tipo_telefone = ? WHERE id = ?";
-        
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, cliente.getNome());
@@ -241,7 +242,7 @@ public class Cliente {
             stm.setString(6, cliente.getNumero());
             stm.setString(7, cliente.getTipo_telefone());
             stm.setInt(8, cliente.getId());
-            
+
             stm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente editado com sucesso!");
             return true;
@@ -250,19 +251,19 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Erro ao editar o cliente!");
             return false;
         }
-        
+
     }
-    
-    public ArrayList<Cliente> pegarClientes(Cliente cliente){
+
+    public ArrayList<Cliente> pegarClientes(Cliente cliente) {
         String sql = "SELECT * FROM cliente";
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-        
+
         try {
             ResultSet res;
             PreparedStatement stm = conn.prepareStatement(sql);
-            
+
             res = stm.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 cliente.setId(res.getInt("id"));
                 cliente.setNome(res.getString("nome"));
                 cliente.setCpf(res.getString("cpf"));
@@ -271,47 +272,71 @@ public class Cliente {
                 cliente.setBairro(res.getString("bairro"));
                 cliente.setNumero(res.getString("numero"));
                 Cliente novoCliente = new Cliente(id, nome, cpf, telefone, rua, bairro, numero);
-                
+
                 listaClientes.add(novoCliente);
             }
-            
+
             return listaClientes;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-        
+
     }
-    public boolean excluirCliente(String nomeCPF){
+
+    public boolean excluirCliente(String nomeCPF) {
         String sql = "DELETE FROM cliente WHERE cliente.cpf = ?";
-                
+
         String[] splitted = nomeCPF.split(" - ");
-        String cpf = splitted[1]; 
+        String cpf = splitted[1];
         String nome = splitted[0];
-        
+
         try {
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setString(1, cpf);
-            
+
             Object[] opcoes = {"Sim", "Não"};
-            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf  + "?",
-                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
-            
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf + "?",
+                    "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso");
-                 return true;
-            }else{
+                return true;
+            } else {
                 JOptionPane.showMessageDialog(null, "O cliente não foi excluido");
-                 return false;
+                return false;
             }
-           
+
         } catch (SQLException e) {
-             e.printStackTrace();
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente");
             return false;
         }
-        
+
     }
-    
+
+    public String getClienteCpfById(int idDono) {
+        ResultSet res;
+        PreparedStatement stm;
+        String sql = "SELECT cpf FROM cliente WHERE id = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idDono);
+            
+            res = stm.executeQuery();
+            
+            if(res != null && res.next()){
+                return res.getString("cpf");
+            }else{
+                throw new SQLException();
+            }
+            
+        } catch (Exception e) {
+            return "";
+        }
+
+    }
+
 }

@@ -6,6 +6,7 @@
 package view.animal;
 
 import controller.AnimalController;
+import controller.ClienteController;
 import funcoes.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 import model.Animal;
 import model.Cliente;
+import model.ClienteAnimal;
 import org.jdesktop.swingx.JXComboBox;
 import view.cliente.CadastrarCliente;
 
@@ -27,10 +29,13 @@ public class EditarAnimal extends javax.swing.JInternalFrame {
     JDesktopPane jDesktopPane1;
     FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Cliente cliente = new Cliente();
+    ClienteController clienteControllerObj = new ClienteController();
     Animal animal = new Animal();
+    ClienteAnimal clienteAnimalObj = new ClienteAnimal();
     ResultSet resultAnimal;
     AnimalController animalController = new AnimalController();
-    int idAnimal;
+    int idAnimal, idDono, indexItemCpfDono;
+    String cpfDono;
 
     /**
      * Creates new form EditarAnimal
@@ -55,14 +60,19 @@ public class EditarAnimal extends javax.swing.JInternalFrame {
                         c.setEnabled(true);
                     }
                 }
-                cbDono.setEnabled(true);
-                funcoesCB.populaComboBox(cliente, cbDono);
 
                 if (cbSelectAnimal.getSelectedItem() != null) {
                     String partes[] = cbSelectAnimal.getSelectedItem().toString().split(" - ");
                     idAnimal = Integer.parseInt(partes[0]);
                     resultAnimal = animalController.selectAllFromAnimalById(idAnimal);
                 }
+
+                // pegar dono do animal e selecionar na combobox
+                idDono = clienteAnimalObj.getDonoIdByAnimalId(idAnimal);
+                cpfDono = clienteControllerObj.getClienteCpfById(idDono);
+
+                cbDono.setEnabled(true);
+                funcoesCB.populaComboBoxSelecionandoDono(cliente, cbDono, cpfDono);
 
                 try {
 
@@ -325,13 +335,13 @@ public class EditarAnimal extends javax.swing.JInternalFrame {
         int idDono = cliente.selectIdFromClienteByCpf(cpfDono);
 
         animal = new Animal(idAnimal, nome, especie, raca, idade);
-        
+
         if (controller.editarAnimal(animal, idDono)) {
             cbSelectAnimal.removeActionListener(cbSelectAnimal.getActionListeners()[0]);
 
+            funcoesCb.populaComboBox(cliente, cbDono);
             funcoes.resetFields(pnForm);
             funcoes.disableFields(pnForm);
-            funcoesCB.populaComboBox(cliente, cbDono);
             cbDono.setEnabled(false);
             funcoesCB.populaComboBoxAnimalComId(animal, cbSelectAnimal);
 
@@ -347,10 +357,8 @@ public class EditarAnimal extends javax.swing.JInternalFrame {
 
                     if (cbSelectAnimal.getSelectedItem() != null) {
                         String partes[] = cbSelectAnimal.getSelectedItem().toString().split(" - ");
-                        
-                        System.out.println(partes[1]);
-                        
-                        if(!partes[0].isEmpty()){
+
+                        if (!partes[0].isEmpty()) {
                             idAnimal = Integer.parseInt(partes[0]);
                         }
 
@@ -358,6 +366,15 @@ public class EditarAnimal extends javax.swing.JInternalFrame {
                             resultAnimal = controller.selectAllFromAnimalById(idAnimal);
                         }
                     }
+
+                    // pegar dono do animal e selecionar na combobox
+                    int idDonoPopula;
+                    String cpfDonoPopula;
+                    idDonoPopula = clienteAnimalObj.getDonoIdByAnimalId(idAnimal);
+                    cpfDonoPopula = clienteControllerObj.getClienteCpfById(idDonoPopula);
+
+                    cbDono.setEnabled(true);
+                    funcoesCB.populaComboBoxSelecionandoDono(cliente, cbDono, cpfDonoPopula);
 
                     try {
 

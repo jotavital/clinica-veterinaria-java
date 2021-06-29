@@ -14,6 +14,7 @@ import model.Cliente;
  * @author kairos-04
  */
 public class ClienteController {
+    Cliente clienteObj = new Cliente();
 
     public ClienteController() {
         
@@ -35,9 +36,13 @@ public class ClienteController {
     public ArrayList<Cliente> pegarClientes(Cliente cliente){
         return cliente.pegarClientes(cliente);
     }
+    
     public boolean exluirCliente(Cliente cliente, String cpf){
-        return cliente.excluirCliente(cpf);
-        
+        return cliente.excluirCliente(cpf);   
+    }
+    
+    public String getClienteCpfById(int idDono){
+        return clienteObj.getClienteCpfById(idDono);
     }
     
 }
