@@ -7,21 +7,26 @@ package view.veterinario;
 
 import controller.VeterinarioController;
 import funcoes.*;
+import funcoes.LimitNumberCharacters;
 import model.Veterinario;
 
 /**
  *
- * @author lukas
+ * @author picle
  */
-public class CadastrarVeterinario extends javax.swing.JInternalFrame {
-    
+public class EditarVeterinario extends javax.swing.JInternalFrame {
+
     Funcoes funcoes = new Funcoes();
+    FuncoesComboBox funcoesCb = new FuncoesComboBox();
+    Veterinario veterinarioObj = new Veterinario();
     MascarasDeCampos mascara = new MascarasDeCampos();
     /**
-     * Creates new form CadastroVeterinario
+     * Creates new form EditarVeterinario
      */
-    public CadastrarVeterinario() {
+    public EditarVeterinario() {
         initComponents();
+        
+        funcoesCb.populaComboBox(veterinarioObj, cbSelectVeterinario);
     }
 
     /**
@@ -51,18 +56,19 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         lblTelefone = new javax.swing.JLabel();
         radioFixo = new javax.swing.JRadioButton();
         radioCelular = new javax.swing.JRadioButton();
+        lblSelectVet = new javax.swing.JLabel();
+        cbSelectVeterinario = new org.jdesktop.swingx.JXComboBox();
 
         buttonGroup1.add(radioCelular);
         buttonGroup1.add(radioFixo);
 
-        setBorder(null);
         setClosable(true);
-        setTitle("Clínica Veterinária - Cadastrar Veterinários");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_add.png"))); // NOI18N
+        setTitle("Clínica Veterinária - Editar Veterinários");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/vcard_edit.png"))); // NOI18N
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_add.png"))); // NOI18N
-        lblTitulo.setText("Novo Veterinário");
+        lblTitulo.setText("Editar Veterinário");
 
         lblNome.setText("Nome:");
 
@@ -122,6 +128,20 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblSelectVet.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSelectVet.setText("Selecione o veterinário:");
+
+        cbSelectVeterinario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbSelectVeterinarioItemStateChanged(evt);
+            }
+        });
+        cbSelectVeterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSelectVeterinarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,44 +149,57 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblCpf, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(lblNome)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblRua)
-                                .addComponent(lblBairro)
-                                .addComponent(lblNumero)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtCpf)
-                            .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(txtNome)
-                            .addComponent(txtRua)
-                            .addComponent(txtBairro)
-                            .addComponent(txtNumero)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(lblTitulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(radioFixo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(radioCelular)))
-                .addContainerGap(122, Short.MAX_VALUE))
+                        .addComponent(radioCelular))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCpf, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblRua)
+                                        .addComponent(lblBairro)
+                                        .addComponent(lblNumero)))
+                                .addGap(18, 18, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSelectVet)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(txtTelefone)
+                            .addComponent(txtRua)
+                            .addComponent(txtBairro)
+                            .addComponent(txtNumero)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbSelectVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(118, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(186, 186, 186))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(157, 157, 157))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(lblTitulo)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbSelectVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSelectVet))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,7 +229,7 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         txtNome.setDocument( new LimitNumberCharacters(50) );
@@ -225,16 +258,16 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         VeterinarioController controller = new VeterinarioController();
-        
+
         String nome = txtNome.getText();
         String cpf = txtCpf.getText();
         String telefone = txtTelefone.getText();
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
         String numero = txtNumero.getText();
-        
+
         Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
-        
+
         if (controller.cadastrarVeterinario(veterinario)){
             funcoes.resetFields(jPanel1);
         }
@@ -256,16 +289,26 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         mascara.mascaraCelular(txtTelefone);
     }//GEN-LAST:event_radioCelularActionPerformed
 
+    private void cbSelectVeterinarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSelectVeterinarioItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSelectVeterinarioItemStateChanged
+
+    private void cbSelectVeterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSelectVeterinarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSelectVeterinarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customSwingComponents.JButtonCadastrar btnCadastrar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private org.jdesktop.swingx.JXComboBox cbSelectVeterinario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBairro;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRua;
+    private javax.swing.JLabel lblSelectVet;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JRadioButton radioCelular;
