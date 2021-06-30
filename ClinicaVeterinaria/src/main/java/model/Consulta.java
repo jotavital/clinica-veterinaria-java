@@ -36,6 +36,14 @@ public class Consulta {
         this.data_consulta = data_consulta;
         this.data_prevista = data_prevista;
     }
+    
+    public Consulta(int id, String descricao, double valor, String data_consulta, String data_prevista) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.data_consulta = data_consulta;
+        this.data_prevista = data_prevista;
+    }
 
     private Consulta(int id, String descricao, double valor, String data_consulta, String data_prevista, String data_agendamento, int fk_animal, int fk_atendente) {
         this.id = id;
@@ -201,6 +209,49 @@ public class Consulta {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    public boolean editarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario){
+        
+        String sql = "UPDATE consulta SET descricao = ?, valor = ?, data_consulta = ?, data_prevista = ?, data_agendamento = ?, fk_animal = ?, fk_atendente= ? WHERE id = ?";
+        String sql2 = "UPDATE veterinario_consulta SET fk_veterinario = ? WHERE fk_consulta = ?";
+
+        Animal animal = new Animal();
+        Atendente atendente = new Atendente();
+        Veterinario veterinario = new Veterinario();
+
+        int idAnimal = animal.getAnimalIdByNome(nomeAnimal);
+        int idAtendente = atendente.getAtendenteIdByNome(nomeAtendente);
+        int idVeterinario = veterinario.getVeterinarioIdByNome(nomeVeterinario);
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, consulta.getDescricao());
+            stm.setDouble(2, consulta.getValor());
+            stm.setString(3, consulta.getData_consulta());
+            stm.setString(4, consulta.getData_prevista());
+            stm.setString(5, LocalDate.now().toString());
+            stm.setInt(6, idAnimal);
+            stm.setInt(7, idAtendente);
+            stm.setInt(8, consulta.getId());
+            stm.executeUpdate();
+
+//            sql 2
+            stm = conn.prepareStatement(sql2);
+            stm.setInt(1, idVeterinario);
+            stm.setInt(2, consulta.getId());
+
+            stm.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Consulta editada com sucesso!");
+
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao editar consulta!");
+            e.printStackTrace();
+
+            return false;
         }
     }
 }

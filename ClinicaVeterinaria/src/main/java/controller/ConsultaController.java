@@ -31,4 +31,8 @@ public class ConsultaController {
     public ResultSet selectAllFromConsultaByDescricao(String descricao){
         return consulta.selectAllFromConsultaByDescricao(descricao);
     }
+    
+    public boolean editarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario){
+        return consulta.editarConsulta(consulta, nomeAnimal, nomeAtendente, nomeVeterinario);
+    }
 }

@@ -5,6 +5,7 @@
  */
 package view.consulta;
 
+import controller.ClienteController;
 import controller.ConsultaController;
 import funcoes.*;
 import java.awt.Component;
@@ -15,14 +16,13 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import model.Animal;
-import model.Cliente;
-import model.Consulta;
-import model.Veterinario;
+import model.*;
 import org.jdesktop.swingx.JXDatePicker;
 import view.animal.CadastrarAnimal;
 import view.cliente.CadastrarCliente;
@@ -33,7 +33,7 @@ import view.veterinario.CadastrarVeterinario;
  * @author picle
  */
 public class EditarConsulta extends javax.swing.JInternalFrame {
-    
+
     FuncoesComboBox funcoesCB = new FuncoesComboBox();
     Funcoes funcoes = new Funcoes();
     Cliente cliente = new Cliente();
@@ -42,30 +42,34 @@ public class EditarConsulta extends javax.swing.JInternalFrame {
     JDesktopPane jDesktopPane1;
     Consulta consulta = new Consulta();
     ResultSet resultConsulta;
+    ClienteAnimal clienteAnimalObj = new ClienteAnimal();
+    ClienteController clienteControllerObj = new ClienteController();
     ConsultaController consultaController = new ConsultaController();
-    int idConsulta;
+    int idConsulta, idDono, idAnimal, idVeterinario;
+    VeterinarioConsulta veterinarioConsultaObj = new VeterinarioConsulta();
+    String cpfDono, cpfVeterinario;
 
     /**
      * Creates new form EditarConsulta
      */
     public EditarConsulta(JDesktopPane jDpane1) throws ParseException {
         initComponents();
-        
+
         jDesktopPane1 = jDpane1;
-        
+
         funcoesCB.populaComboBox(consulta, cbSelectConsulta);
         funcoesCB.populaComboBox(cliente, cbDono);
         funcoesCB.populaComboBox(veterinario, cbVeterinario);
         cbDono.setEnabled(false);
         cbVeterinario.setEnabled(false);
         cbAnimal.setEnabled(false);
-        
+
         cbSelectConsulta.removeActionListener(cbSelectConsulta.getActionListeners()[0]);
-        
+
         cbSelectConsulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 for (Component c : pnForm.getComponents()) {
                     if (c instanceof JTextField) {
                         c.setEnabled(true);
@@ -73,26 +77,42 @@ public class EditarConsulta extends javax.swing.JInternalFrame {
                         c.setEnabled(true);
                     }
                 }
-                
+
                 txtDesc.setEnabled(true);
                 cbDono.setEnabled(true);
+                cbAnimal.setEnabled(true);
                 cbVeterinario.setEnabled(true);
-                
+
                 if (cbSelectConsulta.getSelectedItem() != null) {
                     String partes[] = cbSelectConsulta.getSelectedItem().toString().split(" - ");
-                    resultConsulta = consultaController.selectAllFromConsultaByDescricao(partes[1]);
+
+                    if (partes.length != 1) {
+                        resultConsulta = consultaController.selectAllFromConsultaByDescricao(partes[1]);
+                    }
                 }
-                
+
                 try {
-                    
+
                     if (resultConsulta != null) {
+                        idConsulta = resultConsulta.getInt("id");
+                        idAnimal = resultConsulta.getInt("fk_animal");
+                        idDono = clienteAnimalObj.getDonoIdByAnimalId(idAnimal);
+                        cpfDono = clienteControllerObj.getClienteCpfById(idDono);
+                        funcoesCB.populaComboBoxSelecionandoDono(cliente, cbDono, cpfDono);
+
+                        funcoesCB.populaComboBoxSelecionandoAnimalByDono(animal, cbAnimal, idAnimal, idDono);
+
+                        idVeterinario = veterinarioConsultaObj.getVetIdByConsultaId(idConsulta);
+                        cpfVeterinario = veterinario.getVetCpfById(idVeterinario);
+
+                        funcoesCB.populaComboBoxSelecionandoVeterinario(veterinario, cbVeterinario, cpfVeterinario);
+
                         txtDesc.setText(resultConsulta.getString("descricao"));
                         txtValor.setText(resultConsulta.getString("valor"));
                         pickerDtConsulta.setDate(resultConsulta.getDate("data_consulta"));
-                        
+
                         pickerDtPrevista.setDate(resultConsulta.getDate("data_prevista"));
-                        
-                        idConsulta = resultConsulta.getInt("id");
+
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -432,8 +452,8 @@ public class EditarConsulta extends javax.swing.JInternalFrame {
 
         if (cbDono.getSelectedItem() != null) {
             int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString().split(" - ")[0]);
-            funcoesCB.populaComboBox(animal, idDono, cbAnimal);
-            
+            funcoesCB.populaComboBoxAnimalComIdByDono(animal, idDono, cbAnimal);
+
             if (cbAnimal.getItemCount() != 0) {
                 cbAnimal.setEnabled(true);
             } else {
@@ -493,19 +513,88 @@ public class EditarConsulta extends javax.swing.JInternalFrame {
         String dataPrevista = pickerDtPrevista.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
         String descricao = txtDesc.getText();
         double valor = Double.parseDouble(txtValor.getText());
-        
-        Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
-        
-        String nomeAnimal = cbAnimal.getSelectedItem().toString();
+
+        Consulta consulta = new Consulta(idConsulta, descricao, valor, dataConsulta, dataPrevista);
+        Consulta consulta2 = new Consulta();
+
+        String nomeAnimal = cbAnimal.getSelectedItem().toString().split(" - ")[1];
         String nomeVeterinario = cbVeterinario.getSelectedItem().toString().split(" - ")[0];
-        
-        if (controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario)) {
+
+        if (controller.editarConsulta(consulta, nomeAnimal, "admin", nomeVeterinario)) {
+            cbSelectConsulta.removeActionListener(cbSelectConsulta.getActionListeners()[0]);
+
             funcoes.resetFields(pnForm);
+            funcoes.disableFields(pnForm);
             funcoesCB.populaComboBox(cliente, cbDono);
-            cbAnimal.setEnabled(false);
             funcoesCB.populaComboBox(veterinario, cbVeterinario);
+            cbAnimal.setEnabled(false);
+            cbDono.setEnabled(false);
+            cbVeterinario.setEnabled(false);
             txtDesc.setText("");
+            txtDesc.setEnabled(false);
+
+            try {
+                funcoesCB.populaComboBox(consulta2, cbSelectConsulta);
+            } catch (ParseException ex) {
+                Logger.getLogger(EditarConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            cbSelectConsulta.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    for (Component c : pnForm.getComponents()) {
+                        if (c instanceof JTextField) {
+                            c.setEnabled(true);
+                        } else if (c instanceof JXDatePicker) {
+                            c.setEnabled(true);
+                        }
+                    }
+
+                    txtDesc.setEnabled(true);
+                    cbDono.setEnabled(true);
+                    cbAnimal.setEnabled(true);
+                    cbVeterinario.setEnabled(true);
+
+                    if (cbSelectConsulta.getSelectedItem() != null) {
+                        String partes[] = cbSelectConsulta.getSelectedItem().toString().split(" - ");
+
+                        if (partes.length != 1) {
+                            resultConsulta = consultaController.selectAllFromConsultaByDescricao(partes[1]);
+                        }
+                    }
+
+                    try {
+
+                        if (resultConsulta != null) {
+                            idConsulta = resultConsulta.getInt("id");
+                            idAnimal = resultConsulta.getInt("fk_animal");
+                            idDono = clienteAnimalObj.getDonoIdByAnimalId(idAnimal);
+                            cpfDono = clienteControllerObj.getClienteCpfById(idDono);
+                            funcoesCB.populaComboBoxSelecionandoDono(cliente, cbDono, cpfDono);
+
+                            funcoesCB.populaComboBoxSelecionandoAnimalByDono(animal, cbAnimal, idAnimal, idDono);
+
+                            idVeterinario = veterinarioConsultaObj.getVetIdByConsultaId(idConsulta);
+                            cpfVeterinario = veterinario.getVetCpfById(idVeterinario);
+
+                            funcoesCB.populaComboBoxSelecionandoVeterinario(veterinario, cbVeterinario, cpfVeterinario);
+
+                            txtDesc.setText(resultConsulta.getString("descricao"));
+                            txtValor.setText(resultConsulta.getString("valor"));
+                            pickerDtConsulta.setDate(resultConsulta.getDate("data_consulta"));
+
+                            pickerDtPrevista.setDate(resultConsulta.getDate("data_prevista"));
+
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
         }
+
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void cbSelectConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSelectConsultaActionPerformed

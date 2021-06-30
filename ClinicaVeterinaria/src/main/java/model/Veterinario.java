@@ -271,4 +271,26 @@ public class Veterinario {
             return false;
         }
     }
+    
+    public String getVetCpfById(int idVet){
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT cpf FROM veterinario WHERE id = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setInt(1, idVet);
+            res = stm.executeQuery();
+
+            if (res != null && res.next()) {
+                return res.getString("cpf");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

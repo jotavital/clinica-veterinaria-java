@@ -136,6 +136,21 @@ public class FuncoesComboBox {
         combobox.setSelectedItem(null);
     }
 
+    public void populaComboBoxAnimalComIdByDono(Animal animal, int idDono , org.jdesktop.swingx.JXComboBox combobox) {
+        resetComboBox(combobox);
+
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+
+        listaAnimais = animal.getAnimaisByDono(animal, idDono);
+
+        for (Animal a : listaAnimais) {
+            combobox.addItem(a.getIdAnimal() + " - " + a.getNomeAnimal());
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+        combobox.setSelectedItem(null);
+    }
+    
     public void populaComboBoxAnimalComId(Animal animal, org.jdesktop.swingx.JXComboBox combobox) {
         resetComboBox(combobox);
 
@@ -167,6 +182,84 @@ public class FuncoesComboBox {
                 combobox.addItem(c.getNome() + " - " + c.getCpf());
 
                 if (c.getCpf().equals(cpfDono)) {
+                    combobox.setSelectedIndex(i);
+                }
+                i++;
+            }
+
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+    }
+    
+    public void populaComboBoxSelecionandoAnimal(Animal animal, org.jdesktop.swingx.JXComboBox combobox, int idAnimal) {
+        resetComboBox(combobox);
+
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+
+        listaAnimais = animal.pegarAnimais(animal);
+
+        if (!listaAnimais.isEmpty()) {
+            combobox.setEnabled(true);
+
+            int i = 0;
+
+            for (Animal a : listaAnimais) {
+                combobox.addItem(a.getIdAnimal()+ " - " + a.getNomeAnimal());
+
+                if (a.getIdAnimal() == idAnimal) {
+                    combobox.setSelectedIndex(i);
+                }
+                i++;
+            }
+
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+    }
+    
+    public void populaComboBoxSelecionandoAnimalByDono(Animal animal, org.jdesktop.swingx.JXComboBox combobox, int idAnimal, int idDono) {
+        resetComboBox(combobox);
+
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+
+        listaAnimais = animal.getAnimaisByDono(animal, idDono);
+
+        if (!listaAnimais.isEmpty()) {
+            combobox.setEnabled(true);
+
+            int i = 0;
+
+            for (Animal a : listaAnimais) {
+                combobox.addItem(a.getIdAnimal()+ " - " + a.getNomeAnimal());
+
+                if (a.getIdAnimal() == idAnimal) {
+                    combobox.setSelectedIndex(i);
+                }
+                i++;
+            }
+
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+    }
+    
+    public void populaComboBoxSelecionandoVeterinario(Veterinario veterinario, org.jdesktop.swingx.JXComboBox combobox, String cpfVet) {
+        resetComboBox(combobox);
+
+        ArrayList<Veterinario> listaVeterinarios = new ArrayList<>();
+
+        listaVeterinarios = veterinario.pegarVeterinarios(veterinario);
+
+        if (!listaVeterinarios.isEmpty()) {
+            combobox.setEnabled(true);
+
+            int i = 0;
+
+            for (Veterinario v : listaVeterinarios) {
+                combobox.addItem(v.getNome() + " - " + v.getCpf());
+
+                if (v.getCpf().equals(cpfVet)) {
                     combobox.setSelectedIndex(i);
                 }
                 i++;
