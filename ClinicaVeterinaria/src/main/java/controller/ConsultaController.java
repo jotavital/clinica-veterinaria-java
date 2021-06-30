@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Consulta;
 
@@ -13,6 +14,7 @@ import model.Consulta;
  * @author kairos-04
  */
 public class ConsultaController {
+    Consulta consulta = new Consulta();
 
     public ConsultaController() {
         
@@ -26,4 +28,7 @@ public class ConsultaController {
         return consulta.pegarConsultas(consulta);
     }
     
+    public ResultSet selectAllFromConsultaByDescricao(String descricao){
+        return consulta.selectAllFromConsultaByDescricao(descricao);
+    }
 }

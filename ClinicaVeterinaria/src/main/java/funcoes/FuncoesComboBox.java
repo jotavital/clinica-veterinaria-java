@@ -9,11 +9,15 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JTextField;
 import model.Animal;
 import model.Atendente;
 import model.Cliente;
+import model.Consulta;
 import model.Veterinario;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
@@ -40,7 +44,25 @@ public class FuncoesComboBox {
             for (Cliente c : listaClientes) {
                 combobox.addItem(c.getNome() + " - " + c.getCpf());
             }
-            
+
+        }
+
+        AutoCompleteDecorator.decorate(combobox);
+        combobox.setSelectedItem(null);
+    }
+
+    public void populaComboBox(Consulta consulta, org.jdesktop.swingx.JXComboBox combobox) throws ParseException {
+        resetComboBox(combobox);
+
+        ArrayList<Consulta> listaConsultas = new ArrayList<>();
+
+        listaConsultas = consulta.pegarConsultas(consulta);
+
+        for (Consulta c : listaConsultas) {
+            //combobox.addItem(a.getNome());
+            Date dataConsulta = new SimpleDateFormat("yyyy-MM-dd").parse(c.getData_consulta());
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            combobox.addItem(formatador.format(dataConsulta) + " - " + c.getDescricao());
         }
 
         AutoCompleteDecorator.decorate(combobox);
@@ -113,7 +135,7 @@ public class FuncoesComboBox {
         AutoCompleteDecorator.decorate(combobox);
         combobox.setSelectedItem(null);
     }
-    
+
     public void populaComboBoxAnimalComId(Animal animal, org.jdesktop.swingx.JXComboBox combobox) {
         resetComboBox(combobox);
 
@@ -128,8 +150,8 @@ public class FuncoesComboBox {
         AutoCompleteDecorator.decorate(combobox);
         combobox.setSelectedItem(null);
     }
-    
-    public void populaComboBoxSelecionandoDono(Cliente cliente, org.jdesktop.swingx.JXComboBox combobox, String cpfDono){
+
+    public void populaComboBoxSelecionandoDono(Cliente cliente, org.jdesktop.swingx.JXComboBox combobox, String cpfDono) {
         resetComboBox(combobox);
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -138,18 +160,18 @@ public class FuncoesComboBox {
 
         if (!listaClientes.isEmpty()) {
             combobox.setEnabled(true);
-            
+
             int i = 0;
-            
+
             for (Cliente c : listaClientes) {
                 combobox.addItem(c.getNome() + " - " + c.getCpf());
-                
-                if(c.getCpf().equals(cpfDono)){
+
+                if (c.getCpf().equals(cpfDono)) {
                     combobox.setSelectedIndex(i);
                 }
                 i++;
             }
-            
+
         }
 
         AutoCompleteDecorator.decorate(combobox);

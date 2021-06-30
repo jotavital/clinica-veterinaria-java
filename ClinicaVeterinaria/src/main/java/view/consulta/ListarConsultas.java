@@ -10,8 +10,7 @@ import controller.AtendenteController;
 import model.Consulta;
 import controller.ConsultaController;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.*;
 import model.Animal;
 
@@ -81,6 +80,7 @@ public class ListarConsultas extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
+        setResizable(true);
         setTitle("Clínica Veterinária - Todas as Consultas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book_open.png"))); // NOI18N
         setPreferredSize(new java.awt.Dimension(695, 379));

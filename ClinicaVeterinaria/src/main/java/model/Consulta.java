@@ -119,11 +119,11 @@ public class Consulta {
         Animal animal = new Animal();
         Atendente atendente = new Atendente();
         Veterinario veterinario = new Veterinario();
-        
+
         int idAnimal = animal.getAnimalIdByNome(nomeAnimal);
         int idAtendente = atendente.getAtendenteIdByNome(nomeAtendente);
         int idVeterinario = veterinario.getVeterinarioIdByNome(nomeVeterinario);
-        
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, consulta.getDescricao());
@@ -134,33 +134,33 @@ public class Consulta {
             stm.setInt(6, idAnimal);
             stm.setInt(7, idAtendente);
             stm.executeUpdate();
-            
+
             stm = conn.prepareStatement(sql2);
             stm.setInt(1, idVeterinario);
-            
+
             stm.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso!");
 
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar consulta!");
             e.printStackTrace();
-            
+
             return false;
         }
     }
-    
-    public ArrayList<Consulta> pegarConsultas(Consulta consulta){
+
+    public ArrayList<Consulta> pegarConsultas(Consulta consulta) {
         String sql = "SELECT * FROM consulta";
         ArrayList<Consulta> listaConsultas = new ArrayList<>();
-        
+
         try {
             ResultSet res;
             PreparedStatement stm = conn.prepareStatement(sql);
-            
+
             res = stm.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 consulta.setId(res.getInt("id"));
                 consulta.setDescricao(res.getString("descricao"));
                 consulta.setValor(res.getDouble("valor"));
@@ -170,15 +170,37 @@ public class Consulta {
                 consulta.setFk_animal(res.getInt("fk_animal"));
                 consulta.setFk_atendente(res.getInt("fk_atendente"));
                 Consulta novaConsulta = new Consulta(id, descricao, valor, data_consulta, data_prevista, data_agendamento, fk_animal, fk_atendente);
-                
+
                 listaConsultas.add(novaConsulta);
             }
-            
+
             return listaConsultas;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-        
+
+    }
+
+    public ResultSet selectAllFromConsultaByDescricao(String descricao) {
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT * FROM consulta WHERE descricao = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, descricao);
+            res = stm.executeQuery();
+
+            if (res != null && res.next()) {
+                return res;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

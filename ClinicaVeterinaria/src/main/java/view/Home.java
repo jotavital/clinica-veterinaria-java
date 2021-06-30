@@ -6,6 +6,9 @@
 package view;
 
 import java.sql.Connection;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Connector;
 import view.animal.*;
 import view.atendente.*;
@@ -121,7 +124,7 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(0, 519, Short.MAX_VALUE)
+                .addGap(0, 550, Short.MAX_VALUE)
                 .addComponent(pnRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -239,6 +242,11 @@ public class Home extends javax.swing.JFrame {
 
         menuEditConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/calendar_edit.png"))); // NOI18N
         menuEditConsulta.setText("Editar");
+        menuEditConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditConsultaActionPerformed(evt);
+            }
+        });
         menuConsultas.add(menuEditConsulta);
 
         jMenuBar1.add(menuConsultas);
@@ -530,9 +538,20 @@ public class Home extends javax.swing.JFrame {
     private void submenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuSobreActionPerformed
         // TODO add your handling code here:
         Sobre sobreObj = new Sobre();
-//        jDesktopPane1.add(sobreObj);
         sobreObj.setVisible(true);
     }//GEN-LAST:event_submenuSobreActionPerformed
+
+    private void menuEditConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditConsultaActionPerformed
+        // TODO add your handling code here:
+        EditarConsulta editarConsulta = null;
+        try {
+            editarConsulta = new EditarConsulta(jDesktopPane1);
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jDesktopPane1.add(editarConsulta);
+        editarConsulta.setVisible(true);
+    }//GEN-LAST:event_menuEditConsultaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
