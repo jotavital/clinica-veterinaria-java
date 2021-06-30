@@ -335,6 +335,11 @@ public class Home extends javax.swing.JFrame {
 
         submenuSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/help.png"))); // NOI18N
         submenuSobre.setText("Sobre o software");
+        submenuSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuSobreActionPerformed(evt);
+            }
+        });
         menuSobre.add(submenuSobre);
 
         jMenuBar1.add(menuSobre);
@@ -521,6 +526,13 @@ public class Home extends javax.swing.JFrame {
         jDesktopPane1.add(editarVeterinario);
         editarVeterinario.setVisible(true);
     }//GEN-LAST:event_menuEditVeterinarioActionPerformed
+
+    private void submenuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuSobreActionPerformed
+        // TODO add your handling code here:
+        Sobre sobreObj = new Sobre();
+//        jDesktopPane1.add(sobreObj);
+        sobreObj.setVisible(true);
+    }//GEN-LAST:event_submenuSobreActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
