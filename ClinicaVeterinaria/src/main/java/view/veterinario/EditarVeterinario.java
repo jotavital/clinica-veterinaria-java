@@ -7,7 +7,11 @@ package view.veterinario;
 
 import controller.VeterinarioController;
 import funcoes.*;
-import funcoes.LimitNumberCharacters;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import javax.swing.JTextField;
 import model.Veterinario;
 
 /**
@@ -19,14 +23,66 @@ public class EditarVeterinario extends javax.swing.JInternalFrame {
     Funcoes funcoes = new Funcoes();
     FuncoesComboBox funcoesCb = new FuncoesComboBox();
     Veterinario veterinarioObj = new Veterinario();
+    VeterinarioController veterinarioController = new VeterinarioController();
     MascarasDeCampos mascara = new MascarasDeCampos();
+    ResultSet resultVet;
+    int idVet;
+    String tipo_telefone;
+
     /**
      * Creates new form EditarVeterinario
      */
     public EditarVeterinario() {
         initComponents();
-        
+
         funcoesCb.populaComboBox(veterinarioObj, cbSelectVeterinario);
+
+        cbSelectVeterinario.removeActionListener(cbSelectVeterinario.getActionListeners()[0]);
+
+        cbSelectVeterinario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                for (Component c : jPanel1.getComponents()) {
+                    if (c instanceof JTextField) {
+                        c.setEnabled(true);
+                    }
+                }
+
+                if (cbSelectVeterinario.getSelectedItem() != null) {
+                    String partes[] = cbSelectVeterinario.getSelectedItem().toString().split(" - ");
+                    resultVet = veterinarioController.selectAllFromVeterinarioByCpf(partes[1]);
+                }
+
+                try {
+
+                    if (resultVet != null) {
+                        txtNome.setText(resultVet.getString("nome"));
+                        txtCpf.setText(resultVet.getString("cpf"));
+
+                        if (resultVet.getString("tipo_telefone").equals("Celular")) {
+                            radioCelular.setSelected(true);
+                            mascara.mascaraCelular(txtTelefone);
+                        } else if (resultVet.getString("tipo_telefone").equals("Fixo")) {
+                            radioFixo.setSelected(true);
+                            mascara.mascaraTelefoneFixo(txtTelefone);
+                        } else if (resultVet.getString("tipo_telefone").equals("")) {
+                            radioCelular.setSelected(false);
+                            radioFixo.setSelected(false);
+                        }
+
+                        txtTelefone.setText(resultVet.getString("telefone"));
+                        txtRua.setText(resultVet.getString("rua"));
+                        txtBairro.setText(resultVet.getString("bairro"));
+                        txtNumero.setText(resultVet.getString("numero"));
+
+                        idVet = resultVet.getInt("id");
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     /**
@@ -266,10 +322,69 @@ public class EditarVeterinario extends javax.swing.JInternalFrame {
         String bairro = txtBairro.getText();
         String numero = txtNumero.getText();
 
-        Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
+        if (radioCelular.isSelected() == true) {
+            tipo_telefone = "Celular";
+        } else if (radioFixo.isSelected() == true) {
+            tipo_telefone = "Fixo";
+        }
 
-        if (controller.cadastrarVeterinario(veterinario)){
+        Veterinario veterinario = new Veterinario(idVet, nome, cpf, telefone, rua, bairro, numero, tipo_telefone);
+
+        if (controller.editarVeterinario(veterinario)) {
+            cbSelectVeterinario.removeActionListener(cbSelectVeterinario.getActionListeners()[0]);
+
             funcoes.resetFields(jPanel1);
+            funcoes.uncheckRadioButtonGroup(buttonGroup1);
+            funcoes.disableFields(jPanel1);
+            funcoesCb.populaComboBox(veterinario, cbSelectVeterinario);
+
+            cbSelectVeterinario.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    for (Component c : jPanel1.getComponents()) {
+                        if (c instanceof JTextField) {
+                            c.setEnabled(true);
+                        }
+                    }
+
+                    if (cbSelectVeterinario.getSelectedItem() != null) {
+                        String partes[] = cbSelectVeterinario.getSelectedItem().toString().split(" - ");
+
+                        if (partes.length != 1) {
+                            resultVet = controller.selectAllFromVeterinarioByCpf(partes[1]);
+                        }
+                    }
+
+                    try {
+
+                        if (resultVet != null) {
+                            txtNome.setText(resultVet.getString("nome"));
+                            txtCpf.setText(resultVet.getString("cpf"));
+
+                            if (resultVet.getString("tipo_telefone").equals("Celular")) {
+                                radioCelular.setSelected(true);
+                                mascara.mascaraCelular(txtTelefone);
+                            } else if (resultVet.getString("tipo_telefone").equals("Fixo")) {
+                                radioFixo.setSelected(true);
+                                mascara.mascaraTelefoneFixo(txtTelefone);
+                            } else if (resultVet.getString("tipo_telefone").equals("")) {
+                                radioCelular.setSelected(false);
+                                radioFixo.setSelected(false);
+                            }
+
+                            txtTelefone.setText(resultVet.getString("telefone"));
+                            txtRua.setText(resultVet.getString("rua"));
+                            txtBairro.setText(resultVet.getString("bairro"));
+                            txtNumero.setText(resultVet.getString("numero"));
+
+                            idVet = resultVet.getInt("id");
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

@@ -14,13 +14,15 @@ import javax.swing.JOptionPane;
  * @author lukas
  */
 public class Veterinario {
+
     Connector conector = new Connector();
     Connection conn = conector.connect();
-    
-    String nome, cpf, telefone, rua, bairro, numero;
+
+    String nome, cpf, telefone, rua, bairro, numero, tipo_telefone;
+    int id;
 
     public Veterinario() {
-        
+
     }
 
     public Veterinario(String nome, String cpf, String telefone, String rua, String bairro, String numero) {
@@ -31,7 +33,44 @@ public class Veterinario {
         this.bairro = bairro;
         this.numero = numero;
     }
+    
+    public Veterinario(String nome, String cpf, String telefone, String rua, String bairro, String numero, String tipo_telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.tipo_telefone = tipo_telefone;
+    }
+    
+    public Veterinario(int id, String nome, String cpf, String telefone, String rua, String bairro, String numero, String tipo_telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.tipo_telefone = tipo_telefone;
+    }
+    
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo_telefone() {
+        return tipo_telefone;
+    }
+
+    public void setTipo_telefone(String tipo_telefone) {
+        this.tipo_telefone = tipo_telefone;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -79,11 +118,11 @@ public class Veterinario {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
-    public boolean cadastrarVeterinario(Veterinario veterinario ){
+
+    public boolean cadastrarVeterinario(Veterinario veterinario) {
         //sql para o cadastro do veterinario
-        String sql = "INSERT INTO veterinario (nome, cpf, telefone, rua, bairro, numero) VALUES (?, ?, ?, ?, ?, ?)";
-                
+        String sql = "INSERT INTO veterinario (nome, cpf, telefone, rua, bairro, numero, tipo_telefone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
         try {
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setString(1, veterinario.getNome());
@@ -92,6 +131,7 @@ public class Veterinario {
             stm.setString(4, veterinario.getRua());
             stm.setString(5, veterinario.getBairro());
             stm.setString(6, veterinario.getNumero());
+            stm.setString(7, veterinario.getTipo_telefone());
             stm.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Veterinário cadastrado com sucesso!");
@@ -102,17 +142,17 @@ public class Veterinario {
             return false;
         }
     }
-    
-    public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario){
+
+    public ArrayList<Veterinario> pegarVeterinarios(Veterinario veterinario) {
         String sql = "SELECT * FROM veterinario";
         ArrayList<Veterinario> listaVeterinario = new ArrayList<>();
-        
-        try{
+
+        try {
             ResultSet res = null;
             PreparedStatement stm = conn.prepareStatement(sql);
-            
+
             res = stm.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 veterinario.setNome(res.getString("nome"));
                 veterinario.setCpf(res.getString("cpf"));
                 veterinario.setTelefone(res.getString("telefone"));
@@ -120,10 +160,10 @@ public class Veterinario {
                 veterinario.setBairro(res.getString("bairro"));
                 veterinario.setNumero(res.getString("numero"));
                 Veterinario novoVeterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
-                
+
                 listaVeterinario.add(novoVeterinario);
             }
-            
+
             return listaVeterinario;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +172,7 @@ public class Veterinario {
     }
 
     int getVeterinarioIdByNome(String nomeVeterinario) {
-        
+
         PreparedStatement stm;
         ResultSet res;
 
@@ -143,45 +183,92 @@ public class Veterinario {
             stm.setString(1, nomeVeterinario);
             res = stm.executeQuery();
 
-            if(res.next()){
-                return res.getInt(1);    
-            }else{
+            if (res.next()) {
+                return res.getInt(1);
+            } else {
                 return -1;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
         }
-        
+
     }
-    public boolean excluirVeterinario(String nomeCPF){
+
+    public boolean excluirVeterinario(String nomeCPF) {
         String sql = "DELETE FROM veterinario WHERE veterinario.cpf = ?";
-        
+
         String[] splitted = nomeCPF.split(" - ");
-        String cpf = splitted[1]; 
+        String cpf = splitted[1];
         String nome = splitted[0];
-        
+
         try {
             PreparedStatement stm = conn.prepareCall(sql);
             stm.setString(1, cpf);
             Object[] opcoes = {"Sim", "Não"};
-            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf  + "?",
-                    "Confirmar",JOptionPane.DEFAULT_OPTION,   JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
-            
+            int escolha = JOptionPane.showOptionDialog(null, "Confirmar exclusão de: " + nome + " CPF: " + cpf + "?",
+                    "Confirmar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, opcoes, opcoes[0]);
+
             if (escolha == JOptionPane.YES_OPTION) {
                 stm.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Veterinario excluido com sucesso");
-                 return true;
-            }else{
+                return true;
+            } else {
                 JOptionPane.showMessageDialog(null, "O veterinario não foi excluido");
-                 return false;
+                return false;
             }
-            
+
         } catch (SQLException e) {
-             e.printStackTrace();
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao excluir o veterinario");
             return false;
         }
-       
+
+    }
+
+    public ResultSet selectAllFromVeterinarioByCpf(String cpfVet) {
+        PreparedStatement stm;
+        ResultSet res;
+
+        String sql = "SELECT * FROM veterinario WHERE cpf = ?";
+
+        try {
+            stm = conn.prepareStatement(sql);
+            stm.setString(1, cpfVet);
+            res = stm.executeQuery();
+
+            if (res != null && res.next()) {
+                return res;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public boolean editarVeterinario(Veterinario veterinario){
+        String sql = "UPDATE veterinario SET nome = ?, cpf = ?, telefone = ?, rua = ?, bairro = ?, numero = ?, tipo_telefone = ? WHERE id = ?";
+
+        try {
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setString(1, veterinario.getNome());
+            stm.setString(2, veterinario.getCpf());
+            stm.setString(3, veterinario.getTelefone());
+            stm.setString(4, veterinario.getRua());
+            stm.setString(5, veterinario.getBairro());
+            stm.setString(6, veterinario.getNumero());
+            stm.setString(7, veterinario.getTipo_telefone());
+            stm.setInt(8, veterinario.getId());
+
+            stm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Veterinário editado com sucesso!");
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao editar o veterinário!");
+            return false;
+        }
     }
 }

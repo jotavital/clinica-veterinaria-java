@@ -232,8 +232,15 @@ public class CadastrarVeterinario extends javax.swing.JInternalFrame {
         String rua = txtRua.getText();
         String bairro = txtBairro.getText();
         String numero = txtNumero.getText();
+        String tipo_telefone = "";
         
-        Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero);
+        if(radioCelular.isSelected() == true){
+            tipo_telefone = "Celular";
+        }else if(radioFixo.isSelected() == true){
+            tipo_telefone = "Fixo";
+        }
+        
+        Veterinario veterinario = new Veterinario(nome, cpf, telefone, rua, bairro, numero, tipo_telefone);
         
         if (controller.cadastrarVeterinario(veterinario)){
             funcoes.resetFields(jPanel1);
