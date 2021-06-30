@@ -112,7 +112,7 @@ public class Consulta {
         this.fk_atendente = fk_atendente;
     }
 
-    public boolean CadastrarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario) {
+    public boolean cadastrarConsulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario) {
         String sql = "INSERT INTO consulta (descricao, valor, data_consulta, data_prevista, data_agendamento, fk_animal, fk_atendente) VALUES (?, ?, ?, ?, ?, ?, ?)";
         String sql2 = "INSERT INTO veterinario_consulta (fk_veterinario, fk_consulta) VALUES (?, LAST_INSERT_ID())";
 

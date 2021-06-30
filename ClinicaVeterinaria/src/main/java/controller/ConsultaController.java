@@ -19,7 +19,7 @@ public class ConsultaController {
     }
     
     public boolean cadastrarConstulta(Consulta consulta, String nomeAnimal, String nomeAtendente, String nomeVeterinario){
-        return consulta.CadastrarConsulta(consulta, nomeAnimal, nomeAtendente, nomeVeterinario);
+        return consulta.cadastrarConsulta(consulta, nomeAnimal, nomeAtendente, nomeVeterinario);
     }
     
     public ArrayList<Consulta> pegarConsultas(Consulta consulta){

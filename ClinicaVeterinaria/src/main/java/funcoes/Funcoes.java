@@ -8,7 +8,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicBorders;
-import org.jdesktop.swingx.JXComboBox;
+import org.jdesktop.swingx.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

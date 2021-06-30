@@ -105,7 +105,6 @@ public class FuncoesComboBox {
         ArrayList<Animal> listaAnimais = new ArrayList<>();
 
         listaAnimais = animal.getAnimaisByDono(animal, idDono);
-        System.out.println(idDono);
 
         for (Animal a : listaAnimais) {
             combobox.addItem(a.getNomeAnimal());

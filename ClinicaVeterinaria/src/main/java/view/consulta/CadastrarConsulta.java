@@ -25,6 +25,7 @@ import view.veterinario.CadastrarVeterinario;
 public class CadastrarConsulta extends javax.swing.JInternalFrame {
 
     FuncoesComboBox funcoesCB = new FuncoesComboBox();
+    Funcoes funcoes = new Funcoes();
     Cliente cliente = new Cliente();
     Veterinario veterinario = new Veterinario();
     Animal animal = new Animal();
@@ -354,9 +355,14 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         if (cbDono.getSelectedItem() != null) {
-            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString());
+            int idDono = cliente.getClienteIdByNome(cbDono.getSelectedItem().toString().split(" - ")[0]);
             funcoesCB.populaComboBox(animal, idDono, cbAnimal);
-            cbAnimal.setEnabled(true);
+            
+            if(cbAnimal.getItemCount() != 0){
+                cbAnimal.setEnabled(true);
+            }else{
+                cbAnimal.setEnabled(false);
+            }
         }
 
     }//GEN-LAST:event_cbDonoActionPerformed
@@ -412,9 +418,15 @@ public class CadastrarConsulta extends javax.swing.JInternalFrame {
         Consulta consulta = new Consulta(descricao, valor, dataConsulta, dataPrevista);
 
         String nomeAnimal = cbAnimal.getSelectedItem().toString();
-        String nomeVeterinario = cbVeterinario.getSelectedItem().toString();
+        String nomeVeterinario = cbVeterinario.getSelectedItem().toString().split(" - ")[0];
 
-        controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario); // vai cadastrar como se o atendente fosse admin por enquanto, depois vou mudar isso
+        if(controller.cadastrarConstulta(consulta, nomeAnimal, "admin", nomeVeterinario)){
+            funcoes.resetFields(pnForm);
+            funcoesCB.populaComboBox(cliente, cbDono);
+            cbAnimal.setEnabled(false);
+            funcoesCB.populaComboBox(veterinario, cbVeterinario);
+            txtDesc.setText("");
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
 
